@@ -78,7 +78,9 @@
       <SubType>Designer</SubType>
     </ApplicationDefinition>
     <Compile Include="Migrations\Configuration.cs" />
-    <Compile Include="src\main\model\seguranca\Funcionalidade.cs" />
+    <Compile Include="src\main\model\BO_Seguranca.cs" />
+    <Compile Include="src\main\model\seguranca\ce\Funcionalidade.cs" />
+    <Compile Include="src\main\model\seguranca\dao\DaoFuncionalidade.cs" />
     <Compile Include="src\main\_utils\DaoPadrao.cs" />
     <Compile Include="src\main\_utils\EFDBContext.cs" />
     <Compile Include="src\main\_utils\EntityBase.cs" />
