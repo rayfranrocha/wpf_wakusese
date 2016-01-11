@@ -8,7 +8,7 @@ using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
 namespace wpf_wakusese.src.main._utils
-{
+{//
     [Serializable]
     public class EntityBase
     {
@@ -37,10 +37,6 @@ namespace wpf_wakusese.src.main._utils
             return this.ToString();
         }
         public virtual String getNomeConsolidado3()
-        {
-            return this.ToString();
-        }
-        public virtual String getNomeConsolidado4()
         {
             return this.ToString();
         }
