@@ -1,1 +1,0 @@
-Este projeto é um sistema DESKTOP para a empresa wakusese utilizando C# + WPF + EF6
