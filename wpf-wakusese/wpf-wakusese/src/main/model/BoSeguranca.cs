@@ -9,12 +9,12 @@ using wpf_wakusese.src.main.model.seguranca.dao;
 
 namespace wpf_wakusese.src.main.model
 {
-    public class BO_Seguranca : IDisposable
+    public class BoSeguranca : IDisposable
     {
         private DbContext _DbContext = null;
         private bool _Disposed = false;
 
-        public BO_Seguranca()
+        public BoSeguranca()
         {
             _DbContext = new EFDBContext();
         }

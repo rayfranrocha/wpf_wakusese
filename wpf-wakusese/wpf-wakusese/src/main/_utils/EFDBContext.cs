@@ -7,6 +7,7 @@ using System.Data.Entity;
 using System.Threading.Tasks;
 using System.Data.Entity.ModelConfiguration.Conventions;
 using wpf_wakusese.src.main.model.seguranca;
+using wpf_wakusese.model;
 
 namespace wpf_wakusese.src.main._utils
 {
@@ -21,9 +22,12 @@ namespace wpf_wakusese.src.main._utils
         }
 
         //Seguranca
-        public DbSet<Funcionalidade> Funcionalidade { get; set; }
+        public DbSet<Funcionalidade> Funcionalidades { get; set; }
+        public DbSet<Perfil> Perfis { get; set; }
 
         //Cadastros
+        public DbSet<Empresa> Empresas { get; set; }
+        public DbSet<Endereco> Enderecos { get; set; }
 
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {

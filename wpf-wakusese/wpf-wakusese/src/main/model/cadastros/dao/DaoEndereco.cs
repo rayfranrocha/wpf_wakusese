@@ -7,11 +7,11 @@ using System.Threading.Tasks;
 using wpf_wakusese.model;
 using wpf_wakusese.src.main._utils;
 
-namespace wpf_wakusese.src.main.model.seguranca.dao
+namespace wpf_wakusese.src.main.model.cadastros.dao
 {
-    public class DaoFuncionalidade : DaoPadrao<Funcionalidade>
+    public class DaoEndereco : DaoPadrao<Endereco>
     {
-        public DaoFuncionalidade(DbContext dbContext)
+        public DaoEndereco(DbContext dbContext)
             : base(dbContext)
         {
         }

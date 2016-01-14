@@ -77,9 +77,20 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="Migrations\201601141518431_Num1.cs" />
+    <Compile Include="Migrations\201601141518431_Num1.Designer.cs">
+      <DependentUpon>201601141518431_Num1.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
-    <Compile Include="src\main\model\BO_Seguranca.cs" />
+    <Compile Include="src\main\model\BoCadastros.cs" />
+    <Compile Include="src\main\model\BoSeguranca.cs" />
+    <Compile Include="src\main\model\cadastros\ce\Empresa.cs" />
+    <Compile Include="src\main\model\cadastros\ce\Endereco.cs" />
+    <Compile Include="src\main\model\cadastros\dao\DaoEndereco.cs" />
+    <Compile Include="src\main\model\cadastros\dao\DaoEmpresa.cs" />
+    <Compile Include="src\main\model\seguranca\ce\Perfil.cs" />
     <Compile Include="src\main\model\seguranca\ce\Funcionalidade.cs" />
+    <Compile Include="src\main\model\seguranca\dao\DaoPerfil.cs" />
     <Compile Include="src\main\model\seguranca\dao\DaoFuncionalidade.cs" />
     <Compile Include="src\main\_utils\DaoPadrao.cs" />
     <Compile Include="src\main\_utils\EFDBContext.cs" />
@@ -111,6 +122,9 @@
       <DependentUpon>Settings.settings</DependentUpon>
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
+    <EmbeddedResource Include="Migrations\201601141518431_Num1.resx">
+      <DependentUpon>201601141518431_Num1.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
@@ -126,7 +140,6 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="src\main\model\cadastros\" />
     <Folder Include="src\main\viewControl\cadastros\" />
     <Folder Include="src\main\viewControl\seguranca\" />
     <Folder Include="src\main\_sandbox\" />

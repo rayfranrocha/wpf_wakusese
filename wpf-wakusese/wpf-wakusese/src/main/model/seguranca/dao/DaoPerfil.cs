@@ -9,9 +9,9 @@ using wpf_wakusese.src.main._utils;
 
 namespace wpf_wakusese.src.main.model.seguranca.dao
 {
-    public class DaoFuncionalidade : DaoPadrao<Funcionalidade>
+    public class DaoPerfil : DaoPadrao<Perfil>
     {
-        public DaoFuncionalidade(DbContext dbContext)
+        public DaoPerfil(DbContext dbContext)
             : base(dbContext)
         {
         }
