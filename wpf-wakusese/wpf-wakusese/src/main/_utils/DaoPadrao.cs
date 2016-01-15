@@ -5,39 +5,43 @@ using System.Linq;
 using System.Linq.Expressions;
 using System.Text;
 using System.Threading.Tasks;
+using wpf_wakusese.model;
 
 namespace wpf_wakusese.src.main._utils
 {
     public class DaoPadrao<T> where T : EntityBase
     {
-        //private static RepositorioPadrao<T> _RepositorioPadraoSingleton;
         protected DbSet<T> _DbSet;
-        protected DbContext _DbContext;
+        protected EFDBContext _DbContext;
 
         #region Construtores
 
         public DaoPadrao()
-        { }
-
-        public DaoPadrao(DbContext db)
         {
-            _DbContext = db;
-            _DbSet = _DbContext.Set<T>();
+            //instancia o DbContext
+            _DbContext = new EFDBContext();
+
+            //recebe um DbSet
+            object DbSetObject = _DbContext.GetDBSet(typeof(T));
+
+            //convert num DbSet<T>
+            _DbSet = (DbSet<T>)DbSetObject;
+
         }
 
         #endregion
 
-        //#region Padrão Singleton
-        //public static RepositorioPadrao<T> GetInstance()
-        //{
-        //    if (_RepositorioPadraoSingleton == null) {
-        //        _RepositorioPadraoSingleton = new RepositorioPadrao<T>();
-        //    }
-        //    return _RepositorioPadraoSingleton;
-        //}
-        //#endregion
+        #region Metodos DML Padrão
 
-        #region IRepository<T> Members
+        public void SaveChanges()
+        {
+            _DbContext.SaveChanges();
+        }
+
+        public void AttachTo(T obj)
+        {
+            _DbSet.Attach(obj);
+        }
 
         public void Inserir(T obj)
         {

@@ -82,19 +82,17 @@
       <DependentUpon>201601141518431_Num1.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
-    <Compile Include="src\main\model\BoCadastros.cs" />
-    <Compile Include="src\main\model\BoSeguranca.cs" />
+    <Compile Include="src\main\model\cadastros\bo\BOEmpresa.cs" />
     <Compile Include="src\main\model\cadastros\ce\Empresa.cs" />
     <Compile Include="src\main\model\cadastros\ce\Endereco.cs" />
-    <Compile Include="src\main\model\cadastros\dao\DaoEndereco.cs" />
-    <Compile Include="src\main\model\cadastros\dao\DaoEmpresa.cs" />
     <Compile Include="src\main\model\seguranca\ce\Perfil.cs" />
     <Compile Include="src\main\model\seguranca\ce\Funcionalidade.cs" />
-    <Compile Include="src\main\model\seguranca\dao\DaoPerfil.cs" />
-    <Compile Include="src\main\model\seguranca\dao\DaoFuncionalidade.cs" />
+    <Compile Include="src\main\_utils\BoPadrao.cs" />
     <Compile Include="src\main\_utils\DaoPadrao.cs" />
     <Compile Include="src\main\_utils\EFDBContext.cs" />
     <Compile Include="src\main\_utils\EntityBase.cs" />
+    <Compile Include="src\main\_utils\FactoryBO.cs" />
+    <Compile Include="src\main\_utils\IDaoPadrao.cs" />
     <Page Include="MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>

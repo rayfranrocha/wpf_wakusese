@@ -5,8 +5,6 @@ namespace wpf_wakusese.Migrations
     using System.Data.Entity.Migrations;
     using System.Linq;
     using wpf_wakusese.model;
-    using wpf_wakusese.src.main.model;
-    using wpf_wakusese.src.main.model.seguranca;
 
     internal sealed class Configuration : DbMigrationsConfiguration<wpf_wakusese.src.main._utils.EFDBContext>
     {
@@ -17,12 +15,12 @@ namespace wpf_wakusese.Migrations
 
         protected override void Seed(wpf_wakusese.src.main._utils.EFDBContext context)
         {
-            BoSeguranca bo = new BoSeguranca();
-            Funcionalidade f = new Funcionalidade() { nome = "usuario_tela" };
+            //BoSeguranca bo = new BoSeguranca();
+            //Funcionalidade f = new Funcionalidade() { nome = "usuario_tela" };
             
-            bo.daoFuncionalidade.Inserir(f);
+            //bo.daoFuncionalidade.Inserir(f);
             
-            bo.Commit();
+            //bo.Commit();
         }
     }
 }
