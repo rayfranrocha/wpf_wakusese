@@ -5,7 +5,6 @@ using System.Linq;
 using System.Linq.Expressions;
 using System.Text;
 using System.Threading.Tasks;
-using wpf_wakusese.model;
 
 namespace wpf_wakusese.src.main._utils
 {

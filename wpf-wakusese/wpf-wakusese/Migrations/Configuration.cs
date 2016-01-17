@@ -4,7 +4,6 @@ namespace wpf_wakusese.Migrations
     using System.Data.Entity;
     using System.Data.Entity.Migrations;
     using System.Linq;
-    using wpf_wakusese.model;
 
     internal sealed class Configuration : DbMigrationsConfiguration<wpf_wakusese.src.main._utils.EFDBContext>
     {
@@ -15,12 +14,18 @@ namespace wpf_wakusese.Migrations
 
         protected override void Seed(wpf_wakusese.src.main._utils.EFDBContext context)
         {
-            //BoSeguranca bo = new BoSeguranca();
-            //Funcionalidade f = new Funcionalidade() { nome = "usuario_tela" };
-            
-            //bo.daoFuncionalidade.Inserir(f);
-            
-            //bo.Commit();
+            //  This method will be called after migrating to the latest version.
+
+            //  You can use the DbSet<T>.AddOrUpdate() helper extension method 
+            //  to avoid creating duplicate seed data. E.g.
+            //
+            //    context.People.AddOrUpdate(
+            //      p => p.FullName,
+            //      new Person { FullName = "Andrew Peters" },
+            //      new Person { FullName = "Brice Lambson" },
+            //      new Person { FullName = "Rowan Miller" }
+            //    );
+            //
         }
     }
 }

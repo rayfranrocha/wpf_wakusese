@@ -12,9 +12,11 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
-using wpf_wakusese.model;
 using wpf_wakusese.src.main._utils;
 using wpf_wakusese.src.main.model.cadastros.bo;
+using wpf_wakusese.src.main.model.cadastros.ce;
+using wpf_wakusese.src.main.model.seguranca.bo;
+using wpf_wakusese.src.main.model.seguranca.ce;
 
 namespace wpf_wakusese
 {
@@ -31,7 +33,16 @@ namespace wpf_wakusese
             InitializeComponent();
 
             //Este bo possui uma classe BOEmpresa
-            BOEmpresa boEmpresa = (BOEmpresa) FactoryBO.GetBO(typeof(Empresa));
+            BOEmpresa boEmpresa = (BOEmpresa)FactoryBO.GetBO(typeof(Empresa));
+
+            BOUsuario boUsuario = new BOUsuario();
+
+            Usuario u = new Usuario() { email = "rayfran.rocha.lima@gmail.com", senha = "123" };
+
+            boUsuario.Inserir(u);
+
+            boUsuario.SaveChanges();
+
 
             //Neste BO, eu não fiz uma classe, portanto deveriamos criar um BoGenerico -> BoPadrao<Funcionalidade>
             //Não consegui.

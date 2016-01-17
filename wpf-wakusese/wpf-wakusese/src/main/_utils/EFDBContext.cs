@@ -6,7 +6,8 @@ using System.Text;
 using System.Data.Entity;
 using System.Threading.Tasks;
 using System.Data.Entity.ModelConfiguration.Conventions;
-using wpf_wakusese.model;
+using wpf_wakusese.src.main.model.seguranca.ce;
+using wpf_wakusese.src.main.model.cadastros.ce;
 
 namespace wpf_wakusese.src.main._utils
 {
@@ -26,31 +27,49 @@ namespace wpf_wakusese.src.main._utils
         //Seguranca
         public DbSet<Funcionalidade> Funcionalidades { get; set; }
         public DbSet<Perfil> Perfis { get; set; }
+        public DbSet<Usuario> Usuarios { get; set; }
+
         //Cadastros
         public DbSet<Empresa> Empresas { get; set; }
         public DbSet<Endereco> Enderecos { get; set; }
 
         private void declararDBSets()
         {
-            listaDBSetDeclarados.Add(typeof(Funcionalidade), Funcionalidades);
-            listaDBSetDeclarados.Add(typeof(Perfil), Perfis);
-            listaDBSetDeclarados.Add(typeof(Empresa), Empresas);
-            listaDBSetDeclarados.Add(typeof(Endereco), Enderecos);
+            //listaDBSetDeclarados.Add(typeof(Funcionalidade), Funcionalidades);
+            //listaDBSetDeclarados.Add(typeof(Perfil), Perfis);
+            //listaDBSetDeclarados.Add(typeof(Usuario), Usuarios);
+            //listaDBSetDeclarados.Add(typeof(Empresa), Empresas);
+            //listaDBSetDeclarados.Add(typeof(Endereco), Enderecos);
         }
+
+        //public object GetDBSet(Type tipo)
+        //{
+        //    object resultado = null;
+
+        //    if (!listaDBSetDeclarados.TryGetValue(tipo, out resultado))
+        //    {
+        //        throw new ArgumentException("Não existe DbSet para " + tipo.Name);
+        //    }
+
+        //    return resultado;
+
+        //}
 
         public object GetDBSet(Type tipo)
         {
-            object resultado = null;
+            object r = null;
 
-            if (!listaDBSetDeclarados.TryGetValue(tipo, out resultado))
+            switch (tipo.Name.ToString())
             {
-                throw new ArgumentException("Não existe DbSet para " + tipo.Name);
+                case "Empresa": return Empresas;
+                case "Endereco": return Enderecos;
+                case "Funcionalidade": return Funcionalidades;
+                case "Perfil": return Perfis;
+                case "Usuario": return Usuarios;
             }
-
-            return resultado;
+            return r;
 
         }
-
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
             var serv = PluralizationService.CreateService(new System.Globalization.CultureInfo("en-us"));

@@ -8,7 +8,7 @@ using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 using wpf_wakusese.src.main._utils;
 
-namespace wpf_wakusese.model
+namespace wpf_wakusese.src.main.model.cadastros.ce
 {
     public class Empresa : EntityBase
     {

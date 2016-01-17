@@ -9,7 +9,7 @@ using System.ComponentModel.DataAnnotations.Schema;
 using wpf_wakusese.src.main._utils;
 
 
-namespace wpf_wakusese.model
+namespace wpf_wakusese.src.main.model.seguranca.ce
 {
     public class Funcionalidade : EntityBase
     {

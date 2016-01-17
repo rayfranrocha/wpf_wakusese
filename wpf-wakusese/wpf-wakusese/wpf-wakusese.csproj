@@ -77,14 +77,16 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
-    <Compile Include="Migrations\201601141518431_Num1.cs" />
-    <Compile Include="Migrations\201601141518431_Num1.Designer.cs">
-      <DependentUpon>201601141518431_Num1.cs</DependentUpon>
+    <Compile Include="Migrations\201601171953380_Inicial.cs" />
+    <Compile Include="Migrations\201601171953380_Inicial.Designer.cs">
+      <DependentUpon>201601171953380_Inicial.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="src\main\model\cadastros\bo\BOEmpresa.cs" />
     <Compile Include="src\main\model\cadastros\ce\Empresa.cs" />
     <Compile Include="src\main\model\cadastros\ce\Endereco.cs" />
+    <Compile Include="src\main\model\seguranca\bo\BOUsuario.cs" />
+    <Compile Include="src\main\model\seguranca\ce\Usuario.cs" />
     <Compile Include="src\main\model\seguranca\ce\Perfil.cs" />
     <Compile Include="src\main\model\seguranca\ce\Funcionalidade.cs" />
     <Compile Include="src\main\_utils\BoPadrao.cs" />
@@ -120,8 +122,8 @@
       <DependentUpon>Settings.settings</DependentUpon>
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
-    <EmbeddedResource Include="Migrations\201601141518431_Num1.resx">
-      <DependentUpon>201601141518431_Num1.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201601171953380_Inicial.resx">
+      <DependentUpon>201601171953380_Inicial.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>

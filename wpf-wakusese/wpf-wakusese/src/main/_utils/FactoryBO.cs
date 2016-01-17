@@ -3,8 +3,9 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using wpf_wakusese.model;
 using wpf_wakusese.src.main.model.cadastros.bo;
+using wpf_wakusese.src.main.model.cadastros.ce;
+using wpf_wakusese.src.main.model.seguranca.ce;
 
 namespace wpf_wakusese.src.main._utils
 {
