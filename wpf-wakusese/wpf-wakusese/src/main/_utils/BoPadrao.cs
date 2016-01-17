@@ -9,10 +9,21 @@ namespace wpf_wakusese.src.main._utils
 {
     public class BoPadrao<T> where T : EntityBase
     {
+        protected EFDBContext _DbContext;
         protected DaoPadrao<T> dao;
 
-        public BoPadrao() : base() {
-            dao = new DaoPadrao<T>();
+        public BoPadrao()
+            : base()
+        {
+            _DbContext = new EFDBContext();
+            dao = new DaoPadrao<T>(_DbContext);
+        }
+
+        public BoPadrao(EFDBContext dbContext)
+            : base()
+        {
+            _DbContext = dbContext;
+            dao = new DaoPadrao<T>(_DbContext);
         }
 
         #region Implementacao dos Métodos do IDAOPadrao

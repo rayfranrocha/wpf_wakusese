@@ -10,23 +10,26 @@ namespace wpf_wakusese.src.main._utils
 {
     public class DaoPadrao<T> where T : EntityBase
     {
-        protected DbSet<T> _DbSet;
-        protected EFDBContext _DbContext;
+        private DbSet<T> _DbSet;
+        private EFDBContext _DbContext;
 
         #region Construtores
 
-        public DaoPadrao()
+        public DaoPadrao(EFDBContext dbContext)
         {
-            //instancia o DbContext
-            _DbContext = new EFDBContext();
+            _DbContext = dbContext;
+            DefinirDBSet();
+        }
 
+        private void DefinirDBSet()
+        {
             //recebe um DbSet
             object DbSetObject = _DbContext.GetDBSet(typeof(T));
 
             //convert num DbSet<T>
             _DbSet = (DbSet<T>)DbSetObject;
-
         }
+
 
         #endregion
 

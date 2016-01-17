@@ -32,22 +32,37 @@ namespace wpf_wakusese
         {
             InitializeComponent();
 
-            //Este bo possui uma classe BOEmpresa
-            BOEmpresa boEmpresa = (BOEmpresa)FactoryBO.GetBO(typeof(Empresa));
+            Exemplo4();
 
+            //Exemplo2(boUsuario);
+            //Exemplo3();
+
+        }
+
+        private static void Exemplo4()
+        {
             BOUsuario boUsuario = new BOUsuario();
+            Usuario usu = new Usuario() { email = "alguem.da.google@google.com" };
+            Empresa emp = new Empresa() { nome = "Google" };
+            boUsuario.ExemploVerificaUsuarioEmpresa_seNaoExistir_CriaOsDois(usu, emp);
+        }
+
+        private static void Exemplo3()
+        {
+            //Neste BO, eu não fiz uma classe, portanto deveriamos criar um BoGenerico -> BoPadrao<Funcionalidade>
+            //Não consegui.
+            BoPadrao<Funcionalidade> boFunc = (BoPadrao<Funcionalidade>)FactoryBO.GetBO(typeof(Funcionalidade));
+        }
+
+        private static void Exemplo2(BOUsuario boUsuario)
+        {
+            BOUsuario boUsuario1 = new BOUsuario();
 
             Usuario u = new Usuario() { email = "rayfran.rocha.lima@gmail.com", senha = "123" };
 
-            boUsuario.Inserir(u);
+            boUsuario1.Inserir(u);
 
-            boUsuario.SaveChanges();
-
-
-            //Neste BO, eu não fiz uma classe, portanto deveriamos criar um BoGenerico -> BoPadrao<Funcionalidade>
-            //Não consegui.
-            //BoPadrao<Funcionalidade> boFunc = (BoPadrao<Funcionalidade>)FactoryBO.GetBO(typeof(Funcionalidade));
-
+            boUsuario1.SaveChanges();
         }
 
         //private void incluirEmpresaEPerfil()

@@ -10,6 +10,13 @@ namespace wpf_wakusese.src.main.model.cadastros.bo
 {
     public class BOEmpresa : BoPadrao<Empresa>
     {
-        public BOEmpresa() : base() { }
+        public BOEmpresa()
+            : base()
+        {
+        }
+        public BOEmpresa(EFDBContext dbContext)
+            : base(dbContext)
+        {
+        }
     }
 }
