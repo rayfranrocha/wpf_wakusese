@@ -93,6 +93,7 @@
     <Compile Include="src\main\_utils\DaoPadrao.cs" />
     <Compile Include="src\main\_utils\EFDBContext.cs" />
     <Compile Include="src\main\_utils\EntityBase.cs" />
+    <Compile Include="src\main\_utils\FactoryBO.cs" />
     <Compile Include="src\main\_utils\IDaoPadrao.cs" />
     <Page Include="MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>

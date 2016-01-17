@@ -22,7 +22,7 @@ namespace wpf_wakusese.src.main._utils
                 if (BosConhecidos.TryGetValue(tipoCE, out tipoBO))
                 {
                     bo = Activator.CreateInstance(tipoBO);
-                   Cache.Add(tipoCE, bo);
+                    Cache.Add(tipoCE, bo);
                 }
                 else
                 {
