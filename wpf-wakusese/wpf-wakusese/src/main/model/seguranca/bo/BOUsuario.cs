@@ -28,7 +28,7 @@ namespace wpf_wakusese.src.main.model.seguranca.bo
             }
             catch (Exception)
             {
-                this.Inserir(usu);
+                this.InserirOuAlterar(usu);
             }
 
             try
@@ -37,10 +37,10 @@ namespace wpf_wakusese.src.main.model.seguranca.bo
             }
             catch (Exception)
             {
-                boEmpresa.Inserir(emp);
+                boEmpresa.InserirOuAlterar(emp);
             }
 
-            this.SaveChanges();
+            this.Commit();
 
         }
 

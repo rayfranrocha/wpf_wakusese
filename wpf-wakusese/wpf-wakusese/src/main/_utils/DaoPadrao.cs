@@ -35,7 +35,7 @@ namespace wpf_wakusese.src.main._utils
 
         #region Metodos DML Padrão
 
-        public void SaveChanges()
+        public void Commit()
         {
             _DbContext.SaveChanges();
         }
@@ -45,16 +45,63 @@ namespace wpf_wakusese.src.main._utils
             _DbSet.Attach(obj);
         }
 
-        public void Inserir(T obj)
+        public void InserirOuAlterar(List<T> objs)
+        {
+            foreach (var item in objs)
+            {
+                InserirOuAlterar(item);
+            }
+        }
+
+        public void InserirOuAlterar(T obj)
+        {
+            //Toda vez que utilizar este comando, forçamos a VALIDAÇÃO AUTOMATICA (ex. Campos REQUIRED, Tamanho de campos etc).
+            _DbContext.Configuration.ValidateOnSaveEnabled = true;
+
+            //verifica se utilizará Inserir ou Alterar
+            if (obj.id == 0)
+            {
+                Inserir(obj);
+            }
+            else
+            {
+                Alterar(obj);
+            }
+
+        }
+
+        public void AlterarCamposEpecificos(T obj, string[] campos) {
+
+            AttachTo(obj);
+            foreach (var campo in campos)
+            {
+                _DbContext.Entry(obj).Property(campo).IsModified = true;
+            }
+
+            //Para evitar erros de validação de Propriedade REQUIRED, desabilitamos a validação ao salvar
+            _DbContext.Configuration.ValidateOnSaveEnabled = false;
+
+        }
+        
+        private void Inserir(T obj)
         {
             _DbSet.Add(obj);
         }
 
-        public void Alterar(T obj)
+        private void Alterar(T obj)
         {
-            T objAtual = _DbSet.Find(obj.id);
-            objAtual = obj;
+            if (_DbContext.Entry(obj).State == EntityState.Detached)
+                throw new Exception("Não foi possível realizar UPDATE, pois o objeto com id="+obj.id+" está com status DETACHED. Verifique!");
+
             _DbContext.Entry(obj).State = EntityState.Modified;
+        }
+
+        public void Excluir(List<T> objs)
+        {
+            foreach (var item in objs)
+            {
+                Excluir(item);
+            }
         }
 
         public void Excluir(T obj)
@@ -121,7 +168,11 @@ namespace wpf_wakusese.src.main._utils
             return _DbSet.First(predicate);
         }
 
-        #endregion
+        internal T ObterPrimeiro(int id)
+        {
+            return _DbSet.First(o => o.id == id);
+        }
 
+        #endregion
     }
 }

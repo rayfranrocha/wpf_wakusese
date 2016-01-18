@@ -18,11 +18,9 @@ namespace wpf_wakusese.src.main._utils
         public EFDBContext()
             : base("name=wakuseseDB")
         {
+            //imprime o LOG na aba Output
             this.Database.Log = s => System.Diagnostics.Debug.WriteLine(s);
-            declararDBSets();
         }
-
-        static Dictionary<Type, object> listaDBSetDeclarados = new Dictionary<Type, object>();
 
         //Seguranca
         public DbSet<Funcionalidade> Funcionalidades { get; set; }
@@ -32,28 +30,6 @@ namespace wpf_wakusese.src.main._utils
         //Cadastros
         public DbSet<Empresa> Empresas { get; set; }
         public DbSet<Endereco> Enderecos { get; set; }
-
-        private void declararDBSets()
-        {
-            //listaDBSetDeclarados.Add(typeof(Funcionalidade), Funcionalidades);
-            //listaDBSetDeclarados.Add(typeof(Perfil), Perfis);
-            //listaDBSetDeclarados.Add(typeof(Usuario), Usuarios);
-            //listaDBSetDeclarados.Add(typeof(Empresa), Empresas);
-            //listaDBSetDeclarados.Add(typeof(Endereco), Enderecos);
-        }
-
-        //public object GetDBSet(Type tipo)
-        //{
-        //    object resultado = null;
-
-        //    if (!listaDBSetDeclarados.TryGetValue(tipo, out resultado))
-        //    {
-        //        throw new ArgumentException("Não existe DbSet para " + tipo.Name);
-        //    }
-
-        //    return resultado;
-
-        //}
 
         public object GetDBSet(Type tipo)
         {
@@ -70,6 +46,7 @@ namespace wpf_wakusese.src.main._utils
             return r;
 
         }
+
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
             var serv = PluralizationService.CreateService(new System.Globalization.CultureInfo("en-us"));

@@ -9,6 +9,7 @@ namespace wpf_wakusese.src.main._utils
 {
     public class BoPadrao<T> where T : EntityBase
     {
+
         protected EFDBContext _DbContext;
         protected DaoPadrao<T> dao;
 
@@ -28,9 +29,9 @@ namespace wpf_wakusese.src.main._utils
 
         #region Implementacao dos Métodos do IDAOPadrao
 
-        public void SaveChanges()
+        public void Commit()
         {
-            dao.SaveChanges();
+            dao.Commit();
         }
 
         public void AttachTo(T obj)
@@ -38,14 +39,24 @@ namespace wpf_wakusese.src.main._utils
             dao.AttachTo(obj);
         }
 
-        public void Inserir(T obj)
+        public void InserirOuAlterar(T obj)
         {
-            dao.Inserir(obj);
+            dao.InserirOuAlterar(obj);
         }
 
-        public void Alterar(T obj)
+        public void InserirOuAlterar(List<T> objs)
         {
-            dao.Alterar(obj);
+            dao.InserirOuAlterar(objs);
+        }
+
+        public void AlterarCamposEpecificos(T obj, string[] campos)
+        {
+            dao.AlterarCamposEpecificos(obj, campos);
+        }
+
+        public void Excluir(List<T> objs)
+        {
+            dao.Excluir(objs);
         }
 
         public void Excluir(T obj)
@@ -85,8 +96,13 @@ namespace wpf_wakusese.src.main._utils
             return dao.ObterPrimeiro(predicate);
         }
 
+        public T ObterPrimeiro(int id)
+        {
+            return dao.ObterPrimeiro(id);
+        }
+
         #endregion
 
-       
+
     }
 }

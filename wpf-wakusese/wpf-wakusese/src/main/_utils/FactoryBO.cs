@@ -5,6 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using wpf_wakusese.src.main.model.cadastros.bo;
 using wpf_wakusese.src.main.model.cadastros.ce;
+using wpf_wakusese.src.main.model.seguranca.bo;
 using wpf_wakusese.src.main.model.seguranca.ce;
 
 namespace wpf_wakusese.src.main._utils
@@ -39,7 +40,8 @@ namespace wpf_wakusese.src.main._utils
         private static Dictionary<Type, Type> BosConhecidos = new Dictionary<Type, Type>()
         {
             { typeof(Empresa), typeof(BOEmpresa) }, 
-            { typeof(Funcionalidade), typeof(BoPadrao<Funcionalidade>) }
+            { typeof(Funcionalidade), typeof(BoPadrao<Funcionalidade>) },
+            { typeof(Usuario), typeof(BOUsuario) }
         };
 
 
