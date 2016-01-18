@@ -81,6 +81,18 @@
     <Compile Include="Migrations\201601171953380_Inicial.Designer.cs">
       <DependentUpon>201601171953380_Inicial.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201601181501310_script-0001.cs" />
+    <Compile Include="Migrations\201601181501310_script-0001.Designer.cs">
+      <DependentUpon>201601181501310_script-0001.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201601181507047_script-0002.cs" />
+    <Compile Include="Migrations\201601181507047_script-0002.Designer.cs">
+      <DependentUpon>201601181507047_script-0002.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201601181513080_script-0003.cs" />
+    <Compile Include="Migrations\201601181513080_script-0003.Designer.cs">
+      <DependentUpon>201601181513080_script-0003.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="src\main\model\cadastros\bo\BOEmpresa.cs" />
     <Compile Include="src\main\model\cadastros\ce\Empresa.cs" />
@@ -124,6 +136,15 @@
     </Compile>
     <EmbeddedResource Include="Migrations\201601171953380_Inicial.resx">
       <DependentUpon>201601171953380_Inicial.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201601181501310_script-0001.resx">
+      <DependentUpon>201601181501310_script-0001.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201601181507047_script-0002.resx">
+      <DependentUpon>201601181507047_script-0002.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201601181513080_script-0003.resx">
+      <DependentUpon>201601181513080_script-0003.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>

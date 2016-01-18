@@ -20,9 +20,11 @@ namespace wpf_wakusese.src.main.model.seguranca.ce
         private String _telefone;
 
         private bool _isPermanecerLogado;
-        private Empresa _ultimaEmpresa = new Empresa();
+        private Empresa _ultimaEmpresa;
 
         [Display(Name = "Email")]
+        [Required]
+        [Index("IX_UsuarioEmail", IsUnique = true)]
         public String email
         {
             get { return _email; }
@@ -36,6 +38,7 @@ namespace wpf_wakusese.src.main.model.seguranca.ce
             set { _senha = value; RaisePropertyChanged("senha"); }
         }
 
+        [Index("IX_UsuarioMacTelefone", IsUnique = true)]
         [Display(Name = "MacTelefone")]
         public String macTelefone
         {

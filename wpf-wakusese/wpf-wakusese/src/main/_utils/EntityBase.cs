@@ -7,6 +7,8 @@ using System.Threading.Tasks;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 using System.ComponentModel;
+using System.Windows.Controls;
+using System.Windows.Media;
 
 namespace wpf_wakusese.src.main._utils
 {
@@ -19,9 +21,22 @@ namespace wpf_wakusese.src.main._utils
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public int id { get; set; }
 
-        #region Atributos Uteis para Controle dos objetos
+        #region Atributos/Métodos úteis para Controle dos objetos
         [NotMapped]
         public bool isSelecionado { get; set; }
+        [NotMapped]
+        public bool isAlterado { get; set; }
+        [NotMapped]
+        public SolidColorBrush Background
+        {
+            get { 
+                Color cor = Colors.White;
+                
+                if (isAlterado) { cor = Colors.Cyan; }
+
+                return new SolidColorBrush(cor);
+            }
+        }
         #endregion
 
         #region Padrão de Projetos para Binding WPF
