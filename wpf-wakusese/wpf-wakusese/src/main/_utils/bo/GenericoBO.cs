@@ -6,54 +6,49 @@ using System.Linq.Expressions;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace wpf_wakusese.src.main._utils
+namespace wpf_wakusese.src.main._utils.bo
 {
-    public class DaoPadrao<T> where T : EntityBase
+    public class GenericoBO<T> where T : EntityBase
     {
-        private DbSet<T> _DbSet;
-        private EFDBContext _DbContext;
+        protected EFDBContext _DbContext;
+        protected DbSet<T> _DbSet;
 
-        #region Construtores
+        public GenericoBO()
+            : base()
+        {
+            _DbContext = new EFDBContext();
+            _DbSet = (DbSet<T>)_DbContext.GetDBSet(typeof(T));
+        }
 
-        public DaoPadrao(EFDBContext dbContext)
+        public GenericoBO(EFDBContext dbContext)
+            : base()
         {
             _DbContext = dbContext;
-            DefinirDBSet();
+            _DbContext.GetDBSet(typeof(T));
         }
 
-        private void DefinirDBSet()
-        {
-            //recebe um DbSet
-            object DbSetObject = _DbContext.GetDBSet(typeof(T));
+        #region Implementacao dos Métodos do IDAOPadrao
 
-            //convert num DbSet<T>
-            _DbSet = (DbSet<T>)DbSetObject;
-        }
-
-
-        #endregion
-
-        #region Metodos DML Padrão
-
-        public void Commit()
+        public void SaveChanges()
         {
             _DbContext.SaveChanges();
         }
 
-        public void AttachTo(T obj)
+        public void Attach(T obj)
         {
             _DbSet.Attach(obj);
         }
 
         public void InserirOuAlterar(List<T> objs)
         {
+
             foreach (var item in objs)
             {
                 InserirOuAlterar(item);
             }
         }
 
-        public void InserirOuAlterar(T obj)
+        public virtual void InserirOuAlterar(T obj)
         {
             //Toda vez que utilizar este comando, forçamos a VALIDAÇÃO AUTOMATICA (ex. Campos REQUIRED, Tamanho de campos etc).
             _DbContext.Configuration.ValidateOnSaveEnabled = true;
@@ -67,22 +62,8 @@ namespace wpf_wakusese.src.main._utils
             {
                 Alterar(obj);
             }
-
         }
 
-        public void AlterarCamposEpecificos(T obj, string[] campos) {
-
-            AttachTo(obj);
-            foreach (var campo in campos)
-            {
-                _DbContext.Entry(obj).Property(campo).IsModified = true;
-            }
-
-            //Para evitar erros de validação de Propriedade REQUIRED, desabilitamos a validação ao salvar
-            _DbContext.Configuration.ValidateOnSaveEnabled = false;
-
-        }
-        
         private void Inserir(T obj)
         {
             _DbSet.Add(obj);
@@ -91,9 +72,24 @@ namespace wpf_wakusese.src.main._utils
         private void Alterar(T obj)
         {
             if (_DbContext.Entry(obj).State == EntityState.Detached)
-                throw new Exception("Não foi possível realizar UPDATE, pois o objeto com id="+obj.id+" está com status DETACHED. Verifique!");
+                throw new Exception("Não foi possível realizar UPDATE, pois o objeto com id=" + obj.id + " está com status DETACHED. Verifique!");
 
             _DbContext.Entry(obj).State = EntityState.Modified;
+        }
+
+        public void AlterarCamposEpecificos(T obj, params string[] campos)
+        {
+
+            Attach(obj);
+
+            foreach (var campo in campos)
+            {
+                _DbContext.Entry(obj).Property(campo).IsModified = true;
+            }
+
+            //Para evitar erros de validação de Propriedade REQUIRED, desabilitamos a validação ao salvar
+            _DbContext.Configuration.ValidateOnSaveEnabled = false;
+
         }
 
         public void Excluir(List<T> objs)
@@ -125,6 +121,8 @@ namespace wpf_wakusese.src.main._utils
 
         public T ObterObjetoAtualizado(T obj)
         {
+            if (obj.id == 0) { throw new Exception("Você tentou atualizar um objeto com ID nulo."); }
+
             return _DbSet.Find(obj.id);
         }
 
@@ -133,16 +131,16 @@ namespace wpf_wakusese.src.main._utils
             return _DbSet.OrderBy(o => o.id).ToList();
         }
 
-        public IEnumerable<T> ObterListaByQuery(Expression<Func<T, bool>> query = null,
+        public IEnumerable<T> ObterListaByQuery(Expression<Func<T, bool>> where = null,
                                   Func<IQueryable<T>, IOrderedQueryable<T>> orderBy = null,
                                   string includeProperties = "")
         {
             IQueryable<T> queryResult = _DbSet;
 
             //If there is a query, execute it against the dbset
-            if (query != null)
+            if (where != null)
             {
-                queryResult = queryResult.Where(query);
+                queryResult = queryResult.Where(where);
             }
 
             //get the include requests for the navigation properties and add them to the query result
@@ -163,16 +161,23 @@ namespace wpf_wakusese.src.main._utils
             }
         }
 
-        public T ObterPrimeiro(Expression<Func<T, bool>> predicate)
+        public IEnumerable<T> ObterListaBySQLNativo(String sql, object[] parametros)
         {
-            return _DbSet.First(predicate);
+            return _DbSet.SqlQuery(sql, parametros);
         }
 
-        internal T ObterPrimeiro(int id)
+        public T ObterPrimeiro(Expression<Func<T, bool>> where)
+        {
+            return _DbSet.First(where);
+        }
+
+        public T ObterPrimeiro(int id)
         {
             return _DbSet.First(o => o.id == id);
         }
 
         #endregion
+
+
     }
 }
