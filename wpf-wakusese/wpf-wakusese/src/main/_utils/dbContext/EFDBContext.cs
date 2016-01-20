@@ -6,8 +6,7 @@ using System.Text;
 using System.Data.Entity;
 using System.Threading.Tasks;
 using System.Data.Entity.ModelConfiguration.Conventions;
-using wpf_wakusese.src.main.model.seguranca.ce;
-using wpf_wakusese.src.main.model.cadastros.ce;
+using wpf_wakusese.src.main.model.ce;
 
 namespace wpf_wakusese.src.main._utils
 {
@@ -21,6 +20,11 @@ namespace wpf_wakusese.src.main._utils
             //imprime o LOG na aba Output
             this.Database.Log = s => System.Diagnostics.Debug.WriteLine(s);
         }
+
+        //protected override System.Data.Entity.Validation.DbEntityValidationResult ValidateEntity(System.Data.Entity.Infrastructure.DbEntityEntry entityEntry, IDictionary<object, object> items)
+        //{
+        //    return base.ValidateEntity(entityEntry, items);
+        //}
 
         //Seguranca
         public DbSet<Funcionalidade> Funcionalidades { get; set; }

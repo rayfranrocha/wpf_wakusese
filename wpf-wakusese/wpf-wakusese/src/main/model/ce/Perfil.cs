@@ -7,9 +7,8 @@ using System.Threading.Tasks;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 using wpf_wakusese.src.main._utils;
-using wpf_wakusese.src.main.model.cadastros.ce;
 
-namespace wpf_wakusese.src.main.model.seguranca.ce
+namespace wpf_wakusese.src.main.model.ce
 {
     public class Perfil : EntityBase
     {
