@@ -19,16 +19,13 @@ namespace wpf_wakusese.src.main.model.ce
         private String _cep;
 
         [Display(Name = "Latitude")]
-        [Column("latitude")]
         public Decimal latitude
         {
             get { return _latitude; }
             set { _latitude = value; RaisePropertyChanged("latitude"); }
         }
 
-
         [Display(Name = "Longitude")]
-        [Column("longitude")]
         public Decimal longitude
         {
             get { return _longitude; }
@@ -36,7 +33,6 @@ namespace wpf_wakusese.src.main.model.ce
         }
 
         [Display(Name = "Logradouro")]
-        [Column("logradouro")]
         public String logradouro
         {
             get { return _logradouro; }
@@ -44,7 +40,6 @@ namespace wpf_wakusese.src.main.model.ce
         }
 
         [Display(Name = "Ponto Referência")]
-        [Column("pontoReferencia")]
         public String pontoReferencia
         {
             get { return _pontoReferencia; }
@@ -52,7 +47,6 @@ namespace wpf_wakusese.src.main.model.ce
         }
 
         [Display(Name = "CEP")]
-        [Column("cep")]
         public String cep
         {
             get { return _cep; }
