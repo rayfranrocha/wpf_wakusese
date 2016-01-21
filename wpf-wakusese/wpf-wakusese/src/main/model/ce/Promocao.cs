@@ -12,10 +12,10 @@ namespace wpf_wakusese.src.main.model.ce
 {
     public class Promocao : EntityBase
     {
+        private Produto _produto;
         private DateTime _inicio;
         private DateTime _fim;
         private Decimal _preco;
-        private Produto _produto;
         
         [Required]
         [Display(Name = "Produto")]

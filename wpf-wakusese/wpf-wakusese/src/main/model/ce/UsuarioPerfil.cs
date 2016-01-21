@@ -17,6 +17,7 @@ namespace wpf_wakusese.src.main.model.ce
 
         [Required]
         [Display(Name = "Usuario")]
+        [Index("IX_UsuarioPerfil", Order = 1, IsUnique = true)]
         public Usuario usuario
         {
             get { return _usuario; }
@@ -25,6 +26,7 @@ namespace wpf_wakusese.src.main.model.ce
 
         [Required]
         [Display(Name = "Perfil")]
+        [Index("IX_UsuarioPerfil", Order = 2, IsUnique = true)]
         public Perfil perfil
         {
             get { return _perfil; }

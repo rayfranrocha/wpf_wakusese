@@ -10,10 +10,9 @@ using wpf_wakusese.src.main._utils;
 
 namespace wpf_wakusese.src.main.model.ce
 {
-    public class Categoria : EntityBase
+    public class Caracteristica : EntityBase
     {
         private Empresa _empresa;
-        private Categoria _categoriaPai;
         private String _nome;
 
         [Required(ErrorMessage = "O campo Empresa é obrigatório.")]
@@ -23,14 +22,6 @@ namespace wpf_wakusese.src.main.model.ce
             get { return _empresa; }
             set { _empresa = value; RaisePropertyChanged("empresa"); }
 
-        }
-
-        [Display(Name = "Categoria Pai")]
-        [DisplayFormat(ApplyFormatInEditMode = true)]
-        public Categoria categoriaPai
-        {
-            get { return _categoriaPai; }
-            set { _categoriaPai = value; RaisePropertyChanged("categoriaPai"); }
         }
 
         [Required(ErrorMessage = "O campo Nome é obrigatório.")]

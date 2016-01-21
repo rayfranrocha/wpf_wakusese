@@ -12,49 +12,65 @@ namespace wpf_wakusese.src.main.model.ce
 {
     public class Pedido : EntityBase
     {
-        private Empresa _empresa { get; set; }
+        private Usuario _cliente { get; set; }
         private int _formaPgto { get; set; }
         private Boolean _isPago { get; set; }
-        private DateTime _checking { get; set; }
-        private DateTime _checkout { get; set; }
+        private Boolean _isPontoFidelidade { get; set; }
+        private Boolean _isFidelConsumido { get; set; }
 
-        [Required]
-        [Display(Name = "Empresa")]   
-        public Empresa empresa {
-            get { return _empresa; }
-            set { _empresa = value; RaisePropertyChanged("empresa"); }
-        }       
 
+        [Display(Name = "Cliente")]
+        public Usuario cliente
+        {
+            get { return _cliente; }
+            set { _cliente = value; RaisePropertyChanged("cliente"); }
+        }
 
         [Display(Name = "Forma Pgto.")]
-        public int formaPagto 
+        public int formaPagto
         {
             get { return _formaPgto; }
             set { _formaPgto = value; RaisePropertyChanged("formaPgto"); }
         }
 
         [Display(Name = "Pago?")]
-        public Boolean isPago 
+        public Boolean isPago
         {
             get { return _isPago; }
             set { _isPago = value; RaisePropertyChanged("isPago"); }
         }
 
-        [Display(Name = "Checking")]
-        [DisplayFormat(DataFormatString = "{0:dd/MM/yyyy hh:mm}")]
-        public DateTime checking 
+        [Display(Name = "PontoFidelidade?")]
+        public Boolean isPontoFidelidade
         {
-            get { return _checking; }
-            set { _checking = value; RaisePropertyChanged("checking"); }
+            get { return _isPontoFidelidade; }
+            set { _isPontoFidelidade = value; RaisePropertyChanged("isPontoFidelidade"); }
         }
 
-        [Display(Name = "Checkout")]
-        [DisplayFormat(DataFormatString = "{0:dd/MM/yyyy hh:mm}")]
-        public DateTime checkout 
+        [Display(Name = "P. Fidelid. Consumido?")]
+        public Boolean isFidelConsumido
         {
-            get { return _checkout; }
-            set { _checkout = value; RaisePropertyChanged("checkout"); }
+            get { return _isFidelConsumido; }
+            set { _isFidelConsumido = value; RaisePropertyChanged("isFidelConsumido"); }
         }
+
+        [NotMapped]
+        public List<PedidoProduto> listaPedidoProduto = new List<PedidoProduto>();
+
+        [NotMapped]
+        public Decimal total
+        {
+            get
+            {
+                Decimal r = 0;
+                foreach (var item in listaPedidoProduto)
+                {
+                    r += item.total;
+                }
+                return r;
+            }
+        }
+
 
     }
 }

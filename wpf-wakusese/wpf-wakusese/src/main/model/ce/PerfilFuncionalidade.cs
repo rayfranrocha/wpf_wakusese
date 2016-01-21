@@ -17,6 +17,7 @@ namespace wpf_wakusese.src.main.model.ce
 
         [Required]
         [Display(Name = "Perfil")]
+        [Index("IX_PerfilFuncionalidade", Order=1, IsUnique = true)]
         public Perfil perfil
         {
             get { return _perfil; }
@@ -25,6 +26,7 @@ namespace wpf_wakusese.src.main.model.ce
 
         [Required]
         [Display(Name = "Funcionalidade")]
+        [Index("IX_PerfilFuncionalidade", Order = 2, IsUnique = true)]
         public Funcionalidade funcionalidade 
         {
             get { return _funcionalidade; }

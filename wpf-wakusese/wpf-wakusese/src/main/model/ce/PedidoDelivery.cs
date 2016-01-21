@@ -12,11 +12,10 @@ namespace wpf_wakusese.src.main.model.ce
     public class PedidoDelivery : EntityBase
     {
         private Empresa _empresa { get; set; }
-        private int _formaPgto { get; set; }
-        private Boolean _isPago { get; set; }
-        private DateTime _checking { get; set; }
-        private DateTime _checkout { get; set; }
-
+        private Pedido _pedido { get; set; }
+        private DateTime _horaPedido { get; set; }
+        private DateTime _horaLiberacao { get; set; }
+        private DateTime _horaEntrega { get; set; }
 
         [Required]
         [Display(Name = "Empresa")]
@@ -26,35 +25,34 @@ namespace wpf_wakusese.src.main.model.ce
             set { _empresa = value; RaisePropertyChanged("empresa"); }
         }
 
-
-        [Display(Name = "Forma Pgto.")]
-        public int formaPagto
+        [Required]
+        [Display(Name = "Pedido")]
+        public Pedido pedido
         {
-            get { return _formaPgto; }
-            set { _formaPgto = value; RaisePropertyChanged("formaPgto"); }
+            get { return _pedido; }
+            set { _pedido = value; RaisePropertyChanged("pedido"); }
         }
 
-        [Display(Name = "Pago?")]
-        public Boolean isPago
+
+        [Display(Name = "Hr.Pedido")]
+        public DateTime horaPedido
         {
-            get { return _isPago; }
-            set { _isPago = value; RaisePropertyChanged("isPago"); }
+            get { return _horaPedido; }
+            set { _horaPedido = value; RaisePropertyChanged("horaPedido"); }
         }
 
-        [Display(Name = "Checking")]
-        [DisplayFormat(DataFormatString = "{0:dd/MM/yyyy hh:mm}")]
-        public DateTime checking
+        [Display(Name = "Hr.Liberação")]
+        public DateTime horaLiberacao
         {
-            get { return _checking; }
-            set { _checking = value; RaisePropertyChanged("checking"); }
+            get { return _horaLiberacao; }
+            set { _horaLiberacao = value; RaisePropertyChanged("horaLiberacao"); }
         }
 
-        [Display(Name = "Checkout")]
-        [DisplayFormat(DataFormatString = "{0:dd/MM/yyyy hh:mm}")]
-        public DateTime checkout
+        [Display(Name = "Hr.Entrega")]
+        public DateTime horaEntrega
         {
-            get { return _checkout; }
-            set { _checkout = value; RaisePropertyChanged("checkout"); }
+            get { return _horaEntrega; }
+            set { _horaEntrega = value; RaisePropertyChanged("horaEntrega"); }
         }
 
     }

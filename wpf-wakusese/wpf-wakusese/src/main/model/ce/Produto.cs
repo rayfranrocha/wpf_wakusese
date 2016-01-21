@@ -13,12 +13,12 @@ namespace wpf_wakusese.src.main.model.ce
     public class Produto : EntityBase
     {
         
+        private Categoria _categoria;
         private String _nome;
         private String _descricao;
         private Decimal? _preco;
-        private Decimal _avaliacaoMedia;
         private byte[] _img1;
-        private Categoria _categoria;
+        private Decimal _avaliacaoMedia;
 
         [Display(Name = "Categoria")]
         public Categoria categoria
@@ -64,11 +64,6 @@ namespace wpf_wakusese.src.main.model.ce
             get { return _img1; }
             set { _img1 = value; RaisePropertyChanged("img1"); }
         }
-
-        [NotMapped]
-        public int qt { get; set; }
-
-
 
     }
 }
