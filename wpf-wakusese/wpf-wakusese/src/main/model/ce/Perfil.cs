@@ -23,7 +23,6 @@ namespace wpf_wakusese.src.main.model.ce
         }
 
         [Display(Name = "Nome")]
-        [Column("nome")]
         public String nome {
             get { return _nome; }
             set { _nome = value; RaisePropertyChanged("nome"); }

@@ -94,17 +94,32 @@
       <DependentUpon>201601181513080_script-0003.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
-    <Compile Include="src\main\model\bo\EmpresaBO.cs" />
-    <Compile Include="src\main\model\bo\UsuarioBO.cs" />
+    <Compile Include="src\main\model\bo\BO_Empresa.cs" />
+    <Compile Include="src\main\model\bo\BO_Funcionalidade.cs" />
+    <Compile Include="src\main\model\bo\BO_Endereco.cs" />
+    <Compile Include="src\main\model\bo\BO_Perfil.cs" />
+    <Compile Include="src\main\model\bo\BO_Usuario.cs" />
+    <Compile Include="src\main\model\ce\Categoria.cs" />
     <Compile Include="src\main\model\ce\Empresa.cs" />
     <Compile Include="src\main\model\ce\Endereco.cs" />
     <Compile Include="src\main\model\ce\Funcionalidade.cs" />
+    <Compile Include="src\main\model\ce\ItemPedidoDelivery.cs" />
+    <Compile Include="src\main\model\ce\Pedido.cs" />
+    <Compile Include="src\main\model\ce\PedidoAtendente.cs" />
+    <Compile Include="src\main\model\ce\PedidoDelivery.cs" />
+    <Compile Include="src\main\model\ce\PedidoProduto.cs" />
     <Compile Include="src\main\model\ce\Perfil.cs" />
+    <Compile Include="src\main\model\ce\PerfilFuncionalidade.cs" />
+    <Compile Include="src\main\model\ce\Produto.cs" />
+    <Compile Include="src\main\model\ce\Promocao.cs" />
     <Compile Include="src\main\model\ce\Usuario.cs" />
-    <Compile Include="src\main\model\servicos\SegurancaServico.cs" />
-    <Compile Include="src\main\_utils\bo\GenericoBO.cs" />
-    <Compile Include="src\main\_utils\dbContext\EFDBContext.cs" />
-    <Compile Include="src\main\_utils\entityBase\EntityBase.cs" />
+    <Compile Include="src\main\model\ce\UsuarioPerfil.cs" />
+    <Compile Include="src\main\model\ce\ValePresente.cs" />
+    <Compile Include="src\main\model\ce\ValePresenteAvulso.cs" />
+    <Compile Include="src\main\model\dominios\DominioSeguranca.cs" />
+    <Compile Include="src\main\_utils\GenericoBO.cs" />
+    <Compile Include="src\main\_utils\EFDBContext.cs" />
+    <Compile Include="src\main\_utils\EntityBase.cs" />
     <Page Include="MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>

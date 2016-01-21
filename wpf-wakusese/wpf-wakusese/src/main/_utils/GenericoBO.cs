@@ -6,25 +6,23 @@ using System.Linq.Expressions;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace wpf_wakusese.src.main._utils.bo
+namespace wpf_wakusese.src.main._utils
 {
-    public class GenericoBO<T> where T : EntityBase
+    public abstract class GenericoBO<T> where T : EntityBase
     {
         protected EFDBContext _DbContext;
         protected DbSet<T> _DbSet;
 
-        public GenericoBO()
+        private GenericoBO()
             : base()
         {
-            _DbContext = new EFDBContext();
-            _DbSet = (DbSet<T>)_DbContext.GetDBSet(typeof(T));
         }
 
         public GenericoBO(EFDBContext dbContext)
             : base()
         {
             _DbContext = dbContext;
-            _DbContext.GetDBSet(typeof(T));
+            _DbSet = (DbSet<T>)_DbContext.GetDBSet(typeof(T));
         }
 
         #region Implementacao dos Métodos do IDAOPadrao

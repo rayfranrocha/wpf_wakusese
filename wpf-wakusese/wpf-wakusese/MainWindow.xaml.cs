@@ -18,7 +18,6 @@ using wpf_wakusese.src.main._utils;
 using wpf_wakusese.src.main.model.servicos;
 using wpf_wakusese.src.main.model.bo;
 using wpf_wakusese.src.main.model.ce;
-using wpf_wakusese.src.main._utils.bo;
 
 namespace wpf_wakusese
 {
@@ -56,36 +55,36 @@ namespace wpf_wakusese
             //Exemplo21();
             //Exemplo22();
             Exemplo23();
-
         }
 
         private void Exemplo23()
         {
-            EFDBContext ctx = new EFDBContext();
-            UsuarioBO boUsuario = new UsuarioBO(ctx);
-            var xxx = boUsuario.ObterListaObjeto();
-
+            using (var ctx = new EFDBContext())
+            {
+                BO_Usuario boUsuario = new BO_Usuario(ctx);
+                var xxx = boUsuario.ObterListaObjeto();
+            }
         }
 
         private void Exemplo22()
         {
             using (var context = new EFDBContext())
             {
-                UsuarioBO boUsuario = new UsuarioBO(context);
+                BO_Usuario boUsuario = new BO_Usuario(context);
                 Usuario u = boUsuario.ObterObjetoPorId(13);
             }
         }
 
         private void Exemplo21()
         {
-            GenericoBO<Funcionalidade> funcionalidadeServico = new GenericoBO<Funcionalidade>();
-            for (int i = 0; i < 10; i++)
-            {
-                Funcionalidade f1 = new Funcionalidade() { nome = "login" + i };
-                funcionalidadeServico.InserirOuAlterar(f1);
-            }
-            funcionalidadeServico.SaveChanges();
-            var lf = funcionalidadeServico.ObterListaObjeto();
+            //GenericoBO<Funcionalidade> funcionalidadeServico = new GenericoBO<Funcionalidade>();
+            //for (int i = 0; i < 10; i++)
+            //{
+            //    Funcionalidade f1 = new Funcionalidade() { nome = "login" + i };
+            //    funcionalidadeServico.InserirOuAlterar(f1);
+            //}
+            //funcionalidadeServico.SaveChanges();
+            //var lf = funcionalidadeServico.ObterListaObjeto();
         }
 
         private void Exemplo20()

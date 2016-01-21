@@ -4,7 +4,6 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using wpf_wakusese.src.main._utils;
-using wpf_wakusese.src.main._utils.bo;
 using wpf_wakusese.src.main.model.bo;
 using wpf_wakusese.src.main.model.ce;
 
@@ -14,16 +13,15 @@ namespace wpf_wakusese.src.main.model.servicos
     {
         private EFDBContext dbContext;
 
-        private UsuarioBO boUsuario;
-        private EmpresaBO boEmpresa;
+        private BO_Usuario boUsuario;
+        private BO_Empresa boEmpresa;
         private GenericoBO<Funcionalidade> funcionalidadeServico;
 
         public SegurancaServico()
         {
             dbContext = new EFDBContext();
-            boUsuario = new UsuarioBO(dbContext);
-            boEmpresa = new EmpresaBO(dbContext);
-            funcionalidadeServico = new GenericoBO<Funcionalidade>(dbContext);
+            boUsuario = new BO_Usuario(dbContext);
+            boEmpresa = new BO_Empresa(dbContext);
         }
 
         public void ExemploVerificaUsuarioEmpresa_seNaoExistir_CriaOsDois(Usuario usu, Empresa emp)
