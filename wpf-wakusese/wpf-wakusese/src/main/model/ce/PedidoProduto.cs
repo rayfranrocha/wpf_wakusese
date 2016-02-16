@@ -12,12 +12,13 @@ namespace wpf_wakusese.src.main.model.ce
 {
     public class PedidoProduto : EntityBase
     {
-        private Pedido _pedido { get; set; }
-        private Produto _produto { get; set; }
-        private Decimal _qtde { get; set; }
-        private Decimal _precoPadrao { get; set; }
-        private Decimal _precoPromocao { get; set; }
-        private int _avaliacao { get; set; }
+        private Pedido _pedido;
+        private Produto _produto;
+        private Decimal _qtdePedido;
+        private Decimal _qtdeEntregue;
+        private Decimal _precoPadrao;
+        private Decimal _precoPromocao;
+        private int _avaliacao;
 
 
         [Required]
@@ -37,12 +38,21 @@ namespace wpf_wakusese.src.main.model.ce
         }
 
         [Required]
-        [Display(Name = "Qtde")]
+        [Display(Name = "Qtde Pedido")]
         [DisplayFormat(DataFormatString = "{0:n2}", NullDisplayText = "Sem valor.", ApplyFormatInEditMode = true)]
-        public Decimal qtde
+        public Decimal qtdePedido
         {
-            get { return _qtde; }
-            set { _qtde = value; RaisePropertyChanged("qtde"); }
+            get { return _qtdePedido; }
+            set { _qtdePedido = value; RaisePropertyChanged("qtdePedido"); }
+        }
+
+        [Required]
+        [Display(Name = "Qtde Entregue")]
+        [DisplayFormat(DataFormatString = "{0:n2}", NullDisplayText = "Sem valor.", ApplyFormatInEditMode = true)]
+        public Decimal qtdeEntregue
+        {
+            get { return _qtdeEntregue; }
+            set { _qtdeEntregue = value; RaisePropertyChanged("qtdeEntregue"); }
         }
 
         [Required]
@@ -92,7 +102,7 @@ namespace wpf_wakusese.src.main.model.ce
         {
             get
             {
-                return _qtde * menorPreco;
+                return (_qtdePedido + _qtdeEntregue) * menorPreco;
             }
         }
 

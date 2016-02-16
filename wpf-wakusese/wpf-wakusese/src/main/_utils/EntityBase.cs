@@ -27,6 +27,7 @@ namespace wpf_wakusese.src.main._utils
         [NotMapped]
         public bool isAlterado { get; set; }
         [NotMapped]
+
         public SolidColorBrush Background
         {
             get { 

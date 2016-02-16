@@ -12,6 +12,12 @@ namespace wpf_wakusese.src.main.model.ce
 {
     public class Funcionalidade : EntityBase
     {
+        public Funcionalidade()
+        {
+            isSelecionado = false;
+
+        }
+
         private String _nome;
 
         [Display(Name = "Nome")]

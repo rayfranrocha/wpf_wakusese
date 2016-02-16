@@ -13,9 +13,9 @@ namespace wpf_wakusese.src.main.model.ce
 {
     public class ValePresente : EntityBase
     {
-        private Empresa _empresa { get; set; }
-        private Decimal _valor { get; set; }
-        private Usuario _beneficiado { get; set; }
+        private Empresa _empresa;
+        private Decimal _valor;
+        private Usuario _beneficiado;
 
         [Required]
         [Display(Name = "Empresa")]

@@ -34,24 +34,19 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\..\..\..\repoC#\EntityFramework.6.1.3\lib\net45\EntityFramework.dll</HintPath>
+    <Reference Include="EntityFramework">
+      <HintPath>..\packages\EntityFramework.6.1.3\lib\net45\EntityFramework.dll</HintPath>
     </Reference>
     <Reference Include="EntityFramework.SqlServer">
-      <HintPath>..\..\..\..\..\repoC#\EntityFramework.6.1.3\lib\net45\EntityFramework.SqlServer.dll</HintPath>
-    </Reference>
-    <Reference Include="EntityFramework6.Npgsql, Version=3.0.3.0, Culture=neutral, PublicKeyToken=5d8b90d52f46fda7, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\..\..\..\repoC#\EntityFramework6.Npgsql.3.0.3\lib\net45\EntityFramework6.Npgsql.dll</HintPath>
+      <HintPath>..\packages\EntityFramework.6.1.3\lib\net45\EntityFramework.SqlServer.dll</HintPath>
     </Reference>
     <Reference Include="Mono.Security, Version=4.0.0.0, Culture=neutral, PublicKeyToken=0738eb9f132ed756, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\..\..\..\repoC#\Mono.Security.3.2.3.0\lib\net45\Mono.Security.dll</HintPath>
+      <HintPath>..\packages\Mono.Security.3.2.3.0\lib\net45\Mono.Security.dll</HintPath>
     </Reference>
     <Reference Include="Npgsql, Version=3.0.3.0, Culture=neutral, PublicKeyToken=5d8b90d52f46fda7, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\..\..\..\repoC#\Npgsql.3.0.3\lib\net45\Npgsql.dll</HintPath>
+      <HintPath>..\packages\Npgsql.3.0.3\lib\net45\Npgsql.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.ComponentModel.DataAnnotations" />
@@ -119,7 +114,6 @@
     <Compile Include="src\main\model\bo\BO_UsuarioPerfil.cs" />
     <Compile Include="src\main\model\bo\BO_Usuario.cs" />
     <Compile Include="src\main\model\ce\PedidoAtendente.cs" />
-    <Compile Include="src\main\model\ce\ProdutoCaractValor.cs" />
     <Compile Include="src\main\model\ce\CaracteristicaValor.cs" />
     <Compile Include="src\main\model\ce\Caracteristica.cs" />
     <Compile Include="src\main\model\ce\Categoria.cs" />
@@ -133,6 +127,7 @@
     <Compile Include="src\main\model\ce\Perfil.cs" />
     <Compile Include="src\main\model\ce\PerfilFuncionalidade.cs" />
     <Compile Include="src\main\model\ce\Produto.cs" />
+    <Compile Include="src\main\model\ce\ProdutoCaractValor.cs" />
     <Compile Include="src\main\model\ce\Promocao.cs" />
     <Compile Include="src\main\model\ce\Usuario.cs" />
     <Compile Include="src\main\model\ce\UsuarioPerfil.cs" />
