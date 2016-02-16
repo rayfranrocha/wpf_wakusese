@@ -9,15 +9,14 @@ using wpf_wakusese.src.main.model.ce;
 
 namespace wpf_wakusese.src.main.model.servicos
 {
-    public class SegurancaServico
+    public class DominioSeguranca
     {
         private EFDBContext dbContext;
 
         private BO_Usuario boUsuario;
         private BO_Empresa boEmpresa;
-        private GenericoBO<Funcionalidade> funcionalidadeServico;
 
-        public SegurancaServico()
+        public DominioSeguranca()
         {
             dbContext = new EFDBContext();
             boUsuario = new BO_Usuario(dbContext);
@@ -48,6 +47,18 @@ namespace wpf_wakusese.src.main.model.servicos
 
             dbContext.SaveChanges();
 
+        }
+
+        /// <summary>
+        /// Este método é resposável por autenticar um usuario (fazer login e recuperar seus acessos)
+        /// <para> 1. Verifica credenciais do usuário (telefone ou email + senha) </para>
+        /// <para>2. Recupera a lista de Perfil a partir do Usuario + Empresa </para>
+        /// <para>3. A partir da lista de perfil, adiciona ao Usuario a lista de Funcionalidade que o mesmo tem acesso </para>
+        /// </summary>
+        /// <returns>Usuario</returns>
+        public Usuario doAutenticarUsuario(Usuario u)
+        {
+            throw new NotImplementedException();
         }
 
     }

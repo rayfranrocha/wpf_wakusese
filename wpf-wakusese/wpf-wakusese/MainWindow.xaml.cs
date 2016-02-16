@@ -54,7 +54,38 @@ namespace wpf_wakusese
             //Exemplo20();
             //Exemplo21();
             //Exemplo22();
-            Exemplo23();
+            //Exemplo23();
+            //Exemplo25();
+            //Exemplo26();
+            //Exemplo27();
+        }
+
+        private void Exemplo27()
+        {
+            //DominioSeguranca ds = new DominioSeguranca();
+            //ds.doAutenticarUsuario();
+        }
+
+        private void Exemplo26()
+        {
+            //using (var boPerfil = new BO_Perfil( new EFDBContext() ))
+            //{
+
+            //    Perfil p = boPerfil.ObterObjetoPorId(1);
+
+            //}            
+        }
+
+        private void Exemplo25()
+        {
+            using (var ctx = new EFDBContext())
+            {
+                BO_Perfil boPerfil = new BO_Perfil(ctx);
+
+                Empresa emp = new Empresa() { id = 1 };
+                boPerfil.InserirOuAlterar(new Perfil() { empresa = emp, nome = "Garçom Padrao Enum", perfilPadraoEnum = src.main.model.enums.PerfilPadraoEnum.Garcom });
+                boPerfil.SaveChanges();
+            }
         }
 
         private void Exemplo23()
@@ -272,7 +303,7 @@ namespace wpf_wakusese
 
         //    Usuario usu = new Usuario() { email = "alguem.da.google@google.com" };
         //    Empresa emp = new Empresa() { nome = "Google" };
-        //    segurancaServico.ExemploVerificaUsuarioEmpresa_seNaoExistir_CriaOsDois(usu, emp);
+        //    segurancaServico.ExemploVerificaUsuarioEmpresa_seNaoExistir_CriaOsDo1is(usu, emp);
         //}
 
         //private static void Exemplo3()

@@ -5,6 +5,8 @@ VisualStudioVersion = 12.0.40629.0
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "wpf-wakusese", "wpf-wakusese\wpf-wakusese.csproj", "{92988403-9DD0-4327-9445-5280FD7EFAEF}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SelfHostedWS", "..\..\SelfHostedWS\SelfHostedWS.csproj", "{197E112D-143B-45F1-81D5-C32A6EBFD83A}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -15,6 +17,10 @@ Global
 		{92988403-9DD0-4327-9445-5280FD7EFAEF}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{92988403-9DD0-4327-9445-5280FD7EFAEF}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{92988403-9DD0-4327-9445-5280FD7EFAEF}.Release|Any CPU.Build.0 = Release|Any CPU
+		{197E112D-143B-45F1-81D5-C32A6EBFD83A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{197E112D-143B-45F1-81D5-C32A6EBFD83A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{197E112D-143B-45F1-81D5-C32A6EBFD83A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{197E112D-143B-45F1-81D5-C32A6EBFD83A}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
