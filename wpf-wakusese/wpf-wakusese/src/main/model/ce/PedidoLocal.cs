@@ -12,11 +12,11 @@ namespace wpf_wakusese.src.main.model.ce
 {
     public class PedidoLocal : EntityBase
     {
-        private Empresa _empresa { get; set; }
-        private Pedido _pedido { get; set; }
-        private String _mesa { get; set; }
-        private DateTime _checkin { get; set; }
-        private DateTime _checkout { get; set; }
+        private Empresa _empresa;
+        private Pedido _pedido;
+        private String _mesa;
+        private DateTime _checkin;
+        private DateTime _checkout;
 
         [Required]
         [Display(Name = "Empresa")]
@@ -53,6 +53,13 @@ namespace wpf_wakusese.src.main.model.ce
         {
             get { return _checkout; }
             set { _checkout = value; RaisePropertyChanged("checkout"); }
+        }
+
+        [NotMapped]
+        public String status
+        {
+            get { return checkout < checkin ? "Consumindo" : "Quitado"; }
+
         }
 
     }

@@ -12,11 +12,11 @@ namespace wpf_wakusese.src.main.model.ce
 {
     public class ValePresenteAvulso : EntityBase
     {
-        private Empresa _empresa { get; set; }
-        private Decimal _valor { get; set; }
-        private String _codigoValePresente { get; set; }
-        private String _nome { get; set; }
-        private String _email { get; set; }
+        private Empresa _empresa;
+        private Decimal _valor;
+        private String _codigoValePresente;
+        private String _nome;
+        private String _email;
 
         [Required]
         [Display(Name = "Empresa")]

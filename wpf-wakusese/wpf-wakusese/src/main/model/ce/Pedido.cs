@@ -12,17 +12,22 @@ namespace wpf_wakusese.src.main.model.ce
 {
     public class Pedido : EntityBase
     {
-        private Usuario _cliente { get; set; }
-        private int _formaPgto { get; set; }
-        private Boolean _isPago { get; set; }
-        private Boolean _isPontoFidelidade { get; set; }
-        private Boolean _isFidelConsumido { get; set; }
+        private Usuario _cliente;
+        private int _formaPgto;
+        private Boolean _isPago;
+        private Boolean _isPontoFidelidade;
+        private Boolean _isFidelConsumido;
 
 
         [Display(Name = "Cliente")]
         public Usuario cliente
         {
-            get { return _cliente; }
+            get
+            {
+                //if (_cliente == null) { return new Usuario(); }
+
+                return _cliente;
+            }
             set { _cliente = value; RaisePropertyChanged("cliente"); }
         }
 

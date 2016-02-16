@@ -13,6 +13,7 @@ namespace wpf_wakusese.src.main.model.ce
     public class Usuario : EntityBase
     {
         private Empresa _ultimaEmpresa;
+        private Endereco _endereco;
         private String _email;
         private String _telefone;
         private String _imeiTelefone;
@@ -94,6 +95,13 @@ namespace wpf_wakusese.src.main.model.ce
         {
             get { return _isPermanecerLogado; }
             set { _isPermanecerLogado = value; RaisePropertyChanged("isPermanecerLogado"); }
+        }
+
+        [Display(Name = "Endereço")]
+        public Endereco endereco
+        {
+            get { return _endereco; }
+            set { _endereco = value; RaisePropertyChanged("endereco"); }
         }
 
     }

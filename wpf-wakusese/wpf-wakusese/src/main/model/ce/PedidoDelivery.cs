@@ -11,11 +11,11 @@ namespace wpf_wakusese.src.main.model.ce
 {
     public class PedidoDelivery : EntityBase
     {
-        private Empresa _empresa { get; set; }
-        private Pedido _pedido { get; set; }
-        private DateTime _horaPedido { get; set; }
-        private DateTime _horaLiberacao { get; set; }
-        private DateTime _horaEntrega { get; set; }
+        private Empresa _empresa;
+        private Pedido _pedido;
+        private DateTime _horaPedido;
+        private DateTime _horaLiberacao;
+        private DateTime _horaEntrega;
 
         [Required]
         [Display(Name = "Empresa")]
@@ -53,6 +53,30 @@ namespace wpf_wakusese.src.main.model.ce
         {
             get { return _horaEntrega; }
             set { _horaEntrega = value; RaisePropertyChanged("horaEntrega"); }
+        }
+
+        [NotMapped]
+        public String status
+        {
+
+            get
+            {
+
+                if (horaLiberacao < horaPedido)
+                {
+                    return "Aguardando/Em espera";
+                }
+                else if (horaEntrega < horaLiberacao)
+                {
+                    return "Saiu p/ Entrega";
+                }
+                else
+                {
+                    return "Finalizado/Entregue";
+                }
+                //    return horaEntrega < horaLiberacao ? "Em entrega" : "Quitado"; 
+            }
+
         }
 
     }
