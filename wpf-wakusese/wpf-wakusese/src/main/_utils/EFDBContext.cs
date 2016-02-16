@@ -21,11 +21,6 @@ namespace wpf_wakusese.src.main._utils
             this.Database.Log = s => System.Diagnostics.Debug.WriteLine(s);
         }
 
-        //protected override System.Data.Entity.Validation.DbEntityValidationResult ValidateEntity(System.Data.Entity.Infrastructure.DbEntityEntry entityEntry, IDictionary<object, object> items)
-        //{
-        //    return base.ValidateEntity(entityEntry, items);
-        //}
-
         //Seguranca
         public DbSet<Funcionalidade> Funcionalidades { get; set; }
         public DbSet<Perfil> Perfis { get; set; }

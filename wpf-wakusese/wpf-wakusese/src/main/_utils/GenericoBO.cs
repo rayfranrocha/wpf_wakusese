@@ -16,6 +16,8 @@ namespace wpf_wakusese.src.main._utils
         private GenericoBO()
             : base()
         {
+            _DbContext = new EFDBContext();
+            _DbSet = (DbSet<T>)_DbContext.GetDBSet(typeof(T));
         }
 
         public GenericoBO(EFDBContext dbContext)
