@@ -11,6 +11,7 @@ using System.Runtime.Serialization;
 
 namespace wpf_wakusese.src.main.model.ce
 {
+    //comentario rayfran
     [DataContract(IsReference = true)]
     public class Empresa : EntityBase
     {
