@@ -22,6 +22,8 @@ namespace wpf_wakusese.src.main.model.ce
             endereco = new Endereco();
         }
 
+        // comentario teste 
+
         private String _cnpj;
         private String _nome;
         private Decimal _percTxServico;
