@@ -7,9 +7,11 @@ using System.Threading.Tasks;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 using wpf_wakusese.src.main._utils;
+using System.Runtime.Serialization;
 
 namespace wpf_wakusese.src.main.model.ce
 {
+    [DataContract(IsReference = true)]
     public class Empresa : EntityBase
     {
         public Empresa()
@@ -32,6 +34,7 @@ namespace wpf_wakusese.src.main.model.ce
 
 
         [Display(Name = "Nome")]
+        [DataMember]
         public String nome
         {
             get { return _nome; }

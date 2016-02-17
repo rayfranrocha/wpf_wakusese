@@ -9,16 +9,19 @@ using System.ComponentModel.DataAnnotations.Schema;
 using System.ComponentModel;
 using System.Windows.Controls;
 using System.Windows.Media;
+using System.Runtime.Serialization;
 
 namespace wpf_wakusese.src.main._utils
 {
     [Serializable]
+    [DataContract(IsReference = true)]
     public class EntityBase
     {
         public EntityBase() { }
 
         [Key]
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
+        [DataMember]
         public int id { get; set; }
 
         #region Atributos/Métodos úteis para Controle dos objetos

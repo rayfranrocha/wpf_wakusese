@@ -14,7 +14,27 @@ namespace wpf_wakusese.src.main._utils
 
     public class EFDBContext : DbContext
     {
-        public EFDBContext()
+
+        #region Instance - padrao Singleton
+        private static EFDBContext _instance;
+
+        public static EFDBContext Instance
+        {
+            get
+            {
+                if (_instance == null)
+                {
+                    _instance = new EFDBContext();
+                }
+
+                return _instance;
+
+            }
+            set { _instance = value; }
+        }
+        #endregion
+
+        private EFDBContext()
             : base("name=wakuseseDB")
         {
             //imprime o LOG na aba Output

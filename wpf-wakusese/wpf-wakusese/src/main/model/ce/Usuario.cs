@@ -7,9 +7,11 @@ using System.Threading.Tasks;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 using wpf_wakusese.src.main._utils;
+using System.Runtime.Serialization;
 
 namespace wpf_wakusese.src.main.model.ce
 {
+    [DataContract(IsReference = true)]
     public class Usuario : EntityBase
     {
         private Empresa _ultimaEmpresa;
@@ -77,6 +79,7 @@ namespace wpf_wakusese.src.main.model.ce
         }
 
         [Display(Name = "Última Empresa")]
+        [DataMember]
         public Empresa ultimaEmpresa
         {
             get { return _ultimaEmpresa; }
