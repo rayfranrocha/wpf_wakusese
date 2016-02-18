@@ -16,6 +16,8 @@ namespace wpf_wakusese.src.main.model.bo
         {
         }
 
+        //Este Comentário foi feito pelo Alisson
+
         public ObservableCollection<Categoria> ObterListaCategoriadaEmpresa(Empresa empresa)
         {
             List<Categoria> lista = _DbSet
