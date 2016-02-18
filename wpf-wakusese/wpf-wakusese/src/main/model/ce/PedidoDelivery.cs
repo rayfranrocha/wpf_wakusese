@@ -17,6 +17,8 @@ namespace wpf_wakusese.src.main.model.ce
         private DateTime _horaLiberacao;
         private DateTime _horaEntrega;
 
+
+      ///  iuhifhsdhif
         [Required]
         [Display(Name = "Empresa")]
         public Empresa empresa
