@@ -10,8 +10,8 @@ namespace wpf_wakusese.src.main.model.bo
 {
     public class BO_CaracteristicaValor : GenericoBO<CaracteristicaValor>
     {
-        public BO_CaracteristicaValor(EFDBContext dbContext)
-            : base(dbContext)
+        public BO_CaracteristicaValor()
+            : base()
         {
         }
     }

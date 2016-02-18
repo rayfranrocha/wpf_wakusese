@@ -12,8 +12,8 @@ namespace wpf_wakusese.src.main.model.bo
 {
     public class BO_PedidoLocal : GenericoBO<PedidoLocal>
     {
-        public BO_PedidoLocal(EFDBContext dbContext)
-            : base(dbContext)
+        public BO_PedidoLocal()
+            : base()
         {
         }
 
@@ -32,7 +32,7 @@ namespace wpf_wakusese.src.main.model.bo
             return listObs;
         }
 
-        public PedidoLocal ObterObjetoPorId(int id)
+        public override PedidoLocal ObterObjetoPorId(int id)
         {
             PedidoLocal obj = _DbSet
                                         .Include(o => o.pedido)
@@ -40,9 +40,6 @@ namespace wpf_wakusese.src.main.model.bo
                 //.Include(o => o.empresa)
                                         .Where(o => o.id == id)
                                         .FirstOrDefault();
-
-
-
 
             return obj;
         }

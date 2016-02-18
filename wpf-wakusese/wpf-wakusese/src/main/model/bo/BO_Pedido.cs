@@ -12,12 +12,12 @@ namespace wpf_wakusese.src.main.model.bo
 {
     public class BO_Pedido : GenericoBO<Pedido>
     {
-        public BO_Pedido(EFDBContext dbContext)
-            : base(dbContext)
+        public BO_Pedido()
+            : base()
         {
         }
 
-        public Pedido ObterObjetoAtualizado(Pedido obj)
+        public override Pedido ObterObjetoAtualizado(Pedido obj)
         {
             Pedido r = _DbSet
                                 .Include(o => o.cliente)
@@ -27,7 +27,7 @@ namespace wpf_wakusese.src.main.model.bo
             return r;
         }
 
-
+        //VERIFICAR SE ESTE METODO É NECESSÁRIO
         public virtual int ObterUltimoIdPedido()
         {
 
@@ -51,7 +51,7 @@ namespace wpf_wakusese.src.main.model.bo
 
         }
 
-
+        //VERIFICAR SE ESTE METODO É NECESSÁRIO
         public virtual Pedido ObterUltimoPedido()
         {
             int x;
@@ -83,6 +83,7 @@ namespace wpf_wakusese.src.main.model.bo
 
         }
 
+        //VERIFICAR SE ESTE METODO É NECESSÁRIO
         public ObservableCollection<Pedido> ObterListaPedidosNaoPagos()
         {
             List<Pedido> r = _DbSet

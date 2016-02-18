@@ -12,12 +12,12 @@ namespace wpf_wakusese.src.main.model.bo
 {
     public class BO_PedidoProduto : GenericoBO<PedidoProduto>
     {
-        public BO_PedidoProduto(EFDBContext dbContext)
-            : base(dbContext)
+        public BO_PedidoProduto()
+            : base()
         {
         }
 
-        public virtual ObservableCollection<PedidoProduto> ObterListaObjeto()
+        public override ObservableCollection<PedidoProduto> ObterListaObjeto()
         {
             List<PedidoProduto> lista = _DbSet
                                    .Include(o => o.produto)

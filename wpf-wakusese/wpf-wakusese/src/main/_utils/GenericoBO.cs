@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.Data.Entity;
 using System.Linq;
 using System.Linq.Expressions;
@@ -13,21 +14,14 @@ namespace wpf_wakusese.src.main._utils
         protected EFDBContext _DbContext;
         protected DbSet<T> _DbSet;
 
-        private GenericoBO()
+        public GenericoBO()
             : base()
         {
             _DbContext = EFDBContext.Instance;
             _DbSet = (DbSet<T>)_DbContext.GetDBSet(typeof(T));
         }
 
-        public GenericoBO(EFDBContext dbContext)
-            : base()
-        {
-            _DbContext = dbContext;
-            _DbSet = (DbSet<T>)_DbContext.GetDBSet(typeof(T));
-        }
-
-        #region Implementacao dos Métodos do IDAOPadrao
+        #region Métodos Públicos Que Não Podem Ser Sobescritos (override not allowed)
 
         public void SaveChanges()
         {
@@ -41,7 +35,6 @@ namespace wpf_wakusese.src.main._utils
 
         public void InserirOuAlterar(List<T> objs)
         {
-
             foreach (var item in objs)
             {
                 InserirOuAlterar(item);
@@ -62,19 +55,6 @@ namespace wpf_wakusese.src.main._utils
             {
                 Alterar(obj);
             }
-        }
-
-        private void Inserir(T obj)
-        {
-            _DbSet.Add(obj);
-        }
-
-        private void Alterar(T obj)
-        {
-            if (_DbContext.Entry(obj).State == EntityState.Detached)
-                throw new Exception("Não foi possível realizar UPDATE, pois o objeto com id=" + obj.id + " está com status DETACHED. Verifique!");
-
-            _DbContext.Entry(obj).State = EntityState.Modified;
         }
 
         public void AlterarCamposEpecificos(T obj, params string[] campos)
@@ -100,40 +80,15 @@ namespace wpf_wakusese.src.main._utils
             }
         }
 
-        public void Excluir(T obj)
-        {
-            if (_DbContext.Entry(obj).State == EntityState.Detached)
-                _DbSet.Attach(obj);
-
-            _DbSet.Remove(obj);
-        }
-
         public void ExcluirPorId(int id)
         {
             T obj = _DbSet.Find(id);
-            _DbSet.Remove(obj);
-        }
-
-        public T ObterObjetoPorId(int id)
-        {
-            return _DbSet.Find(id);
-        }
-
-        public T ObterObjetoAtualizado(T obj)
-        {
-            if (obj.id == 0) { throw new Exception("Você tentou atualizar um objeto com ID nulo."); }
-
-            return _DbSet.Find(obj.id);
-        }
-
-        public virtual IEnumerable<T> ObterListaObjeto()
-        {
-            return _DbSet.OrderBy(o => o.id).ToList();
+            Excluir(obj);
         }
 
         public IEnumerable<T> ObterListaByQuery(Expression<Func<T, bool>> where = null,
-                                  Func<IQueryable<T>, IOrderedQueryable<T>> orderBy = null,
-                                  string includeProperties = "")
+                           Func<IQueryable<T>, IOrderedQueryable<T>> orderBy = null,
+                           string includeProperties = "")
         {
             IQueryable<T> queryResult = _DbSet;
 
@@ -171,13 +126,53 @@ namespace wpf_wakusese.src.main._utils
             return _DbSet.First(where);
         }
 
-        public T ObterPrimeiro(int id)
+        #endregion
+
+        #region Métodos Públicos Que Podem Ser Sobescritos (override allowed)
+
+
+        public virtual void Inserir(T obj)
         {
-            return _DbSet.First(o => o.id == id);
+            _DbSet.Add(obj);
+        }
+
+        public virtual void Alterar(T obj)
+        {
+            if (_DbContext.Entry(obj).State == EntityState.Detached)
+                throw new Exception("Não foi possível realizar UPDATE, pois o objeto com id=" + obj.id + " está com status DETACHED. Verifique!");
+
+            _DbContext.Entry(obj).State = EntityState.Modified;
+        }
+        public virtual void Excluir(T obj)
+        {
+            if (_DbContext.Entry(obj).State == EntityState.Detached)
+                _DbSet.Attach(obj);
+
+            _DbSet.Remove(obj);
+        }
+
+        public virtual T ObterObjetoPorId(int id)
+        {
+            return _DbSet.Find(id);
+        }
+
+        public virtual T ObterObjetoAtualizado(T obj)
+        {
+            if (obj.id == 0) { throw new Exception("Você tentou atualizar um objeto com ID nulo."); }
+
+            return _DbSet.Find(obj.id);
+        }
+
+        public virtual ObservableCollection<T> ObterListaObjeto()
+        {
+            List<T> lista = _DbSet.OrderBy(o => o.id).ToList();
+
+            ObservableCollection<T> listObservable = new ObservableCollection<T>(lista);
+
+            return listObservable;
         }
 
         #endregion
-
 
     }
 }

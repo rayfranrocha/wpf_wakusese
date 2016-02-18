@@ -18,9 +18,9 @@ namespace wpf_wakusese.src.main.model.servicos
 
         public DominioSeguranca()
         {
-            dbContext = new EFDBContext();
-            boUsuario = new BO_Usuario(dbContext);
-            boEmpresa = new BO_Empresa(dbContext);
+            dbContext = EFDBContext.Instance;
+            boUsuario = new BO_Usuario();
+            boEmpresa = new BO_Empresa();
         }
 
         public void ExemploVerificaUsuarioEmpresa_seNaoExistir_CriaOsDois(Usuario usu, Empresa emp)

@@ -10,8 +10,8 @@ namespace wpf_wakusese.src.main.model.bo
 {
     public class BO_ValePresenteAvulso : GenericoBO<ValePresenteAvulso>
     {
-        public BO_ValePresenteAvulso(EFDBContext dbContext)
-            : base(dbContext)
+        public BO_ValePresenteAvulso()
+            : base()
         {
         }
     }

@@ -12,12 +12,12 @@ namespace wpf_wakusese.src.main.model.bo
 {
     public class BO_Empresa : GenericoBO<Empresa>
     {
-        public BO_Empresa(EFDBContext dbContext)
-            : base(dbContext)
+        public BO_Empresa()
+            : base()
         {
         }
 
-        public virtual ObservableCollection<Empresa> ObterListaObjeto()
+        public override ObservableCollection<Empresa> ObterListaObjeto()
         {
 
             List<Empresa> lista = _DbSet

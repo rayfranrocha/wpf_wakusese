@@ -78,32 +78,32 @@ namespace wpf_wakusese
 
         private void Exemplo25()
         {
-            using (var ctx = new EFDBContext())
-            {
-                BO_Perfil boPerfil = new BO_Perfil(ctx);
+            //using (var ctx = new EFDBContext())
+            //{
+            //    BO_Perfil boPerfil = new BO_Perfil(ctx);
 
-                Empresa emp = new Empresa() { id = 1 };
-                boPerfil.InserirOuAlterar(new Perfil() { empresa = emp, nome = "Garçom Padrao Enum", perfilPadraoEnum = src.main.model.enums.PerfilPadraoEnum.Garcom });
-                boPerfil.SaveChanges();
-            }
+            //    Empresa emp = new Empresa() { id = 1 };
+            //    boPerfil.InserirOuAlterar(new Perfil() { empresa = emp, nome = "Garçom Padrao Enum", perfilPadraoEnum = src.main.model.enums.PerfilPadraoEnum.Garcom });
+            //    boPerfil.SaveChanges();
+            //}
         }
 
         private void Exemplo23()
         {
-            using (var ctx = new EFDBContext())
-            {
-                BO_Usuario boUsuario = new BO_Usuario(ctx);
-                var xxx = boUsuario.ObterListaObjeto();
-            }
+            //using (var ctx = new EFDBContext())
+            //{
+            //    BO_Usuario boUsuario = new BO_Usuario(ctx);
+            //    var xxx = boUsuario.ObterListaObjeto();
+            //}
         }
 
         private void Exemplo22()
         {
-            using (var context = new EFDBContext())
-            {
-                BO_Usuario boUsuario = new BO_Usuario(context);
-                Usuario u = boUsuario.ObterObjetoPorId(13);
-            }
+            //using (var context = new EFDBContext())
+            //{
+            //    BO_Usuario boUsuario = new BO_Usuario(context);
+            //    Usuario u = boUsuario.ObterObjetoPorId(13);
+            //}
         }
 
         private void Exemplo21()
@@ -120,11 +120,11 @@ namespace wpf_wakusese
 
         private void Exemplo20()
         {
-            using (var context = new EFDBContext())
-            {
-                //UsuarioBO boUsuario = (UsuarioBO)FactoryBO.GetServico(typeof(Usuario));
-                //Usuario u = boUsuario.ObterObjetoPorId(13);
-            }
+            //using (var context = new EFDBContext())
+            //{
+            //    //UsuarioBO boUsuario = (UsuarioBO)FactoryBO.GetServico(typeof(Usuario));
+            //    //Usuario u = boUsuario.ObterObjetoPorId(13);
+            //}
         }
 
         //private void Exemplo18_SQLNativo()

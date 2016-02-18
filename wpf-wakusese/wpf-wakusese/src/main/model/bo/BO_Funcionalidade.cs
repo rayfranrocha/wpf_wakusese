@@ -10,8 +10,8 @@ namespace wpf_wakusese.src.main.model.bo
 {
     public class BO_Funcionalidade : GenericoBO<Funcionalidade>
     {
-        public BO_Funcionalidade(EFDBContext dbContext)
-            : base(dbContext)
+        public BO_Funcionalidade()
+            : base()
         {
         }
 

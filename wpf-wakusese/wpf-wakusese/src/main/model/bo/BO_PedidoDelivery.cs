@@ -12,8 +12,8 @@ namespace wpf_wakusese.src.main.model.bo
 {
     public class BO_PedidoDelivery : GenericoBO<PedidoDelivery>
     {
-        public BO_PedidoDelivery(EFDBContext dbContext)
-            : base(dbContext)
+        public BO_PedidoDelivery()
+            : base()
         {
         }
 
@@ -52,7 +52,7 @@ namespace wpf_wakusese.src.main.model.bo
             }
         }
 
-        public PedidoDelivery ObterObjetoPorId(int id)
+        public override PedidoDelivery ObterObjetoPorId(int id)
         {
             PedidoDelivery obj = _DbSet
                                         .Include(o => o.pedido)

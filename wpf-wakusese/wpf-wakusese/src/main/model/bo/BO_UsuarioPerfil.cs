@@ -12,8 +12,8 @@ namespace wpf_wakusese.src.main.model.bo
 {
     public class BO_UsuarioPerfil : GenericoBO<UsuarioPerfil>
     {
-        public BO_UsuarioPerfil(EFDBContext dbContext)
-            : base(dbContext)
+        public BO_UsuarioPerfil()
+            : base()
         {
         }
 

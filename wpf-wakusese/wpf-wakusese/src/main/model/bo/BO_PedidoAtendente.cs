@@ -10,8 +10,8 @@ namespace wpf_wakusese.src.main.model.bo
 {
     public class BO_PedidoAtendente : GenericoBO<PedidoAtendente>
     {
-        public BO_PedidoAtendente(EFDBContext dbContext)
-            : base(dbContext)
+        public BO_PedidoAtendente()
+            : base()
         {
         }
     }

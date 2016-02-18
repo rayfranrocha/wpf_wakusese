@@ -12,16 +12,16 @@ namespace wpf_wakusese.src.main.model.bo
 {
     public class BO_Usuario : GenericoBO<Usuario>
     {
-        public BO_Usuario(EFDBContext dbContext)
-            : base(dbContext)
+        public BO_Usuario()
+            : base()
         {
         }
 
-        public BO_Usuario()
-            : base(new EFDBContext())
-        {
-            this._DbContext.Configuration.ProxyCreationEnabled = false;
-        }
+        //public BO_Usuario()
+        //    : base(EFDBContext.Instance)
+        //{
+        //    this._DbContext.Configuration.ProxyCreationEnabled = false;
+        //}
 
         /// <summary>
         /// Este método é resposável por resetar a senha de um usuario
@@ -36,7 +36,7 @@ namespace wpf_wakusese.src.main.model.bo
         }
 
 
-        public ObservableCollection<Usuario> ObterListaObjeto()
+        public override ObservableCollection<Usuario> ObterListaObjeto()
         {
 
             List<Usuario> lista = _DbSet
@@ -73,11 +73,6 @@ namespace wpf_wakusese.src.main.model.bo
                 throw new ArgumentException("Não foi encontrado usuário com este telefone e senha!");
             }
             return r;
-        }
-
-        public void Attach(Usuario u)
-        {
-            _DbSet.Attach(u);
         }
 
         public ObservableCollection<Usuario> ObserListaObjetoPorNumeroTelefone(string p)

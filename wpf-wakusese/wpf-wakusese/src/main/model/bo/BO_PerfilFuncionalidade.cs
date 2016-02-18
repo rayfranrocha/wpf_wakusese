@@ -12,8 +12,8 @@ namespace wpf_wakusese.src.main.model.bo
 {
     public class BO_PerfilFuncionalidade : GenericoBO<PerfilFuncionalidade>
     {
-        public BO_PerfilFuncionalidade(EFDBContext dbContext)
-            : base(dbContext)
+        public BO_PerfilFuncionalidade()
+            : base()
         {
         }
 

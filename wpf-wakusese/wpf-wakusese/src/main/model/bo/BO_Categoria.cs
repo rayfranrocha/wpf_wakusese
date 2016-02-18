@@ -11,8 +11,8 @@ namespace wpf_wakusese.src.main.model.bo
 {
     public class BO_Categoria : GenericoBO<Categoria>
     {
-        public BO_Categoria(EFDBContext dbContext)
-            : base(dbContext)
+        public BO_Categoria()
+            : base()
         {
         }
 
