@@ -12,7 +12,7 @@ using System.Runtime.Serialization;
 namespace wpf_wakusese.src.main.model.ce
 {
 
-    
+    //Comentario Teste IGO
     [DataContract(IsReference = true)]
     public class Empresa : EntityBase
     {

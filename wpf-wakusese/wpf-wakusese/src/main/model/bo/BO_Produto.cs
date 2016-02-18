@@ -72,5 +72,18 @@ namespace wpf_wakusese.src.main.model.bo
             ObservableCollection<Produto> listObv = new ObservableCollection<Produto>(lista);
             return listObv;
         }
+
+        public ObservableCollection<Produto> ObterListaProdutosdaEmpresa(Empresa empresa)
+        {
+
+            List<Produto> lista = _DbSet
+
+                              .Include(o => o.categoria)
+                              .Where(o => o.categoria.empresa.id == empresa.id)
+                              .ToList();
+
+            ObservableCollection<Produto> listObv = new ObservableCollection<Produto>(lista);
+            return listObv;
+        }
     }
 }

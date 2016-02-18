@@ -17,13 +17,13 @@ namespace wpf_wakusese.src.main.model.bo
         {
         }
 
-        public System.Collections.ObjectModel.ObservableCollection<PedidoLocal> ObterListaPedidosLocalEmProcesso()
+        public System.Collections.ObjectModel.ObservableCollection<PedidoLocal> ObterListaPedidosLocalEmProcesso(Empresa empresa)
         {
             List<PedidoLocal> list = _DbSet
                                         .Include(o => o.pedido)
                                         .Include(o => o.pedido.cliente)
                                         .Include(o => o.empresa)
-                                        .Where(o => o.checkout < o.checkin)
+                                        .Where(o => o.checkout < o.checkin && o.empresa.id == empresa.id)
                                         .ToList();
 
 

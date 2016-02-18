@@ -17,15 +17,17 @@ namespace wpf_wakusese.src.main.model.bo
         {
         }
 
-        public System.Collections.ObjectModel.ObservableCollection<PedidoDelivery> ObterListaDeliveryEmProcesso()
+        public System.Collections.ObjectModel.ObservableCollection<PedidoDelivery> ObterListaDeliveryEmProcesso(Empresa empresa)
         {
             List<PedidoDelivery> list = _DbSet
                                         .Include(o => o.pedido)
                                         .Include(o => o.pedido.cliente)
                                         .Include(o => o.pedido.cliente.endereco)
                                         .Include(o => o.empresa)
-                                        .Where(o => o.horaEntrega < o.horaPedido)
+                                        .Where(o => o.horaEntrega < o.horaPedido && o.empresa.id == empresa.id)
                                         .ToList();
+
+
 
             ObservableCollection<PedidoDelivery> listObs = new ObservableCollection<PedidoDelivery>(list);
             return listObs;
