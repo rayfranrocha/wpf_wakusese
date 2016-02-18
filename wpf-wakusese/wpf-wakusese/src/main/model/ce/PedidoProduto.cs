@@ -88,7 +88,7 @@ namespace wpf_wakusese.src.main.model.ce
             {
                 Decimal menorPreco = _precoPadrao;
 
-                if (_precoPromocao != null && _precoPromocao > 0 && _precoPromocao < _precoPadrao)
+                if (_precoPromocao > 0 && _precoPromocao > 0 && _precoPromocao < _precoPadrao)
                 {
                     menorPreco = _precoPromocao;
                 }
