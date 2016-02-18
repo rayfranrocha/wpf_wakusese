@@ -16,7 +16,7 @@ namespace wpf_wakusese.src.main.model.bo
             : base(dbContext)
         {
         }
-
+        //
         public System.Collections.ObjectModel.ObservableCollection<PedidoDelivery> ObterListaDeliveryEmProcesso(Empresa empresa)
         {
             List<PedidoDelivery> list = _DbSet

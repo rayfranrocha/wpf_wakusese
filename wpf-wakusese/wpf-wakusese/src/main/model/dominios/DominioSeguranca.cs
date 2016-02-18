@@ -18,7 +18,7 @@ namespace wpf_wakusese.src.main.model.servicos
 
         public DominioSeguranca()
         {
-            dbContext = new EFDBContext();
+            dbContext = EFDBContext.Instance;
             boUsuario = new BO_Usuario(dbContext);
             boEmpresa = new BO_Empresa(dbContext);
         }
