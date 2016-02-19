@@ -1,0 +1,44 @@
+﻿@model IEnumerable<Restaurante.CE_ValePresente>
+
+@{
+    ViewBag.Title = "ValePresente";
+}
+
+<h2>ValePresente</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table border="1" align="center" cellspacing="5">
+    <tr>
+        <th align="center">
+            @Html.DisplayNameFor(model => model.Empresa.empresaNome)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.valePresentevalor)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.valePresenteEmpresaId)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td align="center" cellspacing="5">
+            @Html.DisplayFor(modelItem => item.Empresa.empresaNome)
+        </td>
+        <td align="center" cellspacing="5">
+            @Html.DisplayFor(modelItem => item.valePresentevalor)
+        </td>
+        <td align="center" cellspacing="5">
+            @Html.DisplayFor(modelItem => item.valePresenteId)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "EditValePresente", new { id=item.valePresenteId }) |
+            @Html.ActionLink("Delete", "DeleteValePresente", new { id = item.valePresenteId })
+        </td>
+    </tr>
+}
+
+</table>

@@ -1,0 +1,72 @@
+@{
+    var grid = Html.DevExpress().GridView(settings =>
+    {
+        settings.Name = "gvPedidoProduto";
+        settings.CallbackRouteValues = new { Controller = "PedidoProduto", Action = "gvpPedidoProduto" };
+
+        settings.SettingsEditing.AddNewRowRouteValues = new { Controller = "PedidoProduto", Action = "gvpPedidoProdutoAddNew" };
+        settings.SettingsEditing.UpdateRowRouteValues = new { Controller = "PedidoProduto", Action = "gvpPedidoProdutoUpdate" };
+        settings.SettingsEditing.DeleteRowRouteValues = new { Controller = "PedidoProduto", Action = "gvpPedidoProdutoDelete" };
+        settings.SettingsEditing.Mode = GridViewEditingMode.EditFormAndDisplayRow;
+        settings.SettingsBehavior.ConfirmDelete = true;
+
+        settings.CommandColumn.Visible = true;
+        settings.CommandColumn.ShowDeleteButton = true;
+        settings.CommandColumn.ShowNewButtonInHeader = true;
+        settings.CommandColumn.ShowEditButton = true;
+
+        settings.KeyFieldName = "pedProdId";
+
+        settings.SettingsPager.Visible = true;
+        settings.Settings.ShowGroupPanel = true;
+        settings.Settings.ShowFilterRow = true;
+        settings.SettingsBehavior.AllowSelectByRowClick = true;
+
+        settings.SettingsAdaptivity.AdaptivityMode = GridViewAdaptivityMode.Off;
+        settings.SettingsAdaptivity.AdaptiveColumnPosition = GridViewAdaptiveColumnPosition.Right;
+        settings.SettingsAdaptivity.AdaptiveDetailColumnCount = 1;
+        settings.SettingsAdaptivity.AllowOnlyOneAdaptiveDetailExpanded = false;
+        settings.SettingsAdaptivity.HideDataCellsAtWindowInnerWidth = 0;
+
+        settings.Columns.Add("pedProdId");
+        settings.Columns.Add("pedProdisItensCarr", MVCxGridViewColumnType.CheckBox);
+        settings.Columns.Add("pedProdQtde");
+        settings.Columns.Add("pedProdPrecPromo");
+        settings.Columns.Add("pedProdPrecPadrao");
+        settings.Columns.Add("pedProdGetTotal");
+        
+        var db = new Restaurante.Context();
+
+
+        settings.Columns.Add(column =>
+        {
+            column.FieldName = "pedProdProdutoId";
+            column.Caption = "Produto";
+
+            column.ColumnType = MVCxGridViewColumnType.ComboBox;
+            var comboBoxProperties = column.PropertiesEdit as ComboBoxProperties;
+            comboBoxProperties.DataSource = db.GetProduto();
+            comboBoxProperties.TextField = "prodNome";
+            comboBoxProperties.ValueField = "prodId";
+            comboBoxProperties.ValueType = typeof(int);
+        });
+
+        settings.Columns.Add(column =>
+        {
+            column.FieldName = "pedProdPedidoId";
+            column.Caption = "Pedido";
+
+            column.ColumnType = MVCxGridViewColumnType.ComboBox;
+            var comboBoxProperties = column.PropertiesEdit as ComboBoxProperties;
+            comboBoxProperties.DataSource = db.GetPedido();
+            comboBoxProperties.TextField = "pedidoFormPgto";
+            comboBoxProperties.ValueField = "pedidoId";
+            comboBoxProperties.ValueType = typeof(int);
+        });
+    });
+    if (ViewData["EditError"] != null)
+    {
+        grid.SetEditErrorText((string)ViewData["EditError"]);
+    }
+}
+@grid.Bind(Model).GetHtml()

@@ -1,0 +1,40 @@
+﻿@model Restaurante.CE_ValePresente
+
+@{
+    ViewBag.Title = "DeleteValePresente";
+}
+
+<h2>DeleteValePresente</h2>
+
+<h3>Are you sure you want to delete this?</h3>
+<div>
+    <h4>CE_ValePresente</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Empresa.empresaNome)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Empresa.empresaNome)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.valePresentevalor)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.valePresentevalor)
+        </dd>
+
+    </dl>
+
+    @using (Html.BeginForm()) {
+        @Html.AntiForgeryToken()
+
+        <div class="form-actions no-color">
+            <input type="submit" value="Delete" class="btn btn-default" /> |
+            @Html.ActionLink("Back to List", "Index")
+        </div>
+    }
+</div>

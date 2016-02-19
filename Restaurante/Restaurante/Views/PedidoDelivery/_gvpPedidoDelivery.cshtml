@@ -1,0 +1,93 @@
+@{
+	var grid = Html.DevExpress().GridView(settings => {
+        settings.Name = "gvPedidoDelivery";
+        settings.CallbackRouteValues = new { Controller = "PedidoDelivery", Action = "gvpPedidoDelivery" };
+
+				settings.SettingsEditing.AddNewRowRouteValues = new { Controller = "PedidoDelivery", Action = "gvpPedidoDeliveryAddNew" };
+        settings.SettingsEditing.UpdateRowRouteValues = new { Controller = "PedidoDelivery", Action = "gvpPedidoDeliveryUpdate" };
+        settings.SettingsEditing.DeleteRowRouteValues = new { Controller = "PedidoDelivery", Action = "gvpPedidoDeliveryDelete" };
+        settings.SettingsEditing.Mode = GridViewEditingMode.EditFormAndDisplayRow;
+        settings.SettingsBehavior.ConfirmDelete = true;
+
+        settings.CommandColumn.Visible = true;
+        settings.CommandColumn.ShowDeleteButton = true;
+        settings.CommandColumn.ShowNewButtonInHeader = true;
+        settings.CommandColumn.ShowEditButton = true;
+
+		settings.KeyFieldName = "pedDeliId";
+
+		settings.SettingsPager.Visible = true;
+		settings.Settings.ShowGroupPanel = false;
+		settings.Settings.ShowFilterRow = true;
+		settings.SettingsBehavior.AllowSelectByRowClick = true;
+
+		settings.SettingsAdaptivity.AdaptivityMode = GridViewAdaptivityMode.Off;
+		settings.SettingsAdaptivity.AdaptiveColumnPosition = GridViewAdaptiveColumnPosition.Right;
+		settings.SettingsAdaptivity.AdaptiveDetailColumnCount = 1;
+		settings.SettingsAdaptivity.AllowOnlyOneAdaptiveDetailExpanded = false;
+		settings.SettingsAdaptivity.HideDataCellsAtWindowInnerWidth = 0;
+
+				settings.Columns.Add("pedDeliId");
+        
+                settings.Columns.Add(column =>
+                {
+                    column.Caption = "pedDeliHoraPedido";
+                    column.FieldName = "pedDeliHoraPedido";
+                    column.ColumnType = MVCxGridViewColumnType.DateEdit;
+                    var DateEditProperties = column.PropertiesEdit as DateEditProperties;
+                    column.CellStyle.Wrap = DefaultBoolean.False;
+                });
+        
+                settings.Columns.Add(column =>
+                {
+                    column.Caption = "pedDeliHoraLiberacao";
+                    column.FieldName = "pedDeliHoraLiberacao";
+                    column.ColumnType = MVCxGridViewColumnType.DateEdit;
+                    var DateEditProperties = column.PropertiesEdit as DateEditProperties;
+                    column.CellStyle.Wrap = DefaultBoolean.False;
+                });
+        
+                settings.Columns.Add(column =>
+                {
+                    column.Caption = "pedDeliHoraEntrega";
+                    column.FieldName = "pedDeliHoraEntrega";
+                    column.ColumnType = MVCxGridViewColumnType.DateEdit;
+                    var DateEditProperties = column.PropertiesEdit as DateEditProperties;
+                    column.CellStyle.Wrap = DefaultBoolean.False;
+                });
+				
+                var db = new Restaurante.Context();
+
+                settings.Columns.Add(column =>
+                {
+                    column.FieldName = "pedDeliEmpresaId";
+                    column.Caption = "Empresa";
+
+                    column.ColumnType = MVCxGridViewColumnType.ComboBox;
+                    var comboBoxProperties = column.PropertiesEdit as ComboBoxProperties;
+                    comboBoxProperties.DataSource = db.GetEmpresa();
+                    comboBoxProperties.TextField = "empresaNome";
+                    comboBoxProperties.ValueField = "empresaId";
+                    comboBoxProperties.ValueType = typeof(int);
+                });
+
+                settings.Columns.Add(column =>
+                {
+                    column.FieldName = "pedDeliPedidoId";
+                    column.Caption = "Pedido";
+
+                    column.ColumnType = MVCxGridViewColumnType.ComboBox;
+                    var comboBoxProperties = column.PropertiesEdit as ComboBoxProperties;
+                    comboBoxProperties.DataSource = db.GetPedido();
+                    comboBoxProperties.TextField = "pedidoFormPgto";
+                    comboBoxProperties.ValueField = "pedidoId";
+                    comboBoxProperties.ValueType = typeof(int);
+                });
+        
+        
+			});
+		if (ViewData["EditError"] != null){
+        grid.SetEditErrorText((string)ViewData["EditError"]);
+    }
+}
+@grid.Bind(Model).GetHtml()

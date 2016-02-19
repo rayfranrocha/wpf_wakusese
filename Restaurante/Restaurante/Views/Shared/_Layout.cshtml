@@ -1,0 +1,246 @@
+<!DOCTYPE html>
+
+
+<h2>Menu</h2>
+<!DOCTYPE html>
+<html>
+<head>
+
+    <meta name="viewport" content="width=device-width" />
+    @*<script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>*@
+    <style>
+
+        body{
+            /*background-image:url("https://wallpaperscraft.com/image/koala_sleeping_lying_down_face_40642_2048x1152.jpg");*/
+            background-repeat:no-repeat;
+        }
+         .menu .item {
+
+                    color: #ffffff;
+                    text-decoration: none;
+                    padding: 5px 10px;
+                    display: block;
+                    padding: 14px 16px;
+                    background-color: #000000;
+                }
+
+         .menu .item:hover{
+                        background: #fc9c25;
+                        color: #fff;
+                        -moz-box-shadow: 0 3px 10px 0 #CCC;
+                        -webkit-box-shadow: 0 3px 10px 0 #ccc;
+                        text-shadow: 0px 0px 5px #fff;
+                        cursor:pointer;
+                    }
+
+
+        .menu {
+            list-style: none;
+            border: 2px solid #fc9c25;
+            float: left;
+            background-color: transparent;
+            margin: 0;
+            padding: 0;
+            width: 100%;
+        }
+
+            .menu li {
+                position: relative;
+                float: left;
+                border-right: 1px solid #c0c0c0;
+                color: #fff;
+            }
+
+                .menu li.b {
+                    display: block;
+                    color: white;
+                    text-align: center;
+                    padding: 14px 16px;
+                    text-decoration: none;
+                    background-color: #000000;
+                }
+
+                .menu li a {
+                    color: #ffffff;
+                    text-decoration: none;
+                    padding: 5px 10px;
+                    display: block;
+                    padding: 14px 16px;
+                    background-color: #000000;
+                }
+
+                    .menu li a:hover {
+                        background: #fc9c25;
+                        color: #fff;
+                        -moz-box-shadow: 0 3px 10px 0 #CCC;
+                        -webkit-box-shadow: 0 3px 10px 0 #ccc;
+                        text-shadow: 0px 0px 5px #fff;
+                    }
+
+                .menu li ul {
+                    position: absolute;
+                    top: 45px;
+                    left: 0;
+                    display: none;
+                }
+
+                .menu li:hover ul, .menu li.over ul {
+                    display: block;
+                }
+
+                .menu li ul li {
+                    border: 1px solid #c0c0c0;
+                    display: block;
+                    width: 200px;
+                }
+    </style>
+</head>
+<body>
+    <ul class="menu">
+
+
+        <li>
+            @Html.ActionLink("Menu", "Index", "Menu")
+            <ul>
+               
+
+            </ul>
+        </li>
+        <li class="item">
+            Produtos
+            <ul>
+                <li>@Html.ActionLink("Produto", "Produto", "Produto")</li>
+               
+               
+            </ul>
+        </li>
+        <li class="item">
+            Empresa
+            <ul>
+                <li>@Html.ActionLink("Empresa", "Empresa", "Empresa")</li>
+               
+            </ul>
+        </li>
+        <li class="item">
+            Pedido
+            <ul>
+                <li>@Html.ActionLink("Pedido", "Pedido", "Pedido")</li>
+                <li>@Html.ActionLink("PedidoProduto", "PedidoProduto", "PedidoProduto")</li>
+                <li>@Html.ActionLink("PedidoLocal", "PedidoLocal", "PedidoLocal")</li>
+                <li>@Html.ActionLink("PedidoDelivery", "PedidoDelivery", "PedidoDelivery")</li>
+            </ul>
+        </li>
+
+        <li class="item">
+            Promocao
+            <ul>
+                <li>@Html.ActionLink("Promocao", "Promocao", "Promocao")</li>
+            </ul>
+        </li>
+        <li class="item">
+            Caracteristica
+            <ul>
+                <li>@Html.ActionLink("CaracteristicaValor", "CaracteristicaValor", "CaracteristicaValor")</li>
+                <li>@Html.ActionLink("ProdCaractValor", "ProdCaractValor", "ProdutoCaractValor")</li>
+            </ul>
+        </li>
+
+        <li class="item">
+            Vale Presente
+            <ul>
+                <li>@Html.ActionLink("ValePresente", "ValePresente", "ValePresente")</li>
+                <li>@Html.ActionLink("ValePresenteAvulso", "ValePresenteAvulso", "ValePresenteAvulso")</li>
+            </ul>
+        </li>
+        <li class="item">
+            Endereco
+            <ul>
+                <li>@Html.ActionLink("Endereco", "Endereco", "Endereco")</li>
+            </ul>
+        </li>
+        <li class="item">
+            Usuario
+            <ul>
+                <li>@Html.ActionLink("Usuario", "Usuario", "Usuario")</li>
+                <li>@Html.ActionLink("UsuarioPerfil", "UsuarioPerfil", "UsuarioPerfil")</li>
+            </ul>
+        </li>
+        <li class="item">
+            Categoria
+            <ul>
+                <li>@Html.ActionLink("Categoria", "Categoria", "Categoria")</li>
+            </ul>
+        </li>
+
+        <li class="item">
+            Perfil
+            <ul>
+                <li>@Html.ActionLink("Perfil", "Perfil", "Perfil")</li>
+                <li>@Html.ActionLink("PerfilPadraoEnum", "PerfilPadraoEnum", "PerfilPadraoEnum")</li>
+            </ul>
+        </li>
+
+        <li class="item">
+            PerfilPadraoEnum
+            <ul>
+                <li>@Html.ActionLink("PerfilPadraoEnum", "PerfilPadraoEnum", "PerfilPadraoEnum")</li>
+            </ul>
+        </li>
+
+
+        <ul style="float:right;list-style-type:none;">
+
+            @if (User.Identity.Name == "")
+            {
+                <li>@Html.ActionLink("Login", "Login", "Login", new { href = "javascript:pcModalMode.Show();" })</li>
+               
+            }
+            else
+            {
+                <li class="b"> <tex> Bem Vindo </tex> @User.Identity.Name</li>
+            }
+            @if (User.Identity.Name != "")
+            {
+                <li>@Html.ActionLink("LogOut", "LogOut", "Login")</li>
+            }
+
+
+        </ul>
+    </ul>
+</body>
+</html>
+
+<html>
+<head>
+    <title>@ViewBag.Title</title>
+
+    @Html.DevExpress().GetStyleSheets(
+            new StyleSheet { ExtensionSuite = ExtensionSuite.NavigationAndLayout, Theme = "Metropolis" },
+            new StyleSheet { ExtensionSuite = ExtensionSuite.Editors, Theme = "Metropolis" },
+            new StyleSheet { ExtensionSuite = ExtensionSuite.HtmlEditor, Theme = "Metropolis" },
+            new StyleSheet { ExtensionSuite = ExtensionSuite.GridView, Theme = "Metropolis" },
+            new StyleSheet { ExtensionSuite = ExtensionSuite.PivotGrid, Theme = "Metropolis" },
+            new StyleSheet { ExtensionSuite = ExtensionSuite.Chart, Theme = "Metropolis" },
+            new StyleSheet { ExtensionSuite = ExtensionSuite.Report, Theme = "Metropolis" },
+            new StyleSheet { ExtensionSuite = ExtensionSuite.Scheduler, Theme = "Metropolis" },
+            new StyleSheet { ExtensionSuite = ExtensionSuite.TreeList, Theme = "Metropolis" },
+            new StyleSheet { ExtensionSuite = ExtensionSuite.Spreadsheet, Theme = "Metropolis" }
+)
+    @Html.DevExpress().GetScripts(
+    new Script { ExtensionSuite = ExtensionSuite.NavigationAndLayout },
+    new Script { ExtensionSuite = ExtensionSuite.HtmlEditor },
+    new Script { ExtensionSuite = ExtensionSuite.GridView },
+    new Script { ExtensionSuite = ExtensionSuite.PivotGrid },
+    new Script { ExtensionSuite = ExtensionSuite.Editors },
+    new Script { ExtensionSuite = ExtensionSuite.Chart },
+    new Script { ExtensionSuite = ExtensionSuite.Report },
+    new Script { ExtensionSuite = ExtensionSuite.Scheduler },
+    new Script { ExtensionSuite = ExtensionSuite.TreeList },
+    new Script { ExtensionSuite = ExtensionSuite.Spreadsheet }
+)
+</head>
+
+<body>
+    @RenderBody()
+</body>
+</html>

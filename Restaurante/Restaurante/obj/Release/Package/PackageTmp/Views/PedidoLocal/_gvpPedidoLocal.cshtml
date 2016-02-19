@@ -1,0 +1,77 @@
+@{
+	var grid = Html.DevExpress().GridView(settings => {
+        settings.Name = "gvPedidoLocal";
+        settings.CallbackRouteValues = new { Controller = "PedidoLocal", Action = "gvpPedidoLocal" };
+
+		settings.SettingsEditing.AddNewRowRouteValues = new { Controller = "PedidoLocal", Action = "gvpPedidoLocalAddNew" };
+        settings.SettingsEditing.UpdateRowRouteValues = new { Controller = "PedidoLocal", Action = "gvpPedidoLocalUpdate" };
+        settings.SettingsEditing.DeleteRowRouteValues = new { Controller = "PedidoLocal", Action = "gvpPedidoLocalDelete" };
+        settings.SettingsEditing.Mode = GridViewEditingMode.EditFormAndDisplayRow;
+        settings.SettingsBehavior.ConfirmDelete = true;
+
+        settings.CommandColumn.Visible = true;
+        settings.CommandColumn.ShowDeleteButton = true;
+        settings.CommandColumn.ShowNewButtonInHeader = true;
+        settings.CommandColumn.ShowEditButton = true;
+
+		settings.KeyFieldName = "pedLocalId";
+
+		settings.SettingsPager.Visible = true;
+		settings.Settings.ShowGroupPanel = false;
+		settings.Settings.ShowFilterRow = true;
+		settings.SettingsBehavior.AllowSelectByRowClick = true;
+
+				settings.Columns.Add("pedLocalId");
+				settings.Columns.Add("pedLocalNome");
+        
+                settings.Columns.Add(column =>
+                {
+                    column.Caption = "pedLocalCheckin";
+                    column.FieldName = "pedLocalCheckin";
+                    column.ColumnType = MVCxGridViewColumnType.DateEdit;
+                    var DateEditProperties = column.PropertiesEdit as DateEditProperties;
+                    column.CellStyle.Wrap = DefaultBoolean.False;
+                });
+        
+                settings.Columns.Add(column =>
+                {
+                    column.Caption = "pedLocalCheckout";
+                    column.FieldName = "pedLocalCheckout";
+                    column.ColumnType = MVCxGridViewColumnType.DateEdit;
+                    var DateEditProperties = column.PropertiesEdit as DateEditProperties;
+                    column.CellStyle.Wrap = DefaultBoolean.False;
+                });
+
+                var db = new Restaurante.Context();
+        
+                settings.Columns.Add(column =>
+                {
+                    column.FieldName = "PedidoLocalEmpresaId";
+                    column.Caption = "Empresa";
+
+                    column.ColumnType = MVCxGridViewColumnType.ComboBox;
+                    var comboBoxProperties = column.PropertiesEdit as ComboBoxProperties;
+                    comboBoxProperties.DataSource = db.GetEmpresa();
+                    comboBoxProperties.TextField = "empresaNome";
+                    comboBoxProperties.ValueField = "empresaId";
+                    comboBoxProperties.ValueType = typeof(int);
+                });
+        
+                settings.Columns.Add(column =>
+                {
+                    column.FieldName = "PedidoLocalPedidoId";
+                    column.Caption = "Pedido";
+
+                    column.ColumnType = MVCxGridViewColumnType.ComboBox;
+                    var comboBoxProperties = column.PropertiesEdit as ComboBoxProperties;
+                    comboBoxProperties.DataSource = db.GetPedido();
+                    comboBoxProperties.TextField = "pedidoFormPgto";
+                    comboBoxProperties.ValueField = "pedidoId";
+                    comboBoxProperties.ValueType = typeof(int);
+                });
+			});
+		if (ViewData["EditError"] != null){
+        grid.SetEditErrorText((string)ViewData["EditError"]);
+    }
+}
+@grid.Bind(Model).GetHtml()
