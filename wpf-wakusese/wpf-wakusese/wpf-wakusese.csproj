@@ -134,6 +134,9 @@
     <Compile Include="src\main\_utils\EFDBContext.cs" />
     <Compile Include="src\main\_utils\EntityBase.cs" />
     <Compile Include="src\main\_utils\IconUtil.cs" />
+    <Compile Include="src\test\UserControls\BotaoTelaPrincipal.xaml.cs">
+      <DependentUpon>BotaoTelaPrincipal.xaml</DependentUpon>
+    </Compile>
     <Page Include="MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
@@ -149,6 +152,10 @@
     <Page Include="Resources\Icons.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
+    </Page>
+    <Page Include="src\test\UserControls\BotaoTelaPrincipal.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
     </Page>
   </ItemGroup>
   <ItemGroup>
@@ -187,7 +194,9 @@
     <Folder Include="src\main\viewControl\cadastros\" />
     <Folder Include="src\main\viewControl\seguranca\" />
     <Folder Include="src\main\_sandbox\" />
-    <Folder Include="src\test\" />
+    <Folder Include="src\test\Resources\" />
+    <Folder Include="src\test\TelaPopUps\" />
+    <Folder Include="src\test\TelaUserControls\" />
   </ItemGroup>
   <ItemGroup>
     <Resource Include="Resources\WindowsIcons-license.txt" />
