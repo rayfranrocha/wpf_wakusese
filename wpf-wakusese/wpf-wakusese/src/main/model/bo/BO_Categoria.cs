@@ -11,10 +11,6 @@ namespace wpf_wakusese.src.main.model.bo
 {
     public class BO_Categoria : GenericoBO<Categoria>
     {
-        public BO_Categoria()
-            : base()
-        {
-        }
 
         // comentario teste igo
         //Comentario foi feito pelo ALisson

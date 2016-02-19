@@ -34,7 +34,7 @@ namespace wpf_wakusese.src.main._utils
         }
         #endregion
 
-        private EFDBContext()
+        public EFDBContext()
             : base("name=wakuseseDB")
         {
             //imprime o LOG na aba Output

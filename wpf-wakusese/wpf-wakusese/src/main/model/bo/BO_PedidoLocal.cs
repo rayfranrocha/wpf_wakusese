@@ -12,11 +12,7 @@ namespace wpf_wakusese.src.main.model.bo
 {
     public class BO_PedidoLocal : GenericoBO<PedidoLocal>
     {
-        public BO_PedidoLocal()
-            : base()
-        {
-        }
-        //
+
         public System.Collections.ObjectModel.ObservableCollection<PedidoLocal> ObterListaPedidosLocalEmProcesso(Empresa empresa)
         {
             List<PedidoLocal> list = _DbSet

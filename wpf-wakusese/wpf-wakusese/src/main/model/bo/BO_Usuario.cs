@@ -12,11 +12,6 @@ namespace wpf_wakusese.src.main.model.bo
 {
     public class BO_Usuario : GenericoBO<Usuario>
     {
-        public BO_Usuario()
-            : base()
-        {
-        }
-
         //public BO_Usuario()
         //    : base(EFDBContext.Instance)
         //{

@@ -10,11 +10,5 @@ namespace wpf_wakusese.src.main.model.bo
 {
     public class BO_Funcionalidade : GenericoBO<Funcionalidade>
     {
-        public BO_Funcionalidade()
-            : base()
-        {
-        }
-
-
     }
 }

@@ -10,9 +10,5 @@ namespace wpf_wakusese.src.main.model.bo
 {
     public class BO_ProdutoCaractValor : GenericoBO<ProdutoCaractValor>
     {
-        public BO_ProdutoCaractValor()
-            : base()
-        {
-        }
     }
 }

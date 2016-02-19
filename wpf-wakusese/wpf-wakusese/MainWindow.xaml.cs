@@ -18,6 +18,7 @@ using wpf_wakusese.src.main._utils;
 using wpf_wakusese.src.main.model.servicos;
 using wpf_wakusese.src.main.model.bo;
 using wpf_wakusese.src.main.model.ce;
+using System.Collections.ObjectModel;
 
 namespace wpf_wakusese
 {
@@ -58,6 +59,32 @@ namespace wpf_wakusese
             //Exemplo25();
             //Exemplo26();
             //Exemplo27();
+            //Exemplo28(); //FactoryBO
+            Exemplo29(); //Teste de singleto do FactoryBO
+        }
+
+        private void Exemplo29()
+        {
+
+            var bo1 = FactoryBO<Empresa>.GetBO();
+            var bo2 = FactoryBO<Empresa>.GetBO();
+
+            Empresa emp = new Empresa() { nome = "ICON Solucoes" };
+            bo1.InserirOuAlterar(emp);
+
+            bo2.SaveChanges();
+
+            bool singleton = bo1 == bo2;
+            
+        }
+
+        private void Exemplo28()
+        {
+            //var bo1 = new BO_Empresa();
+            //ObservableCollection<Empresa> lista1 = bo1.ObterListaObjeto();
+
+            var bo2 = FactoryBO<Empresa>.GetBO();
+            ObservableCollection<Empresa> lista2 = bo2.ObterListaObjeto();
         }
 
         private void Exemplo27()

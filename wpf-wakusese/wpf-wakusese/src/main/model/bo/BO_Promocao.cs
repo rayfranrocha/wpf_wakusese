@@ -10,9 +10,5 @@ namespace wpf_wakusese.src.main.model.bo
 {
     public class BO_Promocao : GenericoBO<Promocao>
     {
-        public BO_Promocao()
-            : base()
-        {
-        }
     }
 }

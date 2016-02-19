@@ -12,11 +12,6 @@ namespace wpf_wakusese.src.main.model.bo
 {
     public class BO_Perfil : GenericoBO<Perfil>
     {
-        public BO_Perfil()
-            : base()
-        {
-        }
-
         public override ObservableCollection<Perfil> ObterListaObjeto()
         {
 

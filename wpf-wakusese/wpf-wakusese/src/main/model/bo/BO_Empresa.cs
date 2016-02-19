@@ -12,11 +12,6 @@ namespace wpf_wakusese.src.main.model.bo
 {
     public class BO_Empresa : GenericoBO<Empresa>
     {
-        public BO_Empresa()
-            : base()
-        {
-        }
-
         public override ObservableCollection<Empresa> ObterListaObjeto()
         {
 

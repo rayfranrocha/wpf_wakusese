@@ -12,11 +12,6 @@ namespace wpf_wakusese.src.main.model.bo
 {
     public class BO_Produto : GenericoBO<Produto>
     {
-        public BO_Produto()
-            : base()
-        {
-        }
-
         public override ObservableCollection<Produto> ObterListaObjeto()
         {
             List<Produto> lista = _DbSet

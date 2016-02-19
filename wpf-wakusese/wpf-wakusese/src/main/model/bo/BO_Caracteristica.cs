@@ -10,9 +10,5 @@ namespace wpf_wakusese.src.main.model.bo
 {
     public class BO_Caracteristica : GenericoBO<Caracteristica>
     {
-        public BO_Caracteristica()
-            : base()
-        {
-        }
     }
 }

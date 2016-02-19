@@ -7,13 +7,13 @@ namespace wpf_wakusese.Migrations
     using System.Resources;
     
     [GeneratedCode("EntityFramework.Migrations", "6.1.3-40302")]
-    public sealed partial class script0001 : IMigrationMetadata
+    public sealed partial class Initial : IMigrationMetadata
     {
-        private readonly ResourceManager Resources = new ResourceManager(typeof(script0001));
+        private readonly ResourceManager Resources = new ResourceManager(typeof(Initial));
         
         string IMigrationMetadata.Id
         {
-            get { return "201601181501310_script-0001"; }
+            get { return "201602191805032_Initial"; }
         }
         
         string IMigrationMetadata.Source

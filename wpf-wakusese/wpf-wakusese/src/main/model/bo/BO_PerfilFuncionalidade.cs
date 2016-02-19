@@ -12,11 +12,6 @@ namespace wpf_wakusese.src.main.model.bo
 {
     public class BO_PerfilFuncionalidade : GenericoBO<PerfilFuncionalidade>
     {
-        public BO_PerfilFuncionalidade()
-            : base()
-        {
-        }
-
         public List<PerfilFuncionalidade> ObterListaObjeto(UsuarioPerfil up)
         {
 

@@ -12,11 +12,7 @@ namespace wpf_wakusese.src.main.model.bo
 {
     public class BO_PedidoDelivery : GenericoBO<PedidoDelivery>
     {
-        public BO_PedidoDelivery()
-            : base()
-        {
-        }
-        //
+
         public System.Collections.ObjectModel.ObservableCollection<PedidoDelivery> ObterListaDeliveryEmProcesso(Empresa empresa)
         {
             List<PedidoDelivery> list = _DbSet

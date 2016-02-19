@@ -72,25 +72,9 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
-    <Compile Include="Migrations\201601171953380_Inicial.cs" />
-    <Compile Include="Migrations\201601171953380_Inicial.Designer.cs">
-      <DependentUpon>201601171953380_Inicial.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201601181501310_script-0001.cs" />
-    <Compile Include="Migrations\201601181501310_script-0001.Designer.cs">
-      <DependentUpon>201601181501310_script-0001.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201601181507047_script-0002.cs" />
-    <Compile Include="Migrations\201601181507047_script-0002.Designer.cs">
-      <DependentUpon>201601181507047_script-0002.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201601181513080_script-0003.cs" />
-    <Compile Include="Migrations\201601181513080_script-0003.Designer.cs">
-      <DependentUpon>201601181513080_script-0003.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201601251945174_script-0004.cs" />
-    <Compile Include="Migrations\201601251945174_script-0004.Designer.cs">
-      <DependentUpon>201601251945174_script-0004.cs</DependentUpon>
+    <Compile Include="Migrations\201602191805032_Initial.cs" />
+    <Compile Include="Migrations\201602191805032_Initial.Designer.cs">
+      <DependentUpon>201602191805032_Initial.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="src\main\model\bo\BO_Categoria.cs" />
@@ -136,6 +120,8 @@
     <Compile Include="src\main\model\dominios\IDominioSeguranca.cs" />
     <Compile Include="src\main\model\dominios\DominioSeguranca.cs" />
     <Compile Include="src\main\model\enums\PerfilPadraoEnum.cs" />
+    <Compile Include="src\main\_utils\FactoryBO.cs" />
+    <Compile Include="src\main\_utils\FactoryMigrationsContext.cs" />
     <Compile Include="src\main\_utils\GenericoBO.cs" />
     <Compile Include="src\main\_utils\EFDBContext.cs" />
     <Compile Include="src\main\_utils\EntityBase.cs" />
@@ -167,20 +153,8 @@
       <DependentUpon>Settings.settings</DependentUpon>
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
-    <EmbeddedResource Include="Migrations\201601171953380_Inicial.resx">
-      <DependentUpon>201601171953380_Inicial.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201601181501310_script-0001.resx">
-      <DependentUpon>201601181501310_script-0001.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201601181507047_script-0002.resx">
-      <DependentUpon>201601181507047_script-0002.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201601181513080_script-0003.resx">
-      <DependentUpon>201601181513080_script-0003.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201601251945174_script-0004.resx">
-      <DependentUpon>201601251945174_script-0004.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201602191805032_Initial.resx">
+      <DependentUpon>201602191805032_Initial.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>

@@ -10,9 +10,5 @@ namespace wpf_wakusese.src.main.model.bo
 {
     public class BO_ValePresente : GenericoBO<ValePresente>
     {
-        public BO_ValePresente()
-            : base()
-        {
-        }
     }
 }

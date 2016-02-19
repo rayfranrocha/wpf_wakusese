@@ -131,18 +131,18 @@ namespace wpf_wakusese.src.main._utils
         #region Métodos Públicos Que Podem Ser Sobescritos (override allowed)
 
 
-        public virtual void Inserir(T obj)
+        protected virtual void Inserir(T obj)
         {
             _DbSet.Add(obj);
         }
-
-        public virtual void Alterar(T obj)
+        protected virtual void Alterar(T obj)
         {
             if (_DbContext.Entry(obj).State == EntityState.Detached)
                 throw new Exception("Não foi possível realizar UPDATE, pois o objeto com id=" + obj.id + " está com status DETACHED. Verifique!");
 
             _DbContext.Entry(obj).State = EntityState.Modified;
         }
+
         public virtual void Excluir(T obj)
         {
             if (_DbContext.Entry(obj).State == EntityState.Detached)

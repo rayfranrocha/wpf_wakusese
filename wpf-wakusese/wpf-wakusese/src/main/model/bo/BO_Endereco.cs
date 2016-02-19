@@ -10,11 +10,5 @@ namespace wpf_wakusese.src.main.model.bo
 {
     public class BO_Endereco : GenericoBO<Endereco>
     {
-        public BO_Endereco()
-            : base()
-        {
-        }
-
-
     }
 }

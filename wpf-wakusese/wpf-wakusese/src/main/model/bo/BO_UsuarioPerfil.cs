@@ -12,11 +12,6 @@ namespace wpf_wakusese.src.main.model.bo
 {
     public class BO_UsuarioPerfil : GenericoBO<UsuarioPerfil>
     {
-        public BO_UsuarioPerfil()
-            : base()
-        {
-        }
-
         public UsuarioPerfil ObterUsuarioPerfil(string telefone, string senha)
         {
             UsuarioPerfil r = _DbSet

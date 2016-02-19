@@ -12,11 +12,6 @@ namespace wpf_wakusese.src.main.model.bo
 {
     public class BO_Pedido : GenericoBO<Pedido>
     {
-        public BO_Pedido()
-            : base()
-        {
-        }
-
         public override Pedido ObterObjetoAtualizado(Pedido obj)
         {
             Pedido r = _DbSet
