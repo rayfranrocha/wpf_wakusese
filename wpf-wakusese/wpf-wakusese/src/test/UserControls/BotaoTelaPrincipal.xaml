@@ -1,0 +1,56 @@
+﻿<UserControl x:Class="wpf_wakusese.src.test.UserControls.BotaoTelaPrincipal"
+            xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             mc:Ignorable="d" 
+             Name="_this"
+             d:DesignHeight="300" d:DesignWidth="300">
+
+    <UserControl.Resources>
+        <ControlTemplate x:Key="BotaoStyleBackGroundeBorder" TargetType="{x:Type Button}">
+            <Border BorderBrush="Gray" BorderThickness="0" CornerRadius="2" Background="White" Width="115" TextBlock.Foreground="White" Name="Border">
+                <Grid>
+                    <Rectangle Name="FocusCue" Visibility="Hidden" Stroke="Black" StrokeThickness="1" StrokeDashArray="1 2" SnapsToDevicePixels="True" ></Rectangle>
+                    <ContentPresenter RecognizesAccessKey="True" Margin="{TemplateBinding Padding}"></ContentPresenter>
+                </Grid>
+            </Border>
+            <ControlTemplate.Triggers>
+                <Trigger Property="IsMouseOver" Value="True">
+                    <!--<Setter TargetName="Border" Property="Background"/>
+                            -->
+                    <!--<Setter.Value>
+                                <LinearGradientBrush EndPoint="0.5,1" MappingMode="RelativeToBoundingBox" StartPoint="0.5,0">
+                                    <GradientStop Color="#FF7C8DC9" Offset="0.992"/>
+                                    <GradientStop Color="#FFD8E0EE" Offset="0.008"/>
+                                    <GradientStop Color="#FFE2EEF9" Offset="0.501"/>
+                                </LinearGradientBrush>
+                            </Setter.Value>-->
+                    <!--
+                        </Setter>-->
+                    <Setter TargetName="Border" Property="BorderThickness" Value="1"/>
+                </Trigger>
+                <Trigger Property="IsPressed" Value="True">
+                    <Setter TargetName="Border" Property="Background" Value="IndianRed" />
+                    <Setter TargetName="Border" Property="BorderBrush" Value="DarkKhaki" />
+                </Trigger>
+                <Trigger Property="IsKeyboardFocused" Value="True">
+                    <Setter TargetName="FocusCue" Property="Visibility" Value="Visible" />
+                </Trigger>
+                <Trigger Property="IsEnabled" Value="False">
+                    <!--<Setter TargetName="Border" Property="TextBlock.Foreground" Value="Gray" />-->
+                    <Setter TargetName="Border" Property="Background" Value="Transparent" />
+                </Trigger>
+
+            </ControlTemplate.Triggers>
+        </ControlTemplate>
+    </UserControl.Resources>
+
+    <Button Template="{DynamicResource BotaoStyleBackGroundeBorder}" Click="Button_Click" >
+        <StackPanel Width="{StaticResource AlturaStackPanelBotaoMainWindow}">
+            <Image  Source="{Binding ElementName=_this, Path=Imagem}"  Height="{StaticResource AlturaImagemBotaoMainWindow}"/>
+            <Label  Content="{Binding ElementName=_this, Path=Titulo}" Style="{StaticResource LabelTextBold}" HorizontalAlignment="Center" />
+        </StackPanel>
+    </Button>
+
+</UserControl>
