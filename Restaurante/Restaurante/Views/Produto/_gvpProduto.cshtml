@@ -1,0 +1,88 @@
+@{
+    var grid = Html.DevExpress().GridView(settings =>
+    {
+        settings.Name = "gvProduto";
+     //   settings.CallbackRouteValues = new { Action = "BinaryImageColumnPartial", Controller = "Produto" };
+        
+        settings.CallbackRouteValues = new { Action = "gvpProduto", Controller = "Produto" };
+        settings.SettingsEditing.UpdateRowRouteValues = new { Action = "gvpProdutoUpdate", Controller = "Produto" };
+       
+        settings.SettingsEditing.AddNewRowRouteValues = new { Controller = "Produto", Action = "gvpProdutoAddNew" };
+        settings.SettingsEditing.DeleteRowRouteValues = new { Controller = "Produto", Action = "gvpProdutoDelete" };
+        settings.SettingsEditing.Mode = GridViewEditingMode.EditFormAndDisplayRow;
+        settings.SettingsBehavior.ConfirmDelete = true;
+        settings.Width = Unit.Percentage(100);
+
+        settings.CommandColumn.Visible = true;
+        settings.CommandColumn.ShowDeleteButton = true;
+        settings.CommandColumn.ShowNewButtonInHeader = true;
+        settings.CommandColumn.ShowEditButton = true;
+
+        settings.KeyFieldName = "prodId";
+
+        settings.CommandColumn.Visible = true;
+        settings.CommandColumn.ShowDeleteButton = true;
+        settings.CommandColumn.ShowNewButtonInHeader = true;
+        settings.Settings.ShowGroupPanel = false;
+
+        settings.Columns.Add("prodId");
+
+        settings.Settings.ShowGroupPanel = false;
+        settings.Settings.ShowFilterRow = true;
+        settings.SettingsBehavior.AllowSelectByRowClick = true;
+        settings.Settings.ShowGroupPanel = false;
+        
+        settings.Columns.Add(c =>
+        {
+            c.FieldName = "prodImg1";
+            c.ColumnType = MVCxGridViewColumnType.BinaryImage;
+            var properties = (MVCxBinaryImageEditProperties)c.PropertiesEdit;
+            properties.ImageWidth = 120;
+            properties.ImageHeight = 80;
+            properties.ExportImageSettings.Width = 90;
+            properties.ExportImageSettings.Height = 60;
+            properties.CallbackRouteValues = new { Action = "BinaryImageColumnPhotoUpdate", Controller = "Produto" };
+            properties.EditingSettings.Enabled = true;
+
+        });
+
+        settings.Columns.Add(c =>
+        {
+            c.FieldName = "prodImg2";
+            c.ColumnType = MVCxGridViewColumnType.BinaryImage;
+            var properties = (MVCxBinaryImageEditProperties)c.PropertiesEdit;
+            properties.ImageWidth = 120;
+            properties.ImageHeight = 80;
+            properties.ExportImageSettings.Width = 90;
+            properties.ExportImageSettings.Height = 60;
+            properties.CallbackRouteValues = new { Action = "BinaryImageColumnPhotoUpdate", Controller = "Produto" };
+            properties.EditingSettings.Enabled = true;
+
+        });
+
+        settings.Columns.Add(c =>
+        {
+            c.FieldName = "prodImg3";
+            c.ColumnType = MVCxGridViewColumnType.BinaryImage;
+            var properties = (MVCxBinaryImageEditProperties)c.PropertiesEdit;
+            properties.ImageWidth = 120;
+            properties.ImageHeight = 80;
+            properties.ExportImageSettings.Width = 90;
+            properties.ExportImageSettings.Height = 60;
+            properties.CallbackRouteValues = new { Action = "BinaryImageColumnPhotoUpdate", Controller = "Produto" };
+            properties.EditingSettings.Enabled = true;
+
+        });
+
+        settings.Columns.Add("prodNome");
+        settings.Columns.Add("prodDesc");
+        settings.Columns.Add("prodPreco");
+        settings.Columns.Add("prodAvaliacaoMedia");
+
+    });
+    if (ViewData["EditError"] != null)
+    {
+        grid.SetEditErrorText((string)ViewData["EditError"]);
+    }
+}
+@grid.Bind(Model).GetHtml()

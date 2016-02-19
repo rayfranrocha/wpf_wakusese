@@ -1,0 +1,122 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <title>Refinement a Educational Category Flat Bootstrap Responsive  Website Template | Home :: w3layouts</title>
+    <link src="~/Views/Teste/css/bootstrap.css" rel="stylesheet" type="text/css" media="all">
+    <link src="/css/style.css" rel="stylesheet" type="text/css" media="all" />
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta name="keywords" content="Refinement Responsive web template, Bootstrap Web Templates, Flat Web Templates, Android Compatible web template,
+Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, SonyEricsson, Motorola web design" />
+    <script type="application/x-javascript"> addEventListener("load", function() { setTimeout(hideURLbar, 0); }, false); function hideURLbar(){ window.scrollTo(0,1); } </script>
+    <link href='//fonts.googleapis.com/css?family=Italiana' rel='stylesheet' type='text/css'>
+    <script href="~/Views/Teste/js/jquery-1.11.1.min.js"></script>
+    <link href='//fonts.googleapis.com/css?family=Open+Sans:400,800italic,800,700italic,700,600italic,600,400italic,300italic,300' rel='stylesheet' type='text/css'>
+    <link href='//fonts.googleapis.com/css?family=Yanone+Kaffeesatz:400,200,300,700' rel='stylesheet' type='text/css'>
+    <script href="~/Views/Teste/js/bootstrap.js"></script>
+    <script href="~/Views/Teste/js/responsiveslides.min.js"></script>
+    @*<script>
+        $(function () {
+            $("#slider").responsiveSlides({
+                auto: true,
+                nav: true,
+                speed: 500,
+                namespace: "callbacks",
+                pager: true,
+            });
+        });
+    </script>*@
+
+</head>
+<body>
+    <!--header-->
+    <div class="header">
+        <div class="container">
+            <div class="header-top">
+                <nav class="navbar navbar-default">
+                    <div class="container-fluid">
+                        <!-- Brand and toggle get grouped for better mobile display -->
+                        <div class="navbar-header">
+                                <span class="icon-bar"></span>
+                                <span class="icon-bar"></span>
+                                <span class="icon-bar"></span>
+                            <div class="navbar-brand">
+                                <h1><a href="index.html">Teste</a></h1>
+                            </div>
+                        </div>
+
+                        <!-- Collect the nav links, forms, and other content for toggling -->
+                        <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                            <ul class="nav navbar-nav">
+                                <li><a href="gallery.html">Gallery1</a></li>
+                                
+                                <li><a href="gallery.html">Gallery1</a></li>
+                                <li><a href="services.html">Services</a></li>
+                                <li class="dropdown">
+                                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Gallery <span class="caret"></span></a>
+                                    <ul class="dropdown-menu">
+                                        <li><a href="gallery.html">Gallery1</a></li>
+                                        <li><a href="gallery.html">Gallery2</a></li>
+                                        <li><a href="gallery.html">Gallery3</a></li>
+                                    </ul>
+                                </li>
+                                <li><a href="codes.html">Codes</a></li>
+                                <li><a href="contact.html">Contact</a></li>
+                            </ul>
+
+                        </div><!-- /.navbar-collapse -->
+                    </div><!-- /.container-fluid -->
+                </nav>
+
+            </div>
+        </div>
+    </div>
+    <!--footer-->
+    <div class="footer-section">
+        <div class="container">
+            <div class="social-icons">
+                <a href="#"><i class="icon1"></i></a>
+                <a href="#"><i class="icon2"></i></a>
+                <a href="#"><i class="icon3"></i></a>
+                <a href="#"><i class="icon4"></i></a>
+            </div>
+        </div>
+    </div>
+    <!--footer-->
+</body>
+</html>
+
+<html>
+<head>
+    <title>@ViewBag.Title</title>
+
+    @Html.DevExpress().GetStyleSheets(
+            new StyleSheet { ExtensionSuite = ExtensionSuite.NavigationAndLayout, Theme = "Metropolis" },
+            new StyleSheet { ExtensionSuite = ExtensionSuite.Editors, Theme = "Metropolis" },
+            new StyleSheet { ExtensionSuite = ExtensionSuite.HtmlEditor, Theme = "Metropolis" },
+            new StyleSheet { ExtensionSuite = ExtensionSuite.GridView, Theme = "Metropolis" },
+            new StyleSheet { ExtensionSuite = ExtensionSuite.PivotGrid, Theme = "Metropolis" },
+            new StyleSheet { ExtensionSuite = ExtensionSuite.Chart, Theme = "Metropolis" },
+            new StyleSheet { ExtensionSuite = ExtensionSuite.Report, Theme = "Metropolis" },
+            new StyleSheet { ExtensionSuite = ExtensionSuite.Scheduler, Theme = "Metropolis" },
+            new StyleSheet { ExtensionSuite = ExtensionSuite.TreeList, Theme = "Metropolis" },
+            new StyleSheet { ExtensionSuite = ExtensionSuite.Spreadsheet, Theme = "Metropolis" }
+)
+    @Html.DevExpress().GetScripts(
+    new Script { ExtensionSuite = ExtensionSuite.NavigationAndLayout },
+    new Script { ExtensionSuite = ExtensionSuite.HtmlEditor },
+    new Script { ExtensionSuite = ExtensionSuite.GridView },
+    new Script { ExtensionSuite = ExtensionSuite.PivotGrid },
+    new Script { ExtensionSuite = ExtensionSuite.Editors },
+    new Script { ExtensionSuite = ExtensionSuite.Chart },
+    new Script { ExtensionSuite = ExtensionSuite.Report },
+    new Script { ExtensionSuite = ExtensionSuite.Scheduler },
+    new Script { ExtensionSuite = ExtensionSuite.TreeList },
+    new Script { ExtensionSuite = ExtensionSuite.Spreadsheet }
+)
+</head>
+
+<body>
+    @RenderBody()
+</body>
+</html>

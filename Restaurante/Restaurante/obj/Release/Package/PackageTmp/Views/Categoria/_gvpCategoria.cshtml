@@ -1,0 +1,65 @@
+@{
+	var grid = Html.DevExpress().GridView(settings => {
+        settings.Name = "gvCategoria";
+        settings.CallbackRouteValues = new { Controller = "Categoria", Action = "gvpCategoria" };
+
+		settings.SettingsEditing.AddNewRowRouteValues = new { Controller = "Categoria", Action = "gvpCategoriaAddNew" };
+        settings.SettingsEditing.UpdateRowRouteValues = new { Controller = "Categoria", Action = "gvpCategoriaUpdate" };
+        settings.SettingsEditing.DeleteRowRouteValues = new { Controller = "Categoria", Action = "gvpCategoriaDelete" };
+        settings.SettingsEditing.Mode = GridViewEditingMode.EditFormAndDisplayRow;
+        settings.SettingsBehavior.ConfirmDelete = true;
+
+        settings.CommandColumn.Visible = true;
+        settings.CommandColumn.ShowDeleteButton = true;
+        settings.CommandColumn.ShowNewButtonInHeader = true;
+        settings.CommandColumn.ShowEditButton = true;
+
+		settings.KeyFieldName = "categId";
+
+		settings.SettingsPager.Visible = true;
+		settings.Settings.ShowGroupPanel = false;
+		settings.Settings.ShowFilterRow = true;
+		settings.SettingsBehavior.AllowSelectByRowClick = true;
+
+		settings.SettingsAdaptivity.AdaptivityMode = GridViewAdaptivityMode.Off;
+		settings.SettingsAdaptivity.AdaptiveColumnPosition = GridViewAdaptiveColumnPosition.Right;
+		settings.SettingsAdaptivity.AdaptiveDetailColumnCount = 1;
+		settings.SettingsAdaptivity.AllowOnlyOneAdaptiveDetailExpanded = false;
+		settings.SettingsAdaptivity.HideDataCellsAtWindowInnerWidth = 0;
+
+				settings.Columns.Add("categId");
+				settings.Columns.Add("categImg");
+				settings.Columns.Add("categNome");
+     
+                var db = new Restaurante.Context();
+                //settings.Columns.Add(column =>
+                //{
+                //    column.FieldName = "categCategoriaPai";
+                //    column.Caption = "Categoria";
+                //    column.ColumnType = MVCxGridViewColumnType.ComboBox;
+                //    var comboBoxProperties = column.PropertiesEdit as ComboBoxProperties;
+                //    comboBoxProperties.DataSource = db.GetCategoria();
+                //    comboBoxProperties.TextField = "categNome";
+                //    comboBoxProperties.ValueField = "categId";
+                //    comboBoxProperties.ValueType = typeof(int);
+                //});
+        
+                settings.Columns.Add(column =>
+                {
+                    column.FieldName = "categEmpresaId";
+                    column.Caption = "Empresa";
+
+                    column.ColumnType = MVCxGridViewColumnType.ComboBox;
+                    var comboBoxProperties = column.PropertiesEdit as ComboBoxProperties;
+                    comboBoxProperties.DataSource = db.GetEmpresa();
+                    comboBoxProperties.TextField = "empresaNome";
+                    comboBoxProperties.ValueField = "empresaId";
+                    comboBoxProperties.ValueType = typeof(int);
+                });
+        
+			});
+		if (ViewData["EditError"] != null){
+        grid.SetEditErrorText((string)ViewData["EditError"]);
+    }
+}
+@grid.Bind(Model).GetHtml()

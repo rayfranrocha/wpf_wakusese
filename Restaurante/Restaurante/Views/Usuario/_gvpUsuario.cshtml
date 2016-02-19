@@ -1,0 +1,69 @@
+@{
+    var grid = Html.DevExpress().GridView(settings =>
+    {
+        settings.Name = "gvUsuario";
+        settings.CallbackRouteValues = new { Controller = "Usuario", Action = "gvpUsuario" };
+
+        settings.SettingsEditing.AddNewRowRouteValues = new { Controller = "Usuario", Action = "gvpUsuarioAddNew" , };
+        settings.SettingsText.CommandNew = "Novo";
+        settings.SettingsEditing.UpdateRowRouteValues = new { Controller = "Usuario", Action = "gvpUsuarioUpdate" };
+        settings.SettingsText.CommandUpdate = "Atualizar";
+        settings.SettingsEditing.DeleteRowRouteValues = new { Controller = "Usuario", Action = "gvpUsuarioDelete" };
+        settings.SettingsText.CommandDelete = "Deletar";
+        settings.SettingsEditing.Mode = GridViewEditingMode.EditFormAndDisplayRow;
+        settings.SettingsText.ConfirmDelete = "Deseja Deletar Este Item";
+        settings.SettingsBehavior.ConfirmDelete = true;
+        settings.SettingsText.CommandCancel = "Cancelar";
+        
+        settings.CommandColumn.Visible = true;
+        settings.CommandColumn.ShowDeleteButton = true;
+        settings.CommandColumn.ShowNewButtonInHeader = true;
+        
+        settings.KeyFieldName = "usuId";
+
+        settings.SettingsPager.Visible = true;
+        settings.Settings.ShowGroupPanel = false;
+        settings.Settings.ShowFilterRow = true;
+        settings.SettingsBehavior.AllowSelectByRowClick = true;
+
+        settings.Columns.Add("usuId");
+        settings.Columns.Add("usuEmail");
+        settings.Columns.Add("usuTelef");
+        settings.Columns.Add("usuImeiTelef");
+        settings.Columns.Add("usuSenha");
+        settings.Columns.Add("usuNome");
+        settings.Columns.Add("usuNome");
+        settings.Columns.Add(column =>
+        {
+            column.Caption = "usuDataNasc";
+            column.FieldName = "usuDataNasc";
+            column.ColumnType = MVCxGridViewColumnType.DateEdit;
+            var DateEditProperties = column.PropertiesEdit as DateEditProperties;
+            column.CellStyle.Wrap = DefaultBoolean.False;
+        });
+        settings.Columns.Add("usuFacebook");
+        settings.Columns.Add("usuInstagram");
+        settings.Columns.Add("usuIsPermanLogado");
+        settings.Columns.Add("usuNivelAcesso");
+        
+        var db = new Restaurante.Context();
+
+        settings.Columns.Add(column =>
+        {
+            column.FieldName = "usuarioEnderecoId";
+            column.Caption = "Endereco";
+
+            column.ColumnType = MVCxGridViewColumnType.ComboBox;
+            var comboBoxProperties = column.PropertiesEdit as ComboBoxProperties;
+            comboBoxProperties.DataSource = db.GetEndereco();
+            comboBoxProperties.TextField = "endeLograd";
+            comboBoxProperties.ValueField = "endeId";
+            comboBoxProperties.ValueType = typeof(int);
+        });
+    });
+    if (ViewData["EditError"] != null)
+    {
+        grid.SetEditErrorText((string)ViewData["EditError"]);
+    }
+}
+@grid.Bind(Model).GetHtml()

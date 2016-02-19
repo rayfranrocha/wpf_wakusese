@@ -1,0 +1,68 @@
+@{
+	var grid = Html.DevExpress().GridView(settings => {
+        settings.Name = "gvPerfil";
+        settings.CallbackRouteValues = new { Controller = "Perfil", Action = "gvpPerfil" };
+
+		settings.SettingsEditing.AddNewRowRouteValues = new { Controller = "Perfil", Action = "gvpPerfilAddNew" };
+        settings.SettingsEditing.
+            RowRouteValues = new { Controller = "Perfil", Action = "gvpPerfilUpdate" };
+        settings.SettingsEditing.DeleteRowRouteValues = new { Controller = "Perfil", Action = "gvpPerfilDelete" };
+        settings.SettingsEditing.Mode = GridViewEditingMode.EditFormAndDisplayRow;
+        settings.SettingsBehavior.ConfirmDelete = true;
+
+		settings.CommandColumn.Visible = true;
+        settings.CommandColumn.ShowNewButton = true;
+        settings.CommandColumn.ShowDeleteButton = true;
+        settings.CommandColumn.ShowEditButton = true;
+
+		settings.KeyFieldName = "perfilId";
+
+		settings.SettingsPager.Visible = true;
+		settings.Settings.ShowGroupPanel = true;
+		settings.Settings.ShowFilterRow = true;
+		settings.SettingsBehavior.AllowSelectByRowClick = true;
+
+		settings.SettingsAdaptivity.AdaptivityMode = GridViewAdaptivityMode.Off;
+		settings.SettingsAdaptivity.AdaptiveColumnPosition = GridViewAdaptiveColumnPosition.Right;
+		settings.SettingsAdaptivity.AdaptiveDetailColumnCount = 1;
+		settings.SettingsAdaptivity.AllowOnlyOneAdaptiveDetailExpanded = false;
+		settings.SettingsAdaptivity.HideDataCellsAtWindowInnerWidth = 0;
+
+				settings.Columns.Add("perfilId");
+        
+                var db = new Restaurante.Context();
+
+                settings.Columns.Add(column =>
+                {
+                    column.FieldName = "perfilEmpresaId";
+                    column.Caption = "Empresa";
+
+                    column.ColumnType = MVCxGridViewColumnType.ComboBox;
+                    var comboBoxProperties = column.PropertiesEdit as ComboBoxProperties;
+                    comboBoxProperties.DataSource = db.GetEmpresa();
+                    comboBoxProperties.TextField = "empresaNome";
+                    comboBoxProperties.ValueField = "empresaId";
+                    comboBoxProperties.ValueType = typeof(int);
+                });
+        
+                settings.Columns.Add(column =>
+                {
+                    column.FieldName = "perfilPerfilPadraoEnumId";
+                    column.Caption = "PerfilPadraoEnum";
+
+                    column.ColumnType = MVCxGridViewColumnType.ComboBox;
+                    var comboBoxProperties = column.PropertiesEdit as ComboBoxProperties;
+                    comboBoxProperties.DataSource = db.GetPerfilPadrao();
+                    comboBoxProperties.TextField = "perfilPadraoEnumTipo";
+                    comboBoxProperties.ValueField = "perfilPadraoEnumId";
+                    comboBoxProperties.ValueType = typeof(int);
+                });
+        
+        
+        
+			});
+		if (ViewData["EditError"] != null){
+        grid.SetEditErrorText((string)ViewData["EditError"]);
+    }
+}
+@grid.Bind(Model).GetHtml()

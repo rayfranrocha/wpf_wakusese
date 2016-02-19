@@ -1,0 +1,53 @@
+@{
+	var grid = Html.DevExpress().GridView(settings => {
+        settings.Name = "gvCaracteristica";
+        settings.CallbackRouteValues = new { Controller = "Caracteristica", Action = "gvpCaracteristica" };
+
+		settings.SettingsEditing.AddNewRowRouteValues = new { Controller = "Caracteristica", Action = "gvpCaracteristicaAddNew" };
+        settings.SettingsEditing.UpdateRowRouteValues = new { Controller = "Caracteristica", Action = "gvpCaracteristicaUpdate" };
+        settings.SettingsEditing.DeleteRowRouteValues = new { Controller = "Caracteristica", Action = "gvpCaracteristicaDelete" };
+        settings.SettingsEditing.Mode = GridViewEditingMode.EditFormAndDisplayRow;
+        settings.SettingsBehavior.ConfirmDelete = true;
+
+        settings.CommandColumn.Visible = true;
+        settings.CommandColumn.ShowDeleteButton = true;
+        settings.CommandColumn.ShowNewButtonInHeader = true;
+        settings.CommandColumn.ShowEditButton = true;
+
+		settings.KeyFieldName = "caractId";
+
+		settings.SettingsPager.Visible = true;
+		settings.Settings.ShowGroupPanel = false;
+		settings.Settings.ShowFilterRow = true;
+		settings.SettingsBehavior.AllowSelectByRowClick = true;
+
+		settings.SettingsAdaptivity.AdaptivityMode = GridViewAdaptivityMode.HideDataCells;
+		settings.SettingsAdaptivity.AdaptiveColumnPosition = GridViewAdaptiveColumnPosition.Right;
+		settings.SettingsAdaptivity.AdaptiveDetailColumnCount = 1;
+		settings.SettingsAdaptivity.AllowOnlyOneAdaptiveDetailExpanded = false;
+		settings.SettingsAdaptivity.HideDataCellsAtWindowInnerWidth = 0;
+
+				settings.Columns.Add("caractId");
+				settings.Columns.Add("caractNome");
+        
+                var db = new Restaurante.Context();
+
+                settings.Columns.Add(column =>
+                {
+                    column.FieldName = "caractEmpresaId";
+                    column.Caption = "Empresa";
+
+                    column.ColumnType = MVCxGridViewColumnType.ComboBox;
+                    var comboBoxProperties = column.PropertiesEdit as ComboBoxProperties;
+                    comboBoxProperties.DataSource = db.GetEmpresa();
+                    comboBoxProperties.TextField = "empresaNome";
+                    comboBoxProperties.ValueField = "empresaId";
+                    comboBoxProperties.ValueType = typeof(int);
+                });
+        
+			});
+		if (ViewData["EditError"] != null){
+        grid.SetEditErrorText((string)ViewData["EditError"]);
+    }
+}
+@grid.Bind(Model).GetHtml()

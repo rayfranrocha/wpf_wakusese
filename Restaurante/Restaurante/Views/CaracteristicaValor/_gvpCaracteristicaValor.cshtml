@@ -1,0 +1,54 @@
+@{
+    var grid = Html.DevExpress().GridView(settings =>
+    {
+        settings.Name = "gvCaracteristicaValor";
+        settings.CallbackRouteValues = new { Controller = "CaracteristicaValor", Action = "gvpCaracteristicaValor" };
+
+        settings.SettingsEditing.AddNewRowRouteValues = new { Controller = "CaracteristicaValor", Action = "gvpCaracteristicaValorAddNew" };
+        settings.SettingsEditing.UpdateRowRouteValues = new { Controller = "CaracteristicaValor", Action = "gvpCaracteristicaValorUpdate" };
+        settings.SettingsEditing.DeleteRowRouteValues = new { Controller = "CaracteristicaValor", Action = "gvpCaracteristicaValorDelete" };
+        settings.SettingsEditing.Mode = GridViewEditingMode.EditFormAndDisplayRow;
+        settings.SettingsBehavior.ConfirmDelete = true;
+
+        settings.CommandColumn.Visible = true;
+        settings.CommandColumn.ShowDeleteButton = true;
+        settings.CommandColumn.ShowNewButtonInHeader = true;
+        settings.CommandColumn.ShowEditButton = true;
+
+        settings.KeyFieldName = "caractValId";
+
+        settings.SettingsPager.Visible = true;
+        settings.Settings.ShowGroupPanel = false;
+        settings.Settings.ShowFilterRow = true;
+        settings.SettingsBehavior.AllowSelectByRowClick = true;
+
+        settings.SettingsAdaptivity.AdaptivityMode = GridViewAdaptivityMode.Off;
+        settings.SettingsAdaptivity.AdaptiveColumnPosition = GridViewAdaptiveColumnPosition.Right;
+        settings.SettingsAdaptivity.AdaptiveDetailColumnCount = 1;
+        settings.SettingsAdaptivity.AllowOnlyOneAdaptiveDetailExpanded = false;
+        settings.SettingsAdaptivity.HideDataCellsAtWindowInnerWidth = 0;
+
+        settings.Columns.Add("caractValId");
+        settings.Columns.Add("caractValValor");
+
+        var db = new Restaurante.Context();
+
+        settings.Columns.Add(column =>
+        {
+            column.FieldName = "caractValorCaractId";
+            column.Caption = "caractValorCaractId";
+
+            column.ColumnType = MVCxGridViewColumnType.ComboBox;
+            var comboBoxProperties = column.PropertiesEdit as ComboBoxProperties;
+            comboBoxProperties.DataSource = db.GetCaracteristica();
+            comboBoxProperties.TextField = "caractNome";
+            comboBoxProperties.ValueField = "caractId";
+            comboBoxProperties.ValueType = typeof(int);
+        });
+    });
+    if (ViewData["EditError"] != null)
+    {
+        grid.SetEditErrorText((string)ViewData["EditError"]);
+    }
+}
+@grid.Bind(Model).GetHtml()
