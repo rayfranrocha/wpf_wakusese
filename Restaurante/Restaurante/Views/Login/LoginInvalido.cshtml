@@ -1,0 +1,39 @@
+﻿<script>
+    "javascript:PpupErroValidacao.Show();" 
+</script>
+@Html.DevExpress().PopupControl(settings =>
+{
+    settings.Name = "PpupErroValidacao";
+    settings.Width = 100;
+    settings.AllowDragging = true;
+    settings.CloseAction = CloseAction.CloseButton;
+    settings.CloseOnEscape = true;
+    settings.PopupAnimationType = AnimationType.Fade;
+    settings.HeaderText = "Login";
+    settings.Modal = true;
+    settings.PopupHorizontalAlign = PopupHorizontalAlign.WindowCenter;
+    settings.PopupVerticalAlign = PopupVerticalAlign.WindowCenter;
+    settings.ShowOnPageLoad = true;
+    settings.SetContent(() =>
+    {
+        using (Html.BeginForm())
+        {
+            @Html.AntiForgeryToken();
+            @Html.ValidationSummary(true);
+
+            Html.DevExpress().Label(labelSettings =>
+            {
+
+                labelSettings.ControlStyle.CssClass = "label";
+                labelSettings.Text = "ERRO :";
+                labelSettings.AssociatedControlName = "Nome";
+            }
+              )
+              .Render();
+            
+            ViewContext.Writer.Write("</div><b class=\"Clear\"></b>");
+        }
+    });
+
+    settings.ClientSideEvents.CloseUp = "function(s, e){ ASPxClientEdit.ClearEditorsInContainer(null, '', true); }";
+}).GetHtml()

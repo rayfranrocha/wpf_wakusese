@@ -1,0 +1,164 @@
+﻿@model Restaurante.CE_UsuarioPerfil
+
+@Html.DevExpress().PopupControl(
+    settings =>
+    {
+        settings.Name = "pcModalMode";
+        settings.Width = 100;
+        settings.AllowDragging = true;
+        settings.CloseAction = CloseAction.CloseButton;
+        settings.CloseOnEscape = true;
+        settings.PopupAnimationType = AnimationType.Fade;
+        settings.HeaderText = "Login";
+        settings.Modal = true;
+        settings.PopupHorizontalAlign = PopupHorizontalAlign.WindowCenter;
+        settings.PopupVerticalAlign = PopupVerticalAlign.WindowCenter;
+        settings.ShowOnPageLoad = true;
+        settings.SetContent(() =>
+        {
+            using (Html.BeginForm())
+            {
+                @Html.AntiForgeryToken();
+                @Html.ValidationSummary(true);
+
+                Html.DevExpress().Label(labelSettings =>
+                    {
+
+                        labelSettings.ControlStyle.CssClass = "label";
+                        labelSettings.Text = "Nome:";
+                        labelSettings.AssociatedControlName = "Nome";
+                    }
+                )
+                .Render();
+
+
+                @Html.DevExpress().TextBoxFor(model => model.Usuario.usuNome).Render();
+                @Html.ValidationMessageFor(model => model.Usuario.usuNome);
+
+
+                Html.DevExpress().Label(
+                    labelSettings =>
+                    {
+                        labelSettings.ControlStyle.CssClass = "label";
+                        labelSettings.Text = "Senha:";
+                        labelSettings.AssociatedControlName = "Senha";
+                    }
+                )
+                .Render();
+
+                @Html.DevExpress().TextBoxFor(model => model.Usuario.usuSenha).Render();
+                @Html.ValidationMessageFor(model => model.Usuario.usuSenha);
+
+                
+                Html.DevExpress().Label(
+                    labelSettings =>
+                    {
+                        labelSettings.ControlStyle.CssClass = "label";
+                    }
+                )
+                .Render();
+
+
+
+                @Html.DevExpress().TextBoxFor(m => m.Perfil.PerfilPadraoEnum.perfilPadraoEnumTipo).GetHtml();
+                
+                
+                Html.DevExpress().Button(
+                    buttonSettings =>
+                    {
+                        buttonSettings.Name = "btnUpdate";
+                        buttonSettings.ControlStyle.CssClass = "button";
+                        buttonSettings.Width = 80;
+                        buttonSettings.Text = "OK";
+                        buttonSettings.UseSubmitBehavior = true;
+                    }
+                )
+                .Render();
+
+                Html.DevExpress().Button(
+                    buttonSettings =>
+                    {
+                        buttonSettings.Name = "btnCancel";
+                        buttonSettings.ControlStyle.CssClass = "button";
+                        buttonSettings.Width = 80;
+                        buttonSettings.Text = "Cancel";
+                        buttonSettings.ClientSideEvents.Click = "function(s, e){ pcModalMode.Hide(); }";
+                    }
+                )
+                .Render();
+
+                ViewContext.Writer.Write("</div><b class=\"Clear\"></b>");
+            }
+        });
+
+        settings.ClientSideEvents.CloseUp = "function(s, e){ ASPxClientEdit.ClearEditorsInContainer(null, '', true); }";
+    }).GetHtml()
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+@*@{
+        ViewBag.Title = "Login";
+    }
+
+    <h2>Login</h2>
+
+    @using (Html.BeginForm())
+    {
+        @Html.AntiForgeryToken()
+
+        <div>
+            <h4>CE_Usuario</h4>
+            <hr />
+            @Html.ValidationSummary(true)
+
+            <div>
+                @Html.DevExpress().LabelFor(model => model.usuNome).GetHtml()
+                <div>
+                    @Html.DevExpress().TextBoxFor(model => model.usuNome).GetHtml()
+                    @Html.ValidationMessageFor(model => model.usuNome)
+                </div>
+            </div>
+
+            <div>
+                @Html.DevExpress().LabelFor(model => model.usuSenha).GetHtml()
+                <div>
+                    @Html.DevExpress().TextBoxFor(model => model.usuSenha).GetHtml()
+                    @Html.ValidationMessageFor(model => model.usuSenha)
+                </div>
+            </div>
+            <br />
+
+            <div>
+                <div>
+                    @Html.DevExpress().Button(settings =>
+    {
+        settings.Name = "Logar";
+        settings.UseSubmitBehavior = true;
+    }).GetHtml()
+                </div>
+            </div>
+        </div>
+    }*@

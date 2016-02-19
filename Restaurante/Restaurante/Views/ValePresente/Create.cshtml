@@ -1,0 +1,50 @@
+﻿@model Restaurante.CE_ValePresente
+
+@{
+    ViewBag.Title = "Create";
+}
+
+<h2>Create</h2>
+
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+
+    <div class="form-horizontal">
+        <h4>CE_ValePresente</h4>
+        <hr />
+        @Html.ValidationSummary(true)
+
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.valePresenteId)
+            <div class="col-md-10">
+                @Html.TextBoxFor(model => model.valePresenteId)
+                @Html.ValidationMessageFor(model => model.valePresenteId)
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.valePresentevalor)
+            <div class="col-md-10">
+                @Html.TextBoxFor(model => model.valePresentevalor)
+                @Html.ValidationMessageFor(model => model.valePresentevalor)
+            </div>
+        </div>
+
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.valePresenteEmpresaId)
+            <div class="col-md-10">
+                @Html.DevExpress().TextBoxFor(model => model.valePresenteEmpresaId).GetHtml();
+            </div>
+        </div>
+
+
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <input type="submit" value="Create" class="btn btn-default" />
+            </div>
+        </div>
+    </div>
+}

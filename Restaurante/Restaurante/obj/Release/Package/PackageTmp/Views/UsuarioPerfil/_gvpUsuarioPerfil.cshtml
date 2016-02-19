@@ -1,0 +1,72 @@
+@{
+	var grid = Html.DevExpress().GridView(settings => {
+        settings.Name = "gvUsuarioPerfil";
+        settings.CallbackRouteValues = new { Controller = "UsuarioPerfil", Action = "gvpUsuarioPerfil" };
+
+		settings.SettingsEditing.AddNewRowRouteValues = new { Controller = "UsuarioPerfil", Action = "gvpUsuarioPerfilAddNew" };
+        settings.SettingsEditing.
+            RowRouteValues = new { Controller = "UsuarioPerfil", Action = "gvpUsuarioPerfilUpdate" };
+        settings.SettingsEditing.DeleteRowRouteValues = new { Controller = "UsuarioPerfil", Action = "gvpUsuarioPerfilDelete" };
+
+        settings.Columns[0].Caption = "A";
+        
+        settings.SettingsEditing.Mode = GridViewEditingMode.EditFormAndDisplayRow;
+        settings.SettingsBehavior.ConfirmDelete = true;
+
+        
+        
+		settings.CommandColumn.Visible = true;
+        settings.CommandColumn.ShowNewButton = true;
+        settings.CommandColumn.ShowDeleteButton = true;
+        settings.CommandColumn.ShowEditButton = true;
+
+		settings.KeyFieldName = "usuarioPerfilId";
+
+		settings.SettingsPager.Visible = true;
+		settings.Settings.ShowGroupPanel = true;
+		settings.Settings.ShowFilterRow = true;
+		settings.SettingsBehavior.AllowSelectByRowClick = true;
+
+		settings.SettingsAdaptivity.AdaptivityMode = GridViewAdaptivityMode.Off;
+		settings.SettingsAdaptivity.AdaptiveColumnPosition = GridViewAdaptiveColumnPosition.Right;
+		settings.SettingsAdaptivity.AdaptiveDetailColumnCount = 1;
+		settings.SettingsAdaptivity.AllowOnlyOneAdaptiveDetailExpanded = false;
+		settings.SettingsAdaptivity.HideDataCellsAtWindowInnerWidth = 0;
+
+				settings.Columns.Add("usuarioPerfilId");
+        
+                var db = new Restaurante.Context();
+
+                settings.Columns.Add(column =>
+                {
+                    column.FieldName = "usuarioPerfilUsuarioId";
+                    column.Caption = "Usuario";
+
+                    column.ColumnType = MVCxGridViewColumnType.ComboBox;
+                    var comboBoxProperties = column.PropertiesEdit as ComboBoxProperties;
+                    comboBoxProperties.DataSource = db.GetUsuario();
+                    comboBoxProperties.TextField = "usuNome";
+                    comboBoxProperties.ValueField = "usuId";
+                    comboBoxProperties.ValueType = typeof(int);
+                });
+        
+        
+                settings.Columns.Add(column =>
+                {
+                    column.FieldName = "usuarioPerfilPerfilId";
+                    column.Caption = "Perfil";
+
+                    column.ColumnType = MVCxGridViewColumnType.ComboBox;
+                    var comboBoxProperties = column.PropertiesEdit as ComboBoxProperties;
+                    comboBoxProperties.DataSource = db.GetPerfil();
+                    comboBoxProperties.TextField = "perfilPadraoEnumTipo";
+                    comboBoxProperties.ValueField = "perfilId";
+                    comboBoxProperties.ValueType = typeof(int);
+                });
+        
+			});
+		if (ViewData["EditError"] != null){
+        grid.SetEditErrorText((string)ViewData["EditError"]);
+    }
+}
+@grid.Bind(Model).GetHtml()
