@@ -45,6 +45,8 @@ namespace wpf_wakusese.src.main._utils
         public DbSet<Funcionalidade> Funcionalidades { get; set; }
         public DbSet<Perfil> Perfis { get; set; }
         public DbSet<Usuario> Usuarios { get; set; }
+        public DbSet<UsuarioPerfil> UsuarioPerfil { get; set; }
+        public DbSet<PerfilFuncionalidade> PerfilFuncionalidades { get; set; }
 
         //Cadastros
         public DbSet<Empresa> Empresas { get; set; }
@@ -61,6 +63,8 @@ namespace wpf_wakusese.src.main._utils
                 case "Funcionalidade": return Funcionalidades;
                 case "Perfil": return Perfis;
                 case "Usuario": return Usuarios;
+                case "UsuarioPerfil": return UsuarioPerfil;
+                case "PerfilFuncionalidade": return PerfilFuncionalidades;
             }
             return r;
 

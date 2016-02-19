@@ -56,9 +56,11 @@ namespace wpf_wakusese.src.main.model.servicos
         /// <para>3. A partir da lista de perfil, adiciona ao Usuario a lista de Funcionalidade que o mesmo tem acesso </para>
         /// </summary>
         /// <returns>Usuario</returns>
-        public Usuario doAutenticarUsuario(Usuario u)
+        public Usuario doAutenticarUsuario(String telOrEmail,String senha)
         {
-            throw new NotImplementedException();
+            Usuario r = boUsuario.ObterListaObjeto(telOrEmail, senha);
+
+            return r;
         }
 
     }

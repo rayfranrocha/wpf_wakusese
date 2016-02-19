@@ -47,15 +47,7 @@ namespace wpf_wakusese.src.main.model.bo
 
         }
 
-        public Perfil ObterObjetoPerfilPorPerfilId(int idPerfil)
-        {
-            Perfil perfil =
-                           _DbSet
-                                 .Include(o => o.empresa)
-                                 .Where(o => o.id == idPerfil)
-                                 .FirstOrDefault();
-            return perfil;
-        }
+       
 
         public Perfil ObterObjetoPerfilPorNomeEEmpresaID(int idEmpresa, string nomePerfil)
         {
@@ -64,6 +56,16 @@ namespace wpf_wakusese.src.main.model.bo
                 //.Include(o => o.empresa)
                                  .Where(o => o.empresa.id == idEmpresa && o.nome == nomePerfil)
                                  .FirstOrDefault();
+            return perfil;
+        }
+
+        public Perfil ObterPerfil(UsuarioPerfil item)
+        {
+            Perfil perfil = _DbSet
+                          .Include(o => o.empresa)
+                          .Include(o => o.empresa.endereco) ////////////////////////////////////////////
+                                  .Where(o => o.id == item.perfil.id)
+                                  .FirstOrDefault();
             return perfil;
         }
     }

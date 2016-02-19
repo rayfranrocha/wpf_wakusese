@@ -14,6 +14,12 @@ namespace wpf_wakusese.src.main.model.ce
     [DataContract(IsReference = true)]
     public class Usuario : EntityBase
     {
+        public Usuario()
+        {
+            endereco = new Endereco();
+            listaNomeFuncionalidade = new List<string>();
+        }
+
         private Empresa _ultimaEmpresa;
         private Endereco _endereco;
         private String _email;
@@ -105,6 +111,15 @@ namespace wpf_wakusese.src.main.model.ce
         {
             get { return _endereco; }
             set { _endereco = value; RaisePropertyChanged("endereco"); }
+        }
+
+        [NotMapped]
+        public List<String> listaNomeFuncionalidade { get; set; }
+
+        public bool isPossuiAcesso(string nomeFuncionalidade)
+        {
+            return this.listaNomeFuncionalidade.Contains(nomeFuncionalidade);
+
         }
 
     }

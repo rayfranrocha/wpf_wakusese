@@ -60,19 +60,7 @@ namespace wpf_wakusese.src.main.model.bo
 
         }
 
-        public ObservableCollection<UsuarioPerfil> ObterListaUsuarioPerfilCliente()
-        {
-            String nomePerfil = "Cliente";
-            List<UsuarioPerfil> listaUserPer = _DbSet
-
-                                                .Where(o => o.perfil.nome == nomePerfil)
-                                                .ToList();
-
-            ObservableCollection<UsuarioPerfil> listObv = new ObservableCollection<UsuarioPerfil>(listaUserPer);
-            return listObv;
-
-
-        }
+        
 
         public UsuarioPerfil ObterUsuarioPerfilPorUsuarioEPerfil(Usuario usuarioLogado, Perfil prf)
         {
@@ -87,5 +75,27 @@ namespace wpf_wakusese.src.main.model.bo
 
             return usu;
         }
+
+        public ObservableCollection<UsuarioPerfil> ObterListaUsuarioPerfil(Usuario usuarioLogado)
+        {
+
+            List<UsuarioPerfil> usuPerf = _DbSet
+                .Include(o => o.perfil)
+                .Where(o => o.usuario.id == usuarioLogado.id)
+                                    .ToList();
+            ObservableCollection<UsuarioPerfil> listObv = new ObservableCollection<UsuarioPerfil>(usuPerf);
+            if (listObv.Count == 0)
+            {
+                return null;
+            }
+            else
+            {
+
+                return listObv;
+            }
+
+        }
+
+
     }
 }
