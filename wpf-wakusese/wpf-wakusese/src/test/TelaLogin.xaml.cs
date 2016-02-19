@@ -82,8 +82,8 @@ namespace wpf_wakusese.src.test
                         {
                             Empresa emp = new Empresa();
                             emp = ListaEmpresa[0];
-                           // TelaPrincipal janela = new TelaPrincipal(usuarioLogado, emp);
-                          //  janela.Show();
+                            TelaPrincipal janela = new TelaPrincipal(usuarioLogado, emp);
+                            janela.Show();
                             Close();
                         }
                         else

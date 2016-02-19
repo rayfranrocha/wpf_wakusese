@@ -24,7 +24,7 @@
                 <ColumnDefinition Width="*"/>
             </Grid.ColumnDefinitions>
             <StackPanel Grid.Column="0" Grid.Row="0" Grid.ColumnSpan="2">
-                <Image  Height="70"/>
+                <Image Source="Resources/Imagens/lockBlue.png"  Height="70"/>
             </StackPanel>
             <Border Grid.Column="1" Grid.Row="1">
                 <Grid Grid.Column="0" Grid.Row="1" Grid.ColumnSpan="3" Margin="24,0,24,-210" Background="#FFE6E6E6">

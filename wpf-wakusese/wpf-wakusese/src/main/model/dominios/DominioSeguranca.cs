@@ -15,12 +15,16 @@ namespace wpf_wakusese.src.main.model.servicos
 
         private BO_Usuario boUsuario;
         private BO_Empresa boEmpresa;
+        private BO_UsuarioPerfil boUsuarioPerfil;
+        private BO_PerfilFuncionalidade boPerfilFuncionalidade;
 
         public DominioSeguranca()
         {
             dbContext = EFDBContext.Instance;
             boUsuario = new BO_Usuario();
             boEmpresa = new BO_Empresa();
+            boUsuarioPerfil = new BO_UsuarioPerfil();
+            boPerfilFuncionalidade = new BO_PerfilFuncionalidade();
         }
 
         public void ExemploVerificaUsuarioEmpresa_seNaoExistir_CriaOsDois(Usuario usu, Empresa emp)
@@ -63,5 +67,23 @@ namespace wpf_wakusese.src.main.model.servicos
             return r;
         }
 
+
+        public void doAtualizarPermissoesUsuario(Empresa empresa, Usuario usuario)
+        {
+            //1. Recuperar lista de UsuarioPerfil uf where uf.usuario && uf.perfil.empresa
+            List<UsuarioPerfil> listaUsuarioPerfil = boUsuarioPerfil.ObterListaObjeto(empresa, usuario);
+
+            //2. Recuperar lista de PerfilFuncionalidade pf where pf.perfil in(listaPerfil)  [ lambda na listaUsuarioPerfil ]
+            List<Perfil> listaPerfil = (from x in listaUsuarioPerfil
+                                        select x.perfil).ToList();
+
+            List<PerfilFuncionalidade> listaPerfilFuncionalidade = boPerfilFuncionalidade.ObterListaObjeto(listaPerfil);
+
+            //3. Atualizar usuarioLogado.listaFuncionalidade [ lambda no listaPerfilFuncionalidade ]
+            usuario.listaNomeFuncionalidade.Clear();
+            usuario.listaNomeFuncionalidade.AddRange((from x in listaPerfilFuncionalidade
+                                                            select x.funcionalidade.nome)
+                                                             .ToList());
+        }
     }
 }
