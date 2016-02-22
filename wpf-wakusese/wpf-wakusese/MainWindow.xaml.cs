@@ -27,6 +27,7 @@ namespace wpf_wakusese
     /// </summary>
     public partial class MainWindow : Window
     {
+        IconUtil util = new IconUtil();
         //BoPadrao<Funcionalidade> boFuncionalidade = FactoryBO  BoPadrao<Funcionalidade>.GetInstance();
         //BoPadrao<Empresa> boEmpresa= BoPadrao<Empresa>.GetInstance();
 
@@ -84,7 +85,7 @@ namespace wpf_wakusese
             //ObservableCollection<Empresa> lista1 = bo1.ObterListaObjeto();
 
             var bo2 = FactoryBO<Empresa>.GetBO();
-            ObservableCollection<Empresa> lista2 = bo2.ObterListaObjeto();
+            ObservableCollection<Empresa> lista2 = util.ConverterL2OC(bo2.ObterListaObjeto());
         }
 
         private void Exemplo27()

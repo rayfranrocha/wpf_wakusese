@@ -13,7 +13,7 @@ namespace wpf_wakusese.src.main.model.bo
     public class BO_PedidoDelivery : GenericoBO<PedidoDelivery>
     {
 
-        public System.Collections.ObjectModel.ObservableCollection<PedidoDelivery> ObterListaDeliveryEmProcesso(Empresa empresa)
+        public List<PedidoDelivery> ObterListaDeliveryEmProcesso(Empresa empresa)
         {
             List<PedidoDelivery> list = _DbSet
                                         .Include(o => o.pedido)
@@ -25,8 +25,8 @@ namespace wpf_wakusese.src.main.model.bo
 
 
 
-            ObservableCollection<PedidoDelivery> listObs = new ObservableCollection<PedidoDelivery>(list);
-            return listObs;
+           // ObservableCollection<PedidoDelivery> listObs = new ObservableCollection<PedidoDelivery>(list);
+            return list;
         }
 
         public int ObterUltimoIdPedidoDelivery()

@@ -13,7 +13,7 @@ namespace wpf_wakusese.src.main.model.bo
     public class BO_PedidoLocal : GenericoBO<PedidoLocal>
     {
 
-        public System.Collections.ObjectModel.ObservableCollection<PedidoLocal> ObterListaPedidosLocalEmProcesso(Empresa empresa)
+        public List<PedidoLocal> ObterListaPedidosLocalEmProcesso(Empresa empresa)
         {
             List<PedidoLocal> list = _DbSet
                                         .Include(o => o.pedido)
@@ -24,8 +24,8 @@ namespace wpf_wakusese.src.main.model.bo
 
 
 
-            ObservableCollection<PedidoLocal> listObs = new ObservableCollection<PedidoLocal>(list);
-            return listObs;
+           // ObservableCollection<PedidoLocal> listObs = new ObservableCollection<PedidoLocal>(list);
+            return list;
         }
 
         public override PedidoLocal ObterObjetoPorId(int id)

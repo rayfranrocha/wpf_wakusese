@@ -37,7 +37,7 @@ namespace wpf_wakusese.src.main.model.bo
             return r;
         }
 
-        public ObservableCollection<UsuarioPerfil> ObterListaObjetoUsuario(Usuario usuFocado)
+        public List<UsuarioPerfil> ObterListaObjetoUsuario(Usuario usuFocado)
         {
             if (usuFocado != null)
             {
@@ -47,9 +47,9 @@ namespace wpf_wakusese.src.main.model.bo
                          .Where(o => o.usuario.id == usuFocado.id)
                          .ToList();
 
-                ObservableCollection<UsuarioPerfil> listObv = new ObservableCollection<UsuarioPerfil>(r);
+               // ObservableCollection<UsuarioPerfil> listObv = new ObservableCollection<UsuarioPerfil>(r);
 
-                return listObv;
+                return r;
             }
             else
             {
@@ -76,22 +76,23 @@ namespace wpf_wakusese.src.main.model.bo
             return usu;
         }
 
-        public ObservableCollection<UsuarioPerfil> ObterListaUsuarioPerfil(Usuario usuarioLogado)
+        public List<UsuarioPerfil> ObterListaUsuarioPerfil(Usuario usuarioLogado)
         {
 
-            List<UsuarioPerfil> usuPerf = _DbSet
-                .Include(o => o.perfil)
-                .Where(o => o.usuario.id == usuarioLogado.id)
-                                    .ToList();
-            ObservableCollection<UsuarioPerfil> listObv = new ObservableCollection<UsuarioPerfil>(usuPerf);
-            if (listObv.Count == 0)
+            List<UsuarioPerfil> listaUsuarioPerfil = _DbSet
+                                .Include(o => o.perfil)
+                                .Where(o => o.usuario.id == usuarioLogado.id)
+                                .ToList();
+            //ObservableCollection<UsuarioPerfil> listObv = new ObservableCollection<UsuarioPerfil>(usuPerf);
+
+            if (listaUsuarioPerfil.Count == 0)
             {
                 return null;
             }
             else
             {
 
-                return listObv;
+                return listaUsuarioPerfil;
             }
 
         }

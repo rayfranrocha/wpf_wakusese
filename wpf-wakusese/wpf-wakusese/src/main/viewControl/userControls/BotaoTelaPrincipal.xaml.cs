@@ -13,7 +13,7 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 
-namespace wpf_wakusese.src.test.UserControls
+namespace wpf_wakusese.src.main.viewControl.userControls
 {
     /// <summary>
     /// Interaction logic for BotaoTelaPrincipal.xaml

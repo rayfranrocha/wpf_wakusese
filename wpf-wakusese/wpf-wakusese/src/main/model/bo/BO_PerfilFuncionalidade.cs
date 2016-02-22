@@ -35,7 +35,7 @@ namespace wpf_wakusese.src.main.model.bo
             return r;
         }
 
-        public ObservableCollection<PerfilFuncionalidade> ObterListaFuncinalidadedoPerfilSelecionado(Perfil per)
+        public List<PerfilFuncionalidade> ObterListaFuncinalidadedoPerfilSelecionado(Perfil per)
         {
             if (per != null)
             {
@@ -45,9 +45,9 @@ namespace wpf_wakusese.src.main.model.bo
                                            .Where(o => per.id == o.perfil.id)
                                            .ToList();
 
-                ObservableCollection<PerfilFuncionalidade> listObv = new ObservableCollection<PerfilFuncionalidade>(lista);
+               // ObservableCollection<PerfilFuncionalidade> listObv = new ObservableCollection<PerfilFuncionalidade>(lista);
 
-                return listObv;
+                return lista;
             }
             else
             {

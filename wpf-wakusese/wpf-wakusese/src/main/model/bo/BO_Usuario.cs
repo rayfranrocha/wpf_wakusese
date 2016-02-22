@@ -31,7 +31,7 @@ namespace wpf_wakusese.src.main.model.bo
         }
 
 
-        public override ObservableCollection<Usuario> ObterListaObjeto()
+        public override List<Usuario> ObterListaObjeto()
         {
 
             List<Usuario> lista = _DbSet
@@ -39,9 +39,9 @@ namespace wpf_wakusese.src.main.model.bo
                                        .OrderBy(o => o.id)
                                        .ToList();
 
-            ObservableCollection<Usuario> listObv = new ObservableCollection<Usuario>(lista);
+           // ObservableCollection<Usuario> listObv = new ObservableCollection<Usuario>(lista);
 
-            return listObv;
+            return lista;
         }
 
         public Usuario ObterListaObjeto(string telefoneOrEmail, string senha)
@@ -71,7 +71,7 @@ namespace wpf_wakusese.src.main.model.bo
             return r;
         }
 
-        public ObservableCollection<Usuario> ObserListaObjetoPorNumeroTelefone(string p)
+        public List<Usuario> ObserListaObjetoPorNumeroTelefone(string p)
         {
             List<Usuario> lista = _DbSet
 
@@ -79,11 +79,11 @@ namespace wpf_wakusese.src.main.model.bo
                                .Where(o => o.telefone.Contains(p))
                                .ToList();
 
-            ObservableCollection<Usuario> listObv = new ObservableCollection<Usuario>(lista);
-            return listObv;
+            //ObservableCollection<Usuario> listObv = new ObservableCollection<Usuario>(lista);
+            return lista;
         }
 
-        public ObservableCollection<Usuario> ObserListaObjetoPorEmail(string p)
+        public List<Usuario> ObserListaObjetoPorEmail(string p)
         {
             List<Usuario> lista = _DbSet
 
@@ -91,8 +91,8 @@ namespace wpf_wakusese.src.main.model.bo
                                .Where(o => o.email.Contains(p))
                                .ToList();
 
-            ObservableCollection<Usuario> listObv = new ObservableCollection<Usuario>(lista);
-            return listObv;
+            //ObservableCollection<Usuario> listObv = new ObservableCollection<Usuario>(lista);
+            return lista;
         }
 
         public virtual Usuario ObterUsuarioPorId(int id)
@@ -116,7 +116,7 @@ namespace wpf_wakusese.src.main.model.bo
 
 
 
-        public ObservableCollection<Usuario> ObserListaObjetoPorNome(string p)
+        public List<Usuario> ObserListaObjetoPorNome(string p)
         {
             List<Usuario> lista = _DbSet
 
@@ -124,9 +124,22 @@ namespace wpf_wakusese.src.main.model.bo
                               .Where(o => o.nome.Contains(p))
                               .ToList();
 
-            ObservableCollection<Usuario> listObv = new ObservableCollection<Usuario>(lista);
-            return listObv;
+            //ObservableCollection<Usuario> listObv = new ObservableCollection<Usuario>(lista);
+            return lista;
         }
 
+
+        public List<Usuario> ObterListaUsuariodaEmpresa(Empresa emp)
+        {
+            List<Usuario> lista = _DbSet
+                                       .Include(o => o.endereco)
+                                       
+                                       .OrderBy(o => o.id)
+                                       .ToList();
+
+            //ObservableCollection<Usuario> listObv = new ObservableCollection<Usuario>(lista);
+
+            return lista;
+        }
     }
 }

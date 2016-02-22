@@ -79,16 +79,16 @@ namespace wpf_wakusese.src.main.model.bo
         }
 
         //VERIFICAR SE ESTE METODO É NECESSÁRIO
-        public ObservableCollection<Pedido> ObterListaPedidosNaoPagos()
+        public List<Pedido> ObterListaPedidosNaoPagos()
         {
             List<Pedido> r = _DbSet
                                            .Include(o => o.cliente)
                                            .Where(o => o.isPago == false)
                                            .ToList();
 
-            ObservableCollection<Pedido> lista = new ObservableCollection<Pedido>(r);
+            //ObservableCollection<Pedido> lista = new ObservableCollection<Pedido>(r);
 
-            return lista;
+            return r;
         }
 
     }

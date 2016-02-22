@@ -163,13 +163,13 @@ namespace wpf_wakusese.src.main._utils
             return _DbSet.Find(obj.id);
         }
 
-        public virtual ObservableCollection<T> ObterListaObjeto()
+        public virtual List<T> ObterListaObjeto()
         {
             List<T> lista = _DbSet.OrderBy(o => o.id).ToList();
 
-            ObservableCollection<T> listObservable = new ObservableCollection<T>(lista);
+            //ObservableCollection<T> listObservable = new ObservableCollection<T>(lista);
 
-            return listObservable;
+            return lista;
         }
 
         #endregion

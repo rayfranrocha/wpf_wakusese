@@ -12,25 +12,25 @@ namespace wpf_wakusese.src.main.model.bo
 {
     public class BO_Produto : GenericoBO<Produto>
     {
-        public override ObservableCollection<Produto> ObterListaObjeto()
+        public override List<Produto> ObterListaObjeto()
         {
             List<Produto> lista = _DbSet
                                         .Include(o => o.categoria)
                                         .OrderBy(o => o.id).ToList();
-            ObservableCollection<Produto> listObv = new ObservableCollection<Produto>(lista);
+            //ObservableCollection<Produto> listObv = new ObservableCollection<Produto>(lista);
 
-            return listObv;
+            return lista;
         }
 
-        public ObservableCollection<Produto> ObterListaProdutosPorCategoriaID(Categoria catFocada)
+        public List<Produto> ObterListaProdutosPorCategoriaID(Categoria catFocada)
         {
             List<Produto> lista = _DbSet
                                         .Include(o => o.categoria)
                                         .Where(o => o.categoria.id == catFocada.id)
                                         .OrderBy(o => o.id).ToList();
-            ObservableCollection<Produto> listObv = new ObservableCollection<Produto>(lista);
+           // ObservableCollection<Produto> listObv = new ObservableCollection<Produto>(lista);
 
-            return listObv;
+            return lista;
         }
 
         public Produto ObterProdutoPorId(int id)
@@ -43,7 +43,7 @@ namespace wpf_wakusese.src.main.model.bo
 
         }
 
-        public ObservableCollection<Produto> ObterListaDeProdutosPorNome(string p)
+        public List<Produto> ObterListaDeProdutosPorNome(string p)
         {
             List<Produto> lista = _DbSet
 
@@ -51,11 +51,11 @@ namespace wpf_wakusese.src.main.model.bo
                                .Where(o => o.nome.ToUpper().Contains(p.ToUpper()))
                                .ToList();
 
-            ObservableCollection<Produto> listObv = new ObservableCollection<Produto>(lista);
-            return listObv;
+            //ObservableCollection<Produto> listObv = new ObservableCollection<Produto>(lista);
+            return lista;
         }
 
-        public ObservableCollection<Produto> ObterListaProdutosPorCodigo(string NomeProdutoOrCodigo)
+        public List<Produto> ObterListaProdutosPorCodigo(string NomeProdutoOrCodigo)
         {
             int codigo = Convert.ToInt32(NomeProdutoOrCodigo);
             List<Produto> lista = _DbSet
@@ -64,11 +64,11 @@ namespace wpf_wakusese.src.main.model.bo
                               .Where(o => o.id == codigo)
                               .ToList();
 
-            ObservableCollection<Produto> listObv = new ObservableCollection<Produto>(lista);
-            return listObv;
+           // ObservableCollection<Produto> listObv = new ObservableCollection<Produto>(lista);
+            return lista;
         }
 
-        public ObservableCollection<Produto> ObterListaProdutosdaEmpresa(Empresa empresa)
+        public List<Produto> ObterListaProdutosdaEmpresa(Empresa empresa)
         {
 
             List<Produto> lista = _DbSet
@@ -77,8 +77,8 @@ namespace wpf_wakusese.src.main.model.bo
                               .Where(o => o.categoria.empresa.id == empresa.id)
                               .ToList();
 
-            ObservableCollection<Produto> listObv = new ObservableCollection<Produto>(lista);
-            return listObv;
+            //ObservableCollection<Produto> listObv = new ObservableCollection<Produto>(lista);
+            return lista;
         }
     }
 }

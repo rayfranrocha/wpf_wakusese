@@ -19,7 +19,7 @@ using wpf_wakusese.src.main.model.bo;
 using wpf_wakusese.src.main.model.ce;
 using wpf_wakusese.src.main.model.servicos;
 
-namespace wpf_wakusese.src.test
+namespace wpf_wakusese.src.main.viewControl
 {
     /// <summary>
     /// Interaction logic for TelaLogin.xaml
@@ -30,6 +30,7 @@ namespace wpf_wakusese.src.test
         DominioSeguranca domSeguranca = new DominioSeguranca();
         BO_UsuarioPerfil boUsuarioPerfil = (BO_UsuarioPerfil)FactoryBO<UsuarioPerfil>.GetBO();
         BO_Perfil boPerfil = (BO_Perfil)FactoryBO<Perfil>.GetBO();
+        IconUtil util = new IconUtil();
 
         public TelaLogin()
         {
@@ -64,7 +65,7 @@ namespace wpf_wakusese.src.test
                     if (usuarioLogado != null)
                     {
                         
-                        ObservableCollection<UsuarioPerfil> ListaUsuarioPerfil = boUsuarioPerfil.ObterListaUsuarioPerfil(usuarioLogado);
+                        ObservableCollection<UsuarioPerfil> ListaUsuarioPerfil =util.ConverterL2OC(boUsuarioPerfil.ObterListaUsuarioPerfil(usuarioLogado));
 
                         ObservableCollection<Perfil> Listaperfil = new ObservableCollection<Perfil>();
 

@@ -17,7 +17,7 @@ using wpf_wakusese.src.main._utils;
 using wpf_wakusese.src.main.model.bo;
 using wpf_wakusese.src.main.model.ce;
 
-namespace wpf_wakusese.src.test.TelaUserControls
+namespace wpf_wakusese.src.main.viewControl.cadastros
 {
     /// <summary>
     /// Interaction logic for TelaEmpresa.xaml
@@ -27,9 +27,7 @@ namespace wpf_wakusese.src.test.TelaUserControls
         int ultimaLinhaFocada;// = null;
         BO_Empresa boEmpresa = (BO_Empresa)FactoryBO<Empresa>.GetBO();
         BO_Perfil boPerfil = (BO_Perfil)FactoryBO<Perfil>.GetBO();
-
-       
-
+        IconUtil util = new IconUtil();
 
         #region DependencyProperty e ObservableCollections
 
@@ -63,9 +61,11 @@ namespace wpf_wakusese.src.test.TelaUserControls
 
         #endregion
 
-        public TelaEmpresa()
+        TelaPrincipal frmTelaPrincipal;
+        public TelaEmpresa(TelaPrincipal telaPrincipalInfo)
         {
             InitializeComponent();
+            frmTelaPrincipal = telaPrincipalInfo;
             empresas = new ObservableCollection<Empresa>();
             doConsultar();
         }
@@ -79,7 +79,7 @@ namespace wpf_wakusese.src.test.TelaUserControls
             tvPerfil.IsEnabled = true;
 
             empresas = null;
-            empresas = boEmpresa.ObterListaObjeto();
+            empresas =util.ConverterL2OC(boEmpresa.ObterListaObjeto());
 
             // util.BestFitColumn(gcEmpresa);
 
@@ -91,6 +91,8 @@ namespace wpf_wakusese.src.test.TelaUserControls
 
             gcPerfilFuncionalidade.Visibility = Visibility.Visible;
             gcPerfilFuncionalidadeLista.Visibility = Visibility.Collapsed;
+
+            frmTelaPrincipal.tabControlMenu.IsEnabled = true;
 
         }
 
@@ -111,6 +113,7 @@ namespace wpf_wakusese.src.test.TelaUserControls
 
         private void btnInserir_Click(object sender, RoutedEventArgs e)
         {
+            frmTelaPrincipal.tabControlMenu.IsEnabled = false;
             habilitarBotoes(false);
             if (tvEmpresa.IsEnabled)
             {
@@ -118,7 +121,6 @@ namespace wpf_wakusese.src.test.TelaUserControls
                 tvEmpresa.AllowEditing = true;
                 ultimaLinhaFocada = tvEmpresa.FocusedRowHandle;
             }
-
         }
 
         private void btnSalvar_Click(object sender, RoutedEventArgs e)
@@ -145,6 +147,7 @@ namespace wpf_wakusese.src.test.TelaUserControls
 
         private void btnAlterar_Click(object sender, RoutedEventArgs e)
         {
+            frmTelaPrincipal.tabControlMenu.IsEnabled = false;
             ultimaLinhaFocada = tvEmpresa.FocusedRowHandle;
             tvEmpresa.AllowEditing = true;
 
@@ -162,7 +165,7 @@ namespace wpf_wakusese.src.test.TelaUserControls
                 boEmpresa.Excluir(emp);
                 boEmpresa.SaveChanges();
 
-                empresas = boEmpresa.ObterListaObjeto();
+                empresas =util.ConverterL2OC(boEmpresa.ObterListaObjeto());
 
                 doConsultar();
 
@@ -179,8 +182,7 @@ namespace wpf_wakusese.src.test.TelaUserControls
         private void btnAddPerfil_Click(object sender, RoutedEventArgs e)
         {
             // gcPerfil.Visibility = Visibility.Visible;
-
-
+            frmTelaPrincipal.tabControlMenu.IsEnabled = false;
             habilitarBotoes(false);
 
             tvEmpresa.IsEnabled = false;
@@ -200,19 +202,7 @@ namespace wpf_wakusese.src.test.TelaUserControls
             var per = gcPerfil.GetFocusedRow() as Perfil;
             per.empresa = gcEmpresa.GetFocusedRow() as Empresa;
 
-            boPerfil.InserirOuAlterar(per);
-
-            //if (per.id == 0)
-            //{
-            //    //Inserir
-                
-            //}
-            //else
-            //{
-            //    //Alterar
-            //    bo.daoPerfil.Alterar(per);
-            //}
-
+            boPerfil.InserirOuAlterar(per);                        
             boPerfil.SaveChanges();
 
             MessageBox.Show("Operação Realizada com Sucesso!");
@@ -225,7 +215,7 @@ namespace wpf_wakusese.src.test.TelaUserControls
         {
             var emp = gcEmpresa.GetFocusedRow() as Empresa;
             perfis = new ObservableCollection<Perfil>();
-            perfis = boPerfil.ObterListaEmpresaPerfil(emp);
+            perfis = util.ConverterL2OC(boPerfil.ObterListaPerfilporEmpresa(emp));
 
             int linhaFocada = tvEmpresa.FocusedRowHandle;
 
@@ -252,7 +242,7 @@ namespace wpf_wakusese.src.test.TelaUserControls
             if (per != null && perfis.Count != 0)
             {
                 perfilFuncionalidades = new ObservableCollection<PerfilFuncionalidade>();
-                perfilFuncionalidades = boPerfilFuncionalidade.ObterListaFuncinalidadedoPerfilSelecionado(per);
+                perfilFuncionalidades =util.ConverterL2OC(boPerfilFuncionalidade.ObterListaFuncinalidadedoPerfilSelecionado(per));
                 btnAddFuncionalidadePerfil.IsEnabled = true;
             }
             else
@@ -262,11 +252,12 @@ namespace wpf_wakusese.src.test.TelaUserControls
 
             }
 
-
         }
 
         private void btnAddFuncionalidadePerfil_Click(object sender, RoutedEventArgs e)
         {
+            frmTelaPrincipal.tabControlMenu.IsEnabled = false;
+
             BO_Funcionalidade boFuncionalidade = (BO_Funcionalidade)FactoryBO<Funcionalidade>.GetBO();
 
             gcPerfilFuncionalidade.Visibility = Visibility.Collapsed;
@@ -285,7 +276,7 @@ namespace wpf_wakusese.src.test.TelaUserControls
             var listaPerfilFuncionalidadeSelecionado = perfilFuncionalidades as ObservableCollection<PerfilFuncionalidade>;
 
             // Obter a Lista de todas as funcionalidades Cadastradas
-            listaFuncionalidadesAtualizada = boFuncionalidade.ObterListaObjeto();
+            listaFuncionalidadesAtualizada =util.ConverterL2OC(boFuncionalidade.ObterListaObjeto());
 
             foreach (var itemFuncionalidade in listaFuncionalidadesAtualizada)
             {
@@ -300,11 +291,8 @@ namespace wpf_wakusese.src.test.TelaUserControls
                 }
             }
 
-
             gcPerfilFuncionalidadeLista.ItemsSource = listaFuncionalidadesAtualizada;
-
-            //perfilFuncionalidades = listaFuncionalidadesAtualizada;
-
+                       
         }
 
         private void btnSalvarFuncionalidadePerfil_Click(object sender, RoutedEventArgs e)
@@ -337,7 +325,6 @@ namespace wpf_wakusese.src.test.TelaUserControls
                     }
                 }
 
-
                 if (listaFuncionalidadesAtualizada[i].isSelecionado && exc == false)
                 {
                     PerfilFuncionalidade pf = new PerfilFuncionalidade();
@@ -353,8 +340,5 @@ namespace wpf_wakusese.src.test.TelaUserControls
 
         }
         
-        
-
-
     }
 }

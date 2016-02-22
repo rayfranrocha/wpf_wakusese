@@ -12,7 +12,7 @@ namespace wpf_wakusese.src.main.model.bo
 {
     public class BO_Perfil : GenericoBO<Perfil>
     {
-        public override ObservableCollection<Perfil> ObterListaObjeto()
+        public override List<Perfil> ObterListaObjeto()
         {
 
             List<Perfil> lista = _DbSet
@@ -21,12 +21,12 @@ namespace wpf_wakusese.src.main.model.bo
                                        .OrderBy(o => o.id)
                                        .ToList();
 
-            ObservableCollection<Perfil> listObv = new ObservableCollection<Perfil>(lista);
+          //  ObservableCollection<Perfil> listObv = new ObservableCollection<Perfil>(lista);
 
-            return listObv;
+            return lista;
         }
 
-        public ObservableCollection<Perfil> ObterListaEmpresaPerfil(Empresa emp)
+        public List<Perfil> ObterListaPerfilporEmpresa(Empresa emp)
         {
             if (emp != null)
             {
@@ -35,9 +35,9 @@ namespace wpf_wakusese.src.main.model.bo
                                            .Where(o => emp.id == o.empresa.id)
                                            .ToList();
 
-                ObservableCollection<Perfil> listObv = new ObservableCollection<Perfil>(lista);
+               // ObservableCollection<Perfil> listObv = new ObservableCollection<Perfil>(lista);
 
-                return listObv;
+                return lista;
             }
             else
             {

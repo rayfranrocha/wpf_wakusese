@@ -12,7 +12,7 @@ namespace wpf_wakusese.src.main.model.bo
 {
     public class BO_Empresa : GenericoBO<Empresa>
     {
-        public override ObservableCollection<Empresa> ObterListaObjeto()
+        public override List<Empresa> ObterListaObjeto()
         {
 
             List<Empresa> lista = _DbSet
@@ -20,9 +20,9 @@ namespace wpf_wakusese.src.main.model.bo
                                        .OrderBy(o => o.id)
                                        .ToList();
 
-            ObservableCollection<Empresa> listObv = new ObservableCollection<Empresa>(lista);
+            //ObservableCollection<Empresa> listObv = new ObservableCollection<Empresa>(lista);
 
-            return listObv;
+            return lista;
         }
 
         public Empresa ObterEmpresaPorId(int p)

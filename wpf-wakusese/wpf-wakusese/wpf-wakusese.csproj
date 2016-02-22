@@ -151,17 +151,23 @@
     <Compile Include="src\main\_utils\EFDBContext.cs" />
     <Compile Include="src\main\_utils\EntityBase.cs" />
     <Compile Include="src\main\_utils\IconUtil.cs" />
-    <Compile Include="src\test\TelaLogin.xaml.cs">
+    <Compile Include="src\main\viewControl\TelaLogin.xaml.cs">
       <DependentUpon>TelaLogin.xaml</DependentUpon>
     </Compile>
-    <Compile Include="src\test\TelaPrincipal.xaml.cs">
+    <Compile Include="src\main\viewControl\TelaPrincipal.xaml.cs">
       <DependentUpon>TelaPrincipal.xaml</DependentUpon>
     </Compile>
-    <Compile Include="src\test\TelaUserControls\TelaEmpresa.xaml.cs">
+    <Compile Include="src\main\viewControl\cadastros\TelaEmpresa.xaml.cs">
       <DependentUpon>TelaEmpresa.xaml</DependentUpon>
     </Compile>
-    <Compile Include="src\test\UserControls\BotaoTelaPrincipal.xaml.cs">
+    <Compile Include="src\main\viewControl\cadastros\TelaUsuarios.xaml.cs">
+      <DependentUpon>TelaUsuarios.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="src\main\viewControl\userControls\BotaoTelaPrincipal.xaml.cs">
       <DependentUpon>BotaoTelaPrincipal.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="src\main\viewControl\cadastros\TelaFuncionalidades.xaml.cs">
+      <DependentUpon>TelaFuncionalidades.xaml</DependentUpon>
     </Compile>
     <Page Include="MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
@@ -179,19 +185,27 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
-    <Page Include="src\test\TelaLogin.xaml">
+    <Page Include="src\main\viewControl\TelaLogin.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="src\test\TelaPrincipal.xaml">
+    <Page Include="src\main\viewControl\TelaPrincipal.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="src\test\TelaUserControls\TelaEmpresa.xaml">
+    <Page Include="src\main\viewControl\cadastros\TelaEmpresa.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="src\test\UserControls\BotaoTelaPrincipal.xaml">
+    <Page Include="src\main\viewControl\cadastros\TelaUsuarios.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="src\main\viewControl\userControls\BotaoTelaPrincipal.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="src\main\viewControl\cadastros\TelaFuncionalidades.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -230,10 +244,12 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="src\main\viewControl\cadastros\" />
+    <Folder Include="src\main\viewControl\movimentacao\" />
     <Folder Include="src\main\viewControl\seguranca\" />
     <Folder Include="src\main\_sandbox\" />
     <Folder Include="src\test\TelaPopUps\" />
+    <Folder Include="src\test\TelaUserControls\" />
+    <Folder Include="src\test\UserControls\" />
   </ItemGroup>
   <ItemGroup>
     <Resource Include="Resources\WindowsIcons-license.txt" />
@@ -242,70 +258,70 @@
     <Resource Include="Resources\Entypo-license.txt" />
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="src\test\Resources\Imagens\back.jpg">
+    <Resource Include="src\main\viewControl\resources\Imagens\back.jpg">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Resource>
-    <Resource Include="src\test\Resources\Imagens\cart.png">
+    <Resource Include="src\main\viewControl\resources\Imagens\cart.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Resource>
-    <Resource Include="src\test\Resources\Imagens\Cashier.png">
+    <Resource Include="src\main\viewControl\resources\Imagens\Cashier.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Resource>
-    <Resource Include="src\test\Resources\Imagens\category.png">
+    <Resource Include="src\main\viewControl\resources\Imagens\category.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Resource>
-    <Resource Include="src\test\Resources\Imagens\clients.png">
+    <Resource Include="src\main\viewControl\resources\Imagens\clients.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Resource>
-    <Resource Include="src\test\Resources\Imagens\Clock.png">
+    <Resource Include="src\main\viewControl\resources\Imagens\Clock.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Resource>
-    <Resource Include="src\test\Resources\Imagens\Delivery4.png">
+    <Resource Include="src\main\viewControl\resources\Imagens\Delivery4.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Resource>
-    <Resource Include="src\test\Resources\Imagens\empregados.png">
+    <Resource Include="src\main\viewControl\resources\Imagens\empregados.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Resource>
-    <Resource Include="src\test\Resources\Imagens\empresa.png">
+    <Resource Include="src\main\viewControl\resources\Imagens\empresa.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Resource>
-    <Resource Include="src\test\Resources\Imagens\exit.png">
+    <Resource Include="src\main\viewControl\resources\Imagens\exit.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Resource>
-    <Resource Include="src\test\Resources\Imagens\faq_icon_food_2.png">
+    <Resource Include="src\main\viewControl\resources\Imagens\faq_icon_food_2.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Resource>
-    <Resource Include="src\test\Resources\Imagens\funcionalidades.png">
+    <Resource Include="src\main\viewControl\resources\Imagens\funcionalidades.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Resource>
-    <Resource Include="src\test\Resources\Imagens\gift1.png">
+    <Resource Include="src\main\viewControl\resources\Imagens\gift1.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Resource>
-    <Resource Include="src\test\Resources\Imagens\gift1p.png">
+    <Resource Include="src\main\viewControl\resources\Imagens\gift1p.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Resource>
-    <Resource Include="src\test\Resources\Imagens\gift2.png">
+    <Resource Include="src\main\viewControl\resources\Imagens\gift2.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Resource>
-    <Resource Include="src\test\Resources\Imagens\gift2p.png">
+    <Resource Include="src\main\viewControl\resources\Imagens\gift2p.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Resource>
-    <Resource Include="src\test\Resources\Imagens\icon.png">
+    <Resource Include="src\main\viewControl\resources\Imagens\icon.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Resource>
-    <Resource Include="src\test\Resources\Imagens\lockBlue.png">
+    <Resource Include="src\main\viewControl\resources\Imagens\lockBlue.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Resource>
-    <Resource Include="src\test\Resources\Imagens\pledge_icon_food.jpg">
+    <Resource Include="src\main\viewControl\resources\Imagens\pledge_icon_food.jpg">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Resource>
-    <Resource Include="src\test\Resources\Imagens\produtos.png">
+    <Resource Include="src\main\viewControl\resources\Imagens\produtos.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Resource>
-    <Resource Include="src\test\Resources\Imagens\promocao.png">
+    <Resource Include="src\main\viewControl\resources\Imagens\promocao.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Resource>
-    <Resource Include="src\test\Resources\Imagens\trofeu.png">
+    <Resource Include="src\main\viewControl\resources\Imagens\trofeu.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Resource>
   </ItemGroup>

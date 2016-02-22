@@ -12,19 +12,19 @@ namespace wpf_wakusese.src.main.model.bo
 {
     public class BO_PedidoProduto : GenericoBO<PedidoProduto>
     {
-        public override ObservableCollection<PedidoProduto> ObterListaObjeto()
+        public override List<PedidoProduto> ObterListaObjeto()
         {
             List<PedidoProduto> lista = _DbSet
                                    .Include(o => o.produto)
                                    .Include(o => o.pedido)
                                    .ToList();
 
-            ObservableCollection<PedidoProduto> listObv = new ObservableCollection<PedidoProduto>(lista);
+          //  ObservableCollection<PedidoProduto> listObv = new ObservableCollection<PedidoProduto>(lista);
 
-            return listObv;
+            return lista;
         }
 
-        public ObservableCollection<PedidoProduto> ObterListaItemsdoPedido(Pedido pedido)
+        public List<PedidoProduto> ObterListaItemsdoPedido(Pedido pedido)
         {
             List<PedidoProduto> lista = _DbSet
                                    .Include(o => o.produto)
@@ -32,9 +32,9 @@ namespace wpf_wakusese.src.main.model.bo
                                    .Where(o => o.pedido.id == pedido.id)
                                    .ToList();
 
-            ObservableCollection<PedidoProduto> listObv = new ObservableCollection<PedidoProduto>(lista);
+          //  ObservableCollection<PedidoProduto> listObv = new ObservableCollection<PedidoProduto>(lista);
 
-            return listObv;
+            return lista;
         }
 
         public decimal ObterSubTotaldoPedido(int p)
@@ -49,7 +49,7 @@ namespace wpf_wakusese.src.main.model.bo
             //throw new NotImplementedException();
         }
 
-        public ObservableCollection<PedidoProduto> ObterListaPedidosNaoPago()
+        public List<PedidoProduto> ObterListaPedidosNaoPago()
         {
             List<PedidoProduto> r = _DbSet
                                            .Include(o => o.pedido)
@@ -58,9 +58,9 @@ namespace wpf_wakusese.src.main.model.bo
 
                                            .ToList();
 
-            ObservableCollection<PedidoProduto> lista = new ObservableCollection<PedidoProduto>(r);
+            //ObservableCollection<PedidoProduto> lista = new ObservableCollection<PedidoProduto>(r);
 
-            return lista;
+            return r;
         }
 
 

@@ -1,4 +1,5 @@
-﻿using System;
+﻿using MahApps.Metro.Controls;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -13,14 +14,15 @@ using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
 using wpf_wakusese.src.main.model.ce;
 using wpf_wakusese.src.main.model.servicos;
-using wpf_wakusese.src.test.TelaUserControls;
+using wpf_wakusese.src.main.viewControl.cadastros;
 
-namespace wpf_wakusese.src.test
+
+namespace wpf_wakusese.src.main.viewControl
 {
     /// <summary>
     /// Interaction logic for TelaPrincipal.xaml
     /// </summary>
-    public partial class TelaPrincipal : Window
+    public partial class TelaPrincipal : MetroWindow
     {
         DominioSeguranca domSeguranca = new DominioSeguranca();
 
@@ -78,18 +80,18 @@ namespace wpf_wakusese.src.test
 
         private void stkPbtnsAdministrativo_Loaded(object sender, RoutedEventArgs e)
         {
-            //foreach (object child in stkPbtnsAdministrativo.Children)
-            //{
-            //    if (child is UserControl)
-            //    {
-            //        UserControl btn = (UserControl)child;
-            //        btn.IsEnabled = usuarioLogado.isPossuiAcesso(btn.Name) ? true : false;
-            //        if (btn.IsEnabled == false)
-            //            btn.Opacity = 0.1;
+            foreach (object child in stkPbtnsAdministrativo.Children)
+            {
+                if (child is UserControl)
+                {
+                    UserControl btn = (UserControl)child;
+                    btn.IsEnabled = usuarioLogado.isPossuiAcesso(btn.Name) ? true : false;
+                    if (btn.IsEnabled == false)
+                        btn.Opacity = 0.1;
 
-            //    }
+                }
 
-            //}
+            }
         }
 
         private void stkBtnsVenda_Loaded(object sender, RoutedEventArgs e)
@@ -162,7 +164,7 @@ namespace wpf_wakusese.src.test
         private void btnEmpresa_Click(object sender, EventArgs e)
         {
             this.Cursor = Cursors.Wait;
-            TelaEmpresa frm = new TelaEmpresa();
+            TelaEmpresa frm = new TelaEmpresa(this);
             stkContent.Content = frm;
             this.Cursor = Cursors.Arrow;
         }
@@ -170,16 +172,16 @@ namespace wpf_wakusese.src.test
         private void btnUsuarios_Click(object sender, EventArgs e)
         {
             this.Cursor = Cursors.Wait;
-            //TelaUsuarios frm = new TelaUsuarios();
-            //stkContent.Content = frm;
+            TelaUsuarios frm = new TelaUsuarios(this);
+            stkContent.Content = frm;
             this.Cursor = Cursors.Arrow;
         }
 
         private void btnFuncionalidades_Click(object sender, EventArgs e)
         {
             this.Cursor = Cursors.Wait;
-            //UserControlTelaFuncionalidade frm = new UserControlTelaFuncionalidade();
-            //stkContent.Content = frm;
+            TelaFuncionalidades frm = new TelaFuncionalidades(this);
+            stkContent.Content = frm;
             this.Cursor = Cursors.Arrow;
         }
 

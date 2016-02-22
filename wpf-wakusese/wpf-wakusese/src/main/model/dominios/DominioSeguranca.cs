@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -17,14 +18,16 @@ namespace wpf_wakusese.src.main.model.servicos
         private BO_Empresa boEmpresa;
         private BO_UsuarioPerfil boUsuarioPerfil;
         private BO_PerfilFuncionalidade boPerfilFuncionalidade;
+        private BO_Perfil boPerfil;
 
         public DominioSeguranca()
         {
             dbContext = EFDBContext.Instance;
-            boUsuario = new BO_Usuario();
-            boEmpresa = new BO_Empresa();
-            boUsuarioPerfil = new BO_UsuarioPerfil();
-            boPerfilFuncionalidade = new BO_PerfilFuncionalidade();
+            boUsuario = (BO_Usuario)FactoryBO<Usuario>.GetBO();
+            boEmpresa = (BO_Empresa)FactoryBO<Empresa>.GetBO();
+            boUsuarioPerfil = (BO_UsuarioPerfil)FactoryBO<UsuarioPerfil>.GetBO();
+            boPerfilFuncionalidade = (BO_PerfilFuncionalidade)FactoryBO<PerfilFuncionalidade>.GetBO();
+            boPerfil = (BO_Perfil)FactoryBO<Perfil>.GetBO();
         }
 
         public void ExemploVerificaUsuarioEmpresa_seNaoExistir_CriaOsDois(Usuario usu, Empresa emp)
@@ -83,6 +86,23 @@ namespace wpf_wakusese.src.main.model.servicos
             usuario.listaNomeFuncionalidade.AddRange((from x in listaPerfilFuncionalidade
                                                             select x.funcionalidade.nome)
                                                              .ToList());
+        }
+
+        public List<Usuario> ObterListaUsuariodaEmpresa(Empresa empresa)
+        {
+            //1. Recuperar lista de Perfil que pertecem a empresaLogada 
+            List<Perfil> listaPerfil = boPerfil.ObterListaPerfilporEmpresa(empresa);
+
+            //2. Recuperar de lista de UsuarioPerfil
+            List<UsuarioPerfil> listaUsuarioPerfil = boUsuarioPerfil.ObterListaObjeto();
+
+            //3. Recuperar lista de Usuario que pertencem a empresa logada
+            List<Usuario> listaUsuario= (from x in listaUsuarioPerfil
+                                         where listaPerfil.Contains(x.perfil)
+                                         select x.usuario).ToList();
+
+            return listaUsuario;
+
         }
     }
 }

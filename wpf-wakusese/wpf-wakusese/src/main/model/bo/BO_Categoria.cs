@@ -14,7 +14,7 @@ namespace wpf_wakusese.src.main.model.bo
 
         // comentario teste igo
         //Comentario foi feito pelo ALisson
-        public ObservableCollection<Categoria> ObterListaCategoriadaEmpresa(Empresa empresa)
+        public List<Categoria> ObterListaCategoriadaEmpresa(Empresa empresa)
         {
             List<Categoria> lista = _DbSet
                 //.Include(o => o.categoriaPai)
@@ -22,9 +22,9 @@ namespace wpf_wakusese.src.main.model.bo
                                        .OrderBy(o => o.id)
                                        .ToList();
 
-            ObservableCollection<Categoria> listObv = new ObservableCollection<Categoria>(lista);
+           // ObservableCollection<Categoria> listObv = new ObservableCollection<Categoria>(lista);
 
-            return listObv;
+            return lista;
         }
     }
 }
