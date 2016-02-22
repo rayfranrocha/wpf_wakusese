@@ -67,7 +67,6 @@ namespace wpf_wakusese.src.main.model.servicos
             return r;
         }
 
-
         public void doAtualizarPermissoesUsuario(Empresa empresa, Usuario usuario)
         {
             //1. Recuperar lista de UsuarioPerfil uf where uf.usuario && uf.perfil.empresa

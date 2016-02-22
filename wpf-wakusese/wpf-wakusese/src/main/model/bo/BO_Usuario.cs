@@ -44,11 +44,12 @@ namespace wpf_wakusese.src.main.model.bo
             return listObv;
         }
 
-        public Usuario ObterListaObjeto(string telefone, string senha)
+        public Usuario ObterListaObjeto(string telefoneOrEmail, string senha)
         {
             Usuario r = _DbSet
 
-                               .Where(o => o.telefone == telefone && o.senha == senha)
+                               .Where(o => o.telefone.Contains(telefoneOrEmail) || o.senha.Contains(senha))
+                //.Where(o => o.telefone == telefoneOrEmail && o.senha == senha)
                                .FirstOrDefault();
             if (r == null)
             {

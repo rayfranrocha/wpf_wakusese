@@ -13,6 +13,7 @@ using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
 using wpf_wakusese.src.main.model.ce;
 using wpf_wakusese.src.main.model.servicos;
+using wpf_wakusese.src.test.TelaUserControls;
 
 namespace wpf_wakusese.src.test
 {
@@ -77,18 +78,18 @@ namespace wpf_wakusese.src.test
 
         private void stkPbtnsAdministrativo_Loaded(object sender, RoutedEventArgs e)
         {
-            foreach (object child in stkPbtnsAdministrativo.Children)
-            {
-                if (child is UserControl)
-                {
-                    UserControl btn = (UserControl)child;
-                    btn.IsEnabled = usuarioLogado.isPossuiAcesso(btn.Name) ? true : false;
-                    if (btn.IsEnabled == false)
-                        btn.Opacity = 0.1;
+            //foreach (object child in stkPbtnsAdministrativo.Children)
+            //{
+            //    if (child is UserControl)
+            //    {
+            //        UserControl btn = (UserControl)child;
+            //        btn.IsEnabled = usuarioLogado.isPossuiAcesso(btn.Name) ? true : false;
+            //        if (btn.IsEnabled == false)
+            //            btn.Opacity = 0.1;
 
-                }
+            //    }
 
-            }
+            //}
         }
 
         private void stkBtnsVenda_Loaded(object sender, RoutedEventArgs e)
@@ -161,8 +162,8 @@ namespace wpf_wakusese.src.test
         private void btnEmpresa_Click(object sender, EventArgs e)
         {
             this.Cursor = Cursors.Wait;
-            //TelaEmpresa frm = new TelaEmpresa();
-            //stkContent.Content = frm;
+            TelaEmpresa frm = new TelaEmpresa();
+            stkContent.Content = frm;
             this.Cursor = Cursors.Arrow;
         }
 

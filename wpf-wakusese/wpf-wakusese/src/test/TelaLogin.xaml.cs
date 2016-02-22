@@ -60,7 +60,6 @@ namespace wpf_wakusese.src.test
                     String telefoneOrEmail = txtTelefoneOrEmail.Text;
                     String senha = txtSenha.Password;
 
-
                     usuarioLogado = domSeguranca.doAutenticarUsuario(telefoneOrEmail, senha);
                     if (usuarioLogado != null)
                     {
