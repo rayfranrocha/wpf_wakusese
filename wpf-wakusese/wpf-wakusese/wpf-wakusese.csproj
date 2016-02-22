@@ -97,9 +97,9 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
-    <Compile Include="Migrations\201602191805032_Initial.cs" />
-    <Compile Include="Migrations\201602191805032_Initial.Designer.cs">
-      <DependentUpon>201602191805032_Initial.cs</DependentUpon>
+    <Compile Include="Migrations\201602221732424_Initial.cs" />
+    <Compile Include="Migrations\201602221732424_Initial.Designer.cs">
+      <DependentUpon>201602221732424_Initial.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="src\main\model\bo\BO_Categoria.cs" />
@@ -145,6 +145,12 @@
     <Compile Include="src\main\model\dominios\IDominioSeguranca.cs" />
     <Compile Include="src\main\model\dominios\DominioSeguranca.cs" />
     <Compile Include="src\main\model\enums\PerfilPadraoEnum.cs" />
+    <Compile Include="src\main\viewControl\cadastros\PopupInserirProduto.xaml.cs">
+      <DependentUpon>PopupInserirProduto.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="src\main\viewControl\cadastros\TelaProduto.xaml.cs">
+      <DependentUpon>TelaProduto.xaml</DependentUpon>
+    </Compile>
     <Compile Include="src\main\_utils\FactoryBO.cs" />
     <Compile Include="src\main\_utils\FactoryMigrationsContext.cs" />
     <Compile Include="src\main\_utils\GenericoBO.cs" />
@@ -185,6 +191,14 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
+    <Page Include="src\main\viewControl\cadastros\PopupInserirProduto.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="src\main\viewControl\cadastros\TelaProduto.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="src\main\viewControl\TelaLogin.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -224,8 +238,8 @@
       <DependentUpon>Settings.settings</DependentUpon>
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
-    <EmbeddedResource Include="Migrations\201602191805032_Initial.resx">
-      <DependentUpon>201602191805032_Initial.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201602221732424_Initial.resx">
+      <DependentUpon>201602221732424_Initial.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Licenses.licx" />
     <EmbeddedResource Include="Properties\Resources.resx">

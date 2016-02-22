@@ -7,6 +7,7 @@ using System.Threading.Tasks;
 using wpf_wakusese.src.main._utils;
 using wpf_wakusese.src.main.model.ce;
 using System.Data.Entity;
+using System.Windows.Forms;
 
 namespace wpf_wakusese.src.main.model.bo
 {
@@ -70,15 +71,22 @@ namespace wpf_wakusese.src.main.model.bo
 
         public List<Produto> ObterListaProdutosdaEmpresa(Empresa empresa)
         {
-
-            List<Produto> lista = _DbSet
+            List<Produto> lista =null;
+            try
+            {
+                lista = _DbSet
 
                               .Include(o => o.categoria)
                               .Where(o => o.categoria.empresa.id == empresa.id)
                               .ToList();
-
-            //ObservableCollection<Produto> listObv = new ObservableCollection<Produto>(lista);
-            return lista;
+                return lista;
+            }
+            catch (Exception)
+            {
+                return lista;
+            }
+            
+           // return lista;
         }
     }
 }

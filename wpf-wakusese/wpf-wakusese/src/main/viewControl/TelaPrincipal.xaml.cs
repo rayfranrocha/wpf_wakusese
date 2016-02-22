@@ -188,8 +188,8 @@ namespace wpf_wakusese.src.main.viewControl
         private void btnProdutos_Click(object sender, EventArgs e)
         {
             this.Cursor = Cursors.Wait;
-            //TelaProduto frm = new TelaProduto(this);
-            //stkContent.Content = frm;
+            TelaProduto frm = new TelaProduto(this);
+            stkContent.Content = frm;
             this.Cursor = Cursors.Arrow;
         }
 

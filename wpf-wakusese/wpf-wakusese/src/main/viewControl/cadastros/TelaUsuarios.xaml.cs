@@ -286,7 +286,7 @@ namespace wpf_wakusese.src.main.viewControl.cadastros
 
             //Preenche o Grid control Usuario perfil de acordo com o usuario linha focada
             usuarioPerfis = new ObservableCollection<UsuarioPerfil>();
-            usuarioPerfis = boUsuarioPerfil.ObterListaObjetoUsuario(usuFocado);
+            usuarioPerfis =util.ConverterL2OC(boUsuarioPerfil.ObterListaObjetoUsuario(usuFocado));
 
             ObservableCollection<Perfil> listaPerfil = new ObservableCollection<Perfil>();
 

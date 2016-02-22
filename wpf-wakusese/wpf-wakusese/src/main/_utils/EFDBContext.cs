@@ -51,6 +51,8 @@ namespace wpf_wakusese.src.main._utils
         //Cadastros
         public DbSet<Empresa> Empresas { get; set; }
         public DbSet<Endereco> Enderecos { get; set; }
+        public DbSet<Categoria> Categorias { get; set; }
+        public DbSet<Produto> Produtos { get; set; }
 
         public object GetDBSet(Type tipo)
         {
@@ -65,6 +67,8 @@ namespace wpf_wakusese.src.main._utils
                 case "Usuario": return Usuarios;
                 case "UsuarioPerfil": return UsuarioPerfil;
                 case "PerfilFuncionalidade": return PerfilFuncionalidades;
+                case "Categoria": return Categorias;
+                case "Produto": return Produtos;
             }
             return r;
 

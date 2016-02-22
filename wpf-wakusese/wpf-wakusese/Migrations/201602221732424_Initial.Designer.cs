@@ -13,7 +13,7 @@ namespace wpf_wakusese.Migrations
         
         string IMigrationMetadata.Id
         {
-            get { return "201602191805032_Initial"; }
+            get { return "201602221732424_Initial"; }
         }
         
         string IMigrationMetadata.Source
