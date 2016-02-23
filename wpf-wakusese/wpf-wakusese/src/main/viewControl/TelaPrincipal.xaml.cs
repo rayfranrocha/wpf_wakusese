@@ -41,13 +41,28 @@ namespace wpf_wakusese.src.main.viewControl
             InitializeComponent();
         }
 
+        private BitmapImage imagemSource(string cam)
+        {
+           
+                
+                BitmapImage bitmap = new BitmapImage();
+                bitmap.BeginInit();
+                bitmap.UriSource = new Uri(cam);
+                bitmap.EndInit();
+
+                return bitmap;
+
+            
+           
+        }
+
         public TelaPrincipal(Usuario usuarioLog, Empresa empresaLog)
         {
             InitializeComponent();
             this.Cursor = Cursors.Arrow;
 
             List<TodoItem> items = new List<TodoItem>();
-            items.Add(new TodoItem() { Titulo = "Complete this WPF tutorial", Imagem = "src/main/viewControl/Resources/Imagens/gift1.png" });
+            items.Add(new TodoItem() { Titulo = "Complete this WPF tutorial", Imagem = imagemSource("src/main/viewControl/Resources/Imagens/gift1.png") });
             //items.Add(new TodoItem() { Title = "Learn C#", Completion = 80 });
             //items.Add(new TodoItem() { Title = "Wash the car", Completion = 0 });
 
@@ -65,7 +80,7 @@ namespace wpf_wakusese.src.main.viewControl
         public class TodoItem
         {
             public string Titulo { get; set; }
-            public string Imagem { get; set; }
+            public ImageSource Imagem { get; set; }
         }
 
         public TelaPrincipal(Usuario usuarioLog)
