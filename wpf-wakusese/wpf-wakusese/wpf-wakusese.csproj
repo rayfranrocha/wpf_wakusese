@@ -91,6 +91,9 @@
     <Reference Include="WindowsBase" />
     <Reference Include="PresentationCore" />
     <Reference Include="PresentationFramework" />
+    <Reference Include="Xceed.Wpf.Toolkit">
+      <HintPath>E:\novo\wpf-wakusese\wpf-wakusese\bin\Debug\Xceed.Wpf.Toolkit.dll</HintPath>
+    </Reference>
   </ItemGroup>
   <ItemGroup>
     <ApplicationDefinition Include="App.xaml">
@@ -145,8 +148,8 @@
     <Compile Include="src\main\model\dominios\IDominioSeguranca.cs" />
     <Compile Include="src\main\model\dominios\DominioSeguranca.cs" />
     <Compile Include="src\main\model\enums\PerfilPadraoEnum.cs" />
-    <Compile Include="src\main\viewControl\cadastros\PopupInserirProduto.xaml.cs">
-      <DependentUpon>PopupInserirProduto.xaml</DependentUpon>
+    <Compile Include="src\main\viewControl\cadastros\PopupInserirUsuario.xaml.cs">
+      <DependentUpon>PopupInserirUsuario.xaml</DependentUpon>
     </Compile>
     <Compile Include="src\main\viewControl\cadastros\TelaCategoria.xaml.cs">
       <DependentUpon>TelaCategoria.xaml</DependentUpon>
@@ -197,7 +200,7 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
-    <Page Include="src\main\viewControl\cadastros\PopupInserirProduto.xaml">
+    <Page Include="src\main\viewControl\cadastros\PopupInserirUsuario.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

@@ -1,0 +1,98 @@
+﻿<Controls:MetroWindow x:Class="wpf_wakusese.src.main.viewControl.cadastros.PopupInserirUsuario"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:Controls="http://metro.mahapps.com/winfx/xaml/controls"
+        xmlns:dxg="http://schemas.devexpress.com/winfx/2008/xaml/grid" 
+        xmlns:dx="http://schemas.devexpress.com/winfx/2008/xaml/core"
+        xmlns:xctk="http://schemas.xceed.com/wpf/xaml/toolkit"
+        xmlns:dxe="http://schemas.devexpress.com/winfx/2008/xaml/editors" 
+        x:Name="_this" BorderThickness="0" GlowBrush="Black"         
+                      WindowTransitionsEnabled="False"
+                      WindowStartupLocation="CenterScreen"
+        Title="Usuario" Width="720" Height="500" ResizeMode="NoResize">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="50"/>
+            <RowDefinition Height="50"/>
+            <RowDefinition Height="50"/>
+            <RowDefinition Height="50"/>
+            <RowDefinition Height="50"/>
+            <RowDefinition Height="50"/>
+            <RowDefinition Height="50"/>
+            <RowDefinition Height="100"/>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="auto"/>
+            <ColumnDefinition Width="auto"/>
+            <ColumnDefinition Width="auto"/>
+            <ColumnDefinition Width="auto"/>
+        </Grid.ColumnDefinitions>
+        <Label Content="Geral:" HorizontalAlignment="Left" Grid.ColumnSpan="4" FontSize="25" Grid.Column="0" Grid.Row="0" VerticalAlignment="Top" />
+        <Label Content="Nome:" HorizontalAlignment="Right" Grid.Column="0" Grid.Row="1" VerticalAlignment="Top" />
+        <TextBox Name="txtNomeCliente" Grid.Column="1" Grid.Row="1" HorizontalAlignment="Left" Height="23" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="225"/>
+        <Label Content="Facebook:" Grid.Column="0" Grid.Row="2" HorizontalAlignment="Right" VerticalAlignment="Top"/>
+        <TextBox Name="txtFacebook" Grid.Column="1" Grid.Row="2" HorizontalAlignment="Left" Height="23"  TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="225"/>
+        <Label Content="Latitude:"  HorizontalAlignment="Right" Grid.Column="0" Grid.Row="3"  VerticalAlignment="Top" />
+
+        <xctk:MaskedTextBox Name="txtLatitude"  Grid.Column="1" Grid.Row="3" Mask="00" HorizontalAlignment="Left" Height="23"   TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="225" TextOptions.TextHintingMode="Animated" AllowPromptAsInput="False" HidePromptOnLeave="True" IncludeLiteralsInValue="False"/>
+        <!--<TextBox Name="txtLatitude"    HorizontalAlignment="Left" Height="23" Grid.Column="1" Grid.Row="3" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="225"/>-->
+        <Label Content="Datadenascimento:" Grid.Column="2" Grid.Row="1" HorizontalAlignment="Right"  VerticalAlignment="Top"/>
+        <dxe:DateEdit Name="txtDtNascimento" HorizontalAlignment="Left" Grid.Column="3" Grid.Row="1" Height="23"  VerticalAlignment="Top" Width="225"/>
+        <!--<TextBox Name="txtDatadenascimento" HorizontalAlignment="Left" Grid.Column="3" Grid.Row="1" Height="23"  TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="220" Margin="0,-2,0,0"/>-->
+        <Label Content="Instagram:"  Grid.Column="2" Grid.Row="2" HorizontalAlignment="Right"  VerticalAlignment="Top"/>
+        <TextBox Name="txtInstagram" HorizontalAlignment="Left" Grid.Column="3" Grid.Row="2" Height="23"  TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="225"/>
+        <Label Content="Longitude:"  Grid.Column="2" Grid.Row="3" HorizontalAlignment="Right"  VerticalAlignment="Top"/>
+
+        <xctk:MaskedTextBox Name="txtLongitude"  Grid.Column="3" Grid.Row="3" Mask="00" HorizontalAlignment="Left" Height="23"   TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="225" TextOptions.TextHintingMode="Animated" AllowPromptAsInput="False" HidePromptOnLeave="True" IncludeLiteralsInValue="False"/>
+        <!--<TextBox Name="txtLongitude" HorizontalAlignment="Left" Grid.Column="3" Grid.Row="3" Height="23"  TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="220"/>-->
+        <Label Content="Referencia:"  Grid.Column="0" Grid.Row="4" HorizontalAlignment="Right"  VerticalAlignment="Top"/>
+        <TextBox Name="txtReferencia" HorizontalAlignment="Left" Grid.Column="1" Grid.Row="4" Height="23"  TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="225"/>
+        <Label Content="Telefone:"  Grid.Column="0" Grid.Row="5" HorizontalAlignment="Right"  VerticalAlignment="Top"/>
+
+        <xctk:MaskedTextBox Name="txtTelefone"  Grid.Column="1" Grid.Row="5" Mask="(00)000000000" HorizontalAlignment="Left" Height="23"   TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="225" TextOptions.TextHintingMode="Animated" AllowPromptAsInput="False" HidePromptOnLeave="True" IncludeLiteralsInValue="False"/>
+        <!--<TextBox Name="txtTelefone" HorizontalAlignment="Left" Grid.Column="1" Grid.Row="5" Height="23"  TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="225"/>-->
+        <Label Content="Email:"  Grid.Column="0" Grid.Row="6" HorizontalAlignment="Right"  VerticalAlignment="Top"/>
+        <TextBox Name="txtEmail" HorizontalAlignment="Left" Grid.Column="1" Grid.Row="6" Height="23"  TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="225"/>
+        <Label Content="Logradouro:"  Grid.Column="2" Grid.Row="4" HorizontalAlignment="Right"  VerticalAlignment="Top"/>
+        <TextBox Name="txtLogradouro"  HorizontalAlignment="Left" Grid.Column="3" Grid.Row="4" Height="23"  TextWrapping="Wrap" VerticalAlignment="Top" Text="" Width="225" />
+        <Label Content="Cep:"  Grid.Column="2" Grid.Row="5" HorizontalAlignment="Right"  VerticalAlignment="Top"/>
+
+        <xctk:MaskedTextBox Name="txtCep" Grid.Column="3" Grid.Row="5" Mask="00000-000" HorizontalAlignment="Left" Height="23"  TextWrapping="Wrap" Text="" AllowPromptAsInput="False" IncludeLiteralsInValue="False" HidePromptOnLeave="True" VerticalAlignment="Top" Width="225"/>
+        <!--<TextBox Name="txtCep" HorizontalAlignment="Left" Grid.Column="3" Grid.Row="5" Height="23"  TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="220"/>-->
+        <Label Content="Senha:"  Grid.Column="2" Grid.Row="6" HorizontalAlignment="Right"  VerticalAlignment="Top"/>
+        <TextBox Name="txtSenha" HorizontalAlignment="Left" Grid.Column="3" Grid.Row="6" Height="23"  TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="225"/>
+        <Label Content="Selecione o Perfil:"  Grid.Column="0"  Grid.Row="7" HorizontalAlignment="Left"  VerticalAlignment="Top"/>
+        <ListBox VerticalAlignment="Stretch" ScrollViewer.VerticalScrollBarVisibility="Visible" Name="ListaPerfil" Grid.Column="1" Grid.Row="7"  >
+            <ListBox.ItemTemplate>
+                <DataTemplate>
+                    <Grid>
+                        <Grid.RowDefinitions>
+                            <RowDefinition/>
+                            <RowDefinition/>
+                        </Grid.RowDefinitions>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="100"/>
+                            <ColumnDefinition Width="100"/>
+                        </Grid.ColumnDefinitions>
+                        <TextBlock Text="{Binding Path=nome}" FontSize="15"  Grid.Row="0" Grid.Column="0"  Grid.ColumnSpan="2"/>
+                        <CheckBox  IsChecked="{Binding Path=isSelecionado}" FontSize="10" Grid.Column="1" Grid.Row="0" ></CheckBox>
+                    </Grid>
+                </DataTemplate>
+            </ListBox.ItemTemplate>
+        </ListBox>
+
+        <Button Name="btnSalvar" Grid.Column="3" Grid.Row="7" HorizontalAlignment="Left" Click="btnSalvar_Click" Width="100" Height="40" Style="{StaticResource AccentedSquareButtonStyle}"  >
+            <StackPanel Orientation="Horizontal">
+                <Image Source="{dx:DXImage Image=Save_16x16.png}" />
+                <Label Foreground="White" Style="{StaticResource LabelTextBold}"  VerticalAlignment="Center" Content="Salvar"/>
+            </StackPanel>
+        </Button>
+
+        <Button x:Name="btnVoltar" Grid.Column="4" Grid.Row="7" Width="100" HorizontalAlignment="Right" Height="40" Click="btnVoltar_Click" Style="{StaticResource AccentedSquareButtonStyle}" >
+            <StackPanel Orientation="Horizontal">
+                <Image Source="{dx:DXImage Image=Undo_16x16.png}" />
+                <Label Foreground="White" Style="{StaticResource LabelTextBold}" VerticalAlignment="Center" Content="Voltar"/>
+            </StackPanel>
+        </Button>
+    </Grid>
+</Controls:MetroWindow>
