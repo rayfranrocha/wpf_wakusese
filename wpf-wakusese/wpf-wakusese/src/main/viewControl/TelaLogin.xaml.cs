@@ -50,7 +50,9 @@ namespace wpf_wakusese.src.main.viewControl
 
             if (String.IsNullOrEmpty(txtSenha.Password) || String.IsNullOrEmpty(txtTelefoneOrEmail.Text))
             {
-                metroWindow.ShowMessageAsync("Login", " Preencha todos os campos!", MessageDialogStyle.Affirmative, null);
+                lbMessagem.Visibility = Visibility.Visible;
+                lbMessagem.Content = " Preencha todos os campos!";
+                //metroWindow.ShowMessageAsync("Login", " Preencha todos os campos!", MessageDialogStyle.Affirmative, null);
 
             }
             else
@@ -78,7 +80,9 @@ namespace wpf_wakusese.src.main.viewControl
                 }
                 catch (Exception ex)
                 {
-                    metroWindow.ShowMessageAsync("Login", ex.Message, MessageDialogStyle.Affirmative, null);
+                    lbMessagem.Visibility = Visibility.Visible;
+                    lbMessagem.Content = ex.Message;
+                    //metroWindow.ShowMessageAsync("Login", ex.Message, MessageDialogStyle.Affirmative, null);
 
                 }
                 finally

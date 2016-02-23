@@ -4,7 +4,8 @@
         xmlns:xctk="http://schemas.xceed.com/wpf/xaml/toolkit"              
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         BorderThickness="0" GlowBrush="Black" WindowTransitionsEnabled="False"
-        Title="Login" Height="330" Width="410" WindowStartupLocation="CenterScreen" WindowStyle="ToolWindow" ResizeMode="NoResize" KeyDown="TeclaEnterPressionada_KeyDown">
+        Title="Login" Height="330" Width="410" WindowStartupLocation="CenterScreen" 
+        WindowStyle="ToolWindow" ResizeMode="NoResize" KeyDown="TeclaEnterPressionada_KeyDown">
     <Controls:MetroWindow.Resources>
         <Style x:Key="LabelTextBold" TargetType="Label">
             <Setter Property="FontStyle" Value="Normal"/>
@@ -30,26 +31,24 @@
                 <Grid Grid.Column="0" Grid.Row="1" Grid.ColumnSpan="3" Margin="24,0,24,-210" Background="#FFE6E6E6">
                     <Grid.RowDefinitions>
                         <RowDefinition Height="auto"/>
+                        <RowDefinition Height="35"/>
                         <RowDefinition Height="auto"/>
                         <RowDefinition Height="auto"/>
                         <RowDefinition Height="auto"/>
-                        <RowDefinition Height="auto"/>
-                        <RowDefinition Height="auto"/>
+                        <RowDefinition Height="40"/>
+                        <RowDefinition Height="30"/>
                     </Grid.RowDefinitions>
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition Width="*"/>
                         <ColumnDefinition Width="*"/>
                         <ColumnDefinition Width="*"/>
                     </Grid.ColumnDefinitions>
-                    <Label VerticalAlignment="Center" Height="40" Width="58"  HorizontalAlignment="Center" Grid.Row="1" Grid.ColumnSpan="2" Margin="74,3,112,24">Login:</Label>
-                    <TextBox Name="txtTelefoneOrEmail" Height="20"  Background="White" Grid.ColumnSpan="3" Margin="94,23,80,16" Grid.Row="1"/>
-                    <!--<xctk:MaskedTextBox Name="txtTelefone" Mask="(00)000000000" Height="25"  Background="White" Grid.ColumnSpan="3" Margin="94,23,80,16" Grid.Row="1"/>-->
-
-                    <Label HorizontalAlignment="Center"  VerticalAlignment="Center"  Grid.Row="4" Content="Senha: " Style="{StaticResource LabelTextBold}" Margin="64,1,4,15" Width="54"/>
-                    <PasswordBox Name="txtSenha" HorizontalAlignment="Center" VerticalAlignment="Center" Width="192" Background="White" Height="22" Grid.Row="4" MaxLength="50" FontSize="12"  TabIndex="1" Grid.ColumnSpan="3" Margin="94,21,80,38" Grid.RowSpan="2" PasswordChar="*" />
-
-                    <Button   VerticalAlignment="Top"   Click="btnCancel_Click" Height="26" Content="Cancel" Grid.Column="1" Grid.Row="5" FontSize="11" IsCancel="True" x:Name="btnCancel" TabIndex="3" Grid.ColumnSpan="2" Margin="89,25,93,0" />
-                    <Button   HorizontalAlignment="Left"   Click="btnLogin_Click" VerticalAlignment="Bottom" Width="62" Height="26" Content="Login" Grid.Row="5"  FontSize="11"  x:Name="btnLogin" TabIndex="2" Grid.ColumnSpan="2" Margin="94,0,0,4" />
+                  <Label  Height="27" Width="58"  HorizontalAlignment="Right"   Grid.Row="0"  >Login:</Label>
+                    <TextBox Name="txtTelefoneOrEmail" Height="20" Width="210" Grid.Column="0" VerticalAlignment="Top"  Background="White" Grid.ColumnSpan="3" Grid.Row="1"/>
+                    <Label HorizontalAlignment="Right" Height="27"  VerticalAlignment="Stretch"  Grid.Row="2" Content="Senha: " Style="{StaticResource LabelTextBold}" Width="54"/>
+                    <PasswordBox Name="txtSenha" Grid.ColumnSpan="3" VerticalAlignment="Top" Width="210"  Height="20" Grid.Column="0" Grid.Row="4"   PasswordChar="*" />
+                    <Button   HorizontalAlignment="Center"   Click="btnLogin_Click" VerticalAlignment="Bottom" Width="62" Height="26" Content="Entrar" Grid.Row="7"  FontSize="11"  x:Name="btnLogin" TabIndex="2"  Grid.Column="1" />
+                    <Label x:Name="lbMessagem" HorizontalAlignment="Center" Visibility="Collapsed" Height="26"  Grid.ColumnSpan="3" Background="Red" Grid.Row="5" VerticalAlignment="Center"/>
                 </Grid>
             </Border>
         </Grid>

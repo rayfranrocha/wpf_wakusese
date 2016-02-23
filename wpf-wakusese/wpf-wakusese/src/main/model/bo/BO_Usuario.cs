@@ -53,7 +53,7 @@ namespace wpf_wakusese.src.main.model.bo
                                .FirstOrDefault();
             if (r == null)
             {
-                throw new ArgumentException("Não foi encontrado usuário com este telefone e senha!");
+                throw new ArgumentException("Não foi encontrado usuário com este Login e senha!");
             }
 
             return r;
