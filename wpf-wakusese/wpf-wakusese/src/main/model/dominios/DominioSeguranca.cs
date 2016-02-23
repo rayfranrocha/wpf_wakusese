@@ -70,15 +70,10 @@ namespace wpf_wakusese.src.main.model.servicos
             Usuario r = boUsuario.ObterListaObjeto(telOrEmail, senha);
 
             //2.
-            ObservableCollection<UsuarioPerfil> ListaUsuarioPerfil = IconUtil.ConverterL2OC(boUsuarioPerfil.ObterListaUsuarioPerfil(r));
+            List<UsuarioPerfil> ListaUsuarioPerfil = boUsuarioPerfil.ObterListaUsuarioPerfil(r);
 
-            ObservableCollection<Perfil> Listaperfil = new ObservableCollection<Perfil>();
-
-            foreach (var item in ListaUsuarioPerfil)
-            {
-                Listaperfil.Add(boPerfil.ObterPerfil(item));
-
-            }
+            List<Perfil> Listaperfil = (from c in ListaUsuarioPerfil
+                                                        select c.perfil).ToList();
 
             r.ListaEmpresa = new List<Empresa>(from c in Listaperfil
                                                select c.empresa).Distinct().ToList();

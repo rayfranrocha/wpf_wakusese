@@ -81,6 +81,7 @@ namespace wpf_wakusese.src.main.model.bo
 
             List<UsuarioPerfil> listaUsuarioPerfil = _DbSet
                                 .Include(o => o.perfil)
+                                .Include(o=> o.perfil.empresa)
                                 .Where(o => o.usuario.id == usuarioLogado.id)
                                 .ToList();
             //ObservableCollection<UsuarioPerfil> listObv = new ObservableCollection<UsuarioPerfil>(usuPerf);
