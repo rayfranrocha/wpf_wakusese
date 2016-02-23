@@ -36,12 +36,7 @@ namespace wpf_wakusese.src.main.viewControl
         {
             InitializeComponent();
         }
-
-        private void btnCancel_Click(object sender, RoutedEventArgs e)
-        {
-            this.Close();
-        }
-
+                
         private void btnLogin_Click(object sender, RoutedEventArgs e)
         {
 
@@ -50,6 +45,7 @@ namespace wpf_wakusese.src.main.viewControl
 
             if (String.IsNullOrEmpty(txtSenha.Password) || String.IsNullOrEmpty(txtTelefoneOrEmail.Text))
             {
+                
                 metroWindow.ShowMessageAsync("Login", " Preencha todos os campos!", MessageDialogStyle.Affirmative, null);
 
             }

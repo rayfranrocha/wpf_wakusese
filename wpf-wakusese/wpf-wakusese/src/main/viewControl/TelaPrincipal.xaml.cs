@@ -46,6 +46,13 @@ namespace wpf_wakusese.src.main.viewControl
             InitializeComponent();
             this.Cursor = Cursors.Arrow;
 
+            List<TodoItem> items = new List<TodoItem>();
+            items.Add(new TodoItem() { Titulo = "Complete this WPF tutorial", Imagem = "src/main/viewControl/Resources/Imagens/gift1.png" });
+            //items.Add(new TodoItem() { Title = "Learn C#", Completion = 80 });
+            //items.Add(new TodoItem() { Title = "Wash the car", Completion = 0 });
+
+            icTodoList.ItemsSource = items;
+
             usuarioLogado = usuarioLog;
 
             empLogada = empresaLog;
@@ -55,10 +62,18 @@ namespace wpf_wakusese.src.main.viewControl
             txtUsuarioLogado.Text = usuarioLogado.nome;
         }
 
+        public class TodoItem
+        {
+            public string Titulo { get; set; }
+            public string Imagem { get; set; }
+        }
+
         public TelaPrincipal(Usuario usuarioLog)
         {
             InitializeComponent();
             this.Cursor = Cursors.Arrow;
+
+           
 
             usuarioLogado = usuarioLog;
             empLogada = usuarioLog.ultimaEmpresa;
@@ -109,18 +124,18 @@ namespace wpf_wakusese.src.main.viewControl
 
         private void stkBtnsVenda_Loaded(object sender, RoutedEventArgs e)
         {
-            foreach (object child in stkBtnsVenda.Children)
-            {
-                if (child is UserControl)
-                {
-                    UserControl btn = (UserControl)child;
-                    btn.IsEnabled = usuarioLogado.isPossuiAcesso(btn.Name) ? true : false;
-                    if (btn.IsEnabled == false)
-                        btn.Opacity = 0.1;
+            //foreach (object child in stkBtnsVenda.Children)
+            //{
+            //    if (child is UserControl)
+            //    {
+            //        UserControl btn = (UserControl)child;
+            //        btn.IsEnabled = usuarioLogado.isPossuiAcesso(btn.Name) ? true : false;
+            //        if (btn.IsEnabled == false)
+            //            btn.Opacity = 0.1;
 
-                }
+            //    }
 
-            }
+            //}
         }
 
         private void _this_Closing(object sender, System.ComponentModel.CancelEventArgs e)

@@ -42,14 +42,14 @@
                         <ColumnDefinition Width="*"/>
                     </Grid.ColumnDefinitions>
                     <Label VerticalAlignment="Center" Height="40" Width="58"  HorizontalAlignment="Center" Grid.Row="1" Grid.ColumnSpan="2" Margin="74,3,112,24">Login:</Label>
-                    <TextBox Name="txtTelefoneOrEmail" Height="20"  Background="White" Grid.ColumnSpan="3" Margin="94,23,80,16" Grid.Row="1"/>
+                    <TextBox Name="txtTelefoneOrEmail" Height="20"  Background="White" Grid.ColumnSpan="3" Margin="94,23,80,16" Grid.Row="1" Controls:TextBoxHelper.Watermark="Email ou Telefone"/>
                     <!--<xctk:MaskedTextBox Name="txtTelefone" Mask="(00)000000000" Height="25"  Background="White" Grid.ColumnSpan="3" Margin="94,23,80,16" Grid.Row="1"/>-->
 
                     <Label HorizontalAlignment="Center"  VerticalAlignment="Center"  Grid.Row="4" Content="Senha: " Style="{StaticResource LabelTextBold}" Margin="64,1,4,15" Width="54"/>
                     <PasswordBox Name="txtSenha" HorizontalAlignment="Center" VerticalAlignment="Center" Width="192" Background="White" Height="22" Grid.Row="4" MaxLength="50" FontSize="12"  TabIndex="1" Grid.ColumnSpan="3" Margin="94,21,80,38" Grid.RowSpan="2" PasswordChar="*" />
 
-                    <Button   VerticalAlignment="Top"   Click="btnCancel_Click" Height="26" Content="Cancel" Grid.Column="1" Grid.Row="5" FontSize="11" IsCancel="True" x:Name="btnCancel" TabIndex="3" Grid.ColumnSpan="2" Margin="89,25,93,0" />
-                    <Button   HorizontalAlignment="Left"   Click="btnLogin_Click" VerticalAlignment="Bottom" Width="62" Height="26" Content="Login" Grid.Row="5"  FontSize="11"  x:Name="btnLogin" TabIndex="2" Grid.ColumnSpan="2" Margin="94,0,0,4" />
+                    
+                    <Button   HorizontalAlignment="Left"   Click="btnLogin_Click" VerticalAlignment="Bottom" Width="62" Height="26" Content="Login" Grid.Row="5"  FontSize="11"  x:Name="btnLogin" TabIndex="2" Margin="36,0,0,-36" Grid.Column="1" />
                 </Grid>
             </Border>
         </Grid>
