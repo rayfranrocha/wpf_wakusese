@@ -37,11 +37,6 @@ namespace wpf_wakusese.src.main.viewControl
             InitializeComponent();
         }
 
-        private void btnCancel_Click(object sender, RoutedEventArgs e)
-        {
-            this.Close();
-        }
-
         private void btnLogin_Click(object sender, RoutedEventArgs e)
         {
 

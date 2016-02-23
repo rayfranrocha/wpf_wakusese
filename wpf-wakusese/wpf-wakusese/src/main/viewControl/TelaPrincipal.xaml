@@ -6,6 +6,7 @@
         xmlns:dxg="http://schemas.devexpress.com/winfx/2008/xaml/grid"
         xmlns:dx="http://schemas.devexpress.com/winfx/2008/xaml/core"
         xmlns:ctrl="clr-namespace:wpf_wakusese.src.main.viewControl.userControls"
+        xmlns:system="clr-namespace:System;assembly=mscorlib"
         Title="SisRestaurante" WindowState="Maximized"  Width="1200" Loaded="MainWindow_Loaded" MinWidth="1200"  Height="700" MinHeight="700" Icon="Resources/Imagens/faq_icon_food_2.png" ResizeMode="CanResizeWithGrip" Closing="_this_Closing">
     <Grid>
         <Grid.Background>
@@ -33,7 +34,25 @@
                         <TextBlock Text="VENDAS" Foreground="Blue" />
                     </StackPanel>
                 </TabItem.Header>
-                <StackPanel  Name="stkBtnsVenda"  Orientation="Horizontal" VerticalAlignment="Top" Height="80"  Loaded="stkBtnsVenda_Loaded" >
+
+
+                <ItemsControl  Name="icTodoList">
+                        <ItemsControl.ItemsPanel>
+                            <ItemsPanelTemplate>
+                                <WrapPanel />
+                            </ItemsPanelTemplate>
+                        </ItemsControl.ItemsPanel>
+                    
+                        <ItemsControl.ItemTemplate>
+                            <DataTemplate>
+                            <ctrl:BotaoTelaPrincipal x:Name="z" Titulo="{Binding Titulo}"   Imagem="{Binding imagem}" />
+                            
+                            </DataTemplate>
+                        </ItemsControl.ItemTemplate>
+                        
+                    </ItemsControl>
+                
+                <!--<StackPanel  Name="stkBtnsVenda"  Orientation="Horizontal" VerticalAlignment="Top" Height="80"  Loaded="stkBtnsVenda_Loaded" >
                     <ctrl:BotaoTelaPrincipal x:Name="btnAbriFecharCaixa" Titulo="Caixa"   Imagem="Resources/Imagens/Cashier.png" />
                     <ctrl:BotaoTelaPrincipal x:Name="btnHistoricoCaixa"   Titulo="Histórico do Caixa" Imagem="Resources/Imagens/Clock.png" />
                     <GridSplitter Width="1"/>
@@ -46,7 +65,7 @@
                     <GridSplitter  Width="1"/>
                     <ctrl:BotaoTelaPrincipal x:Name="btnSairLogout"     Click="btnSairLogout_Click" Tag="btnB" Titulo="Logout" Imagem="Resources/Imagens/exit.png" />
 
-                </StackPanel>
+                </StackPanel>-->
 
             </TabItem>
 
