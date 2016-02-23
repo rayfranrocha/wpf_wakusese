@@ -100,9 +100,9 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
-    <Compile Include="Migrations\201602231858196_Initial.cs" />
-    <Compile Include="Migrations\201602231858196_Initial.Designer.cs">
-      <DependentUpon>201602231858196_Initial.cs</DependentUpon>
+    <Compile Include="Migrations\201602231947340_initial.cs" />
+    <Compile Include="Migrations\201602231947340_initial.Designer.cs">
+      <DependentUpon>201602231947340_initial.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="src\main\model\bo\BO_Categoria.cs" />
@@ -148,6 +148,9 @@
     <Compile Include="src\main\model\dominios\IDominioSeguranca.cs" />
     <Compile Include="src\main\model\dominios\DominioSeguranca.cs" />
     <Compile Include="src\main\model\enums\PerfilPadraoEnum.cs" />
+    <Compile Include="src\main\viewControl\cadastros\PopupInserirProduto.xaml.cs">
+      <DependentUpon>PopupInserirProduto.xaml</DependentUpon>
+    </Compile>
     <Compile Include="src\main\viewControl\cadastros\PopupInserirUsuario.xaml.cs">
       <DependentUpon>PopupInserirUsuario.xaml</DependentUpon>
     </Compile>
@@ -197,6 +200,10 @@
       <SubType>Code</SubType>
     </Compile>
     <Page Include="Resources\Icons.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="src\main\viewControl\cadastros\PopupInserirProduto.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
@@ -255,8 +262,8 @@
       <DependentUpon>Settings.settings</DependentUpon>
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
-    <EmbeddedResource Include="Migrations\201602231858196_Initial.resx">
-      <DependentUpon>201602231858196_Initial.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201602231947340_initial.resx">
+      <DependentUpon>201602231947340_initial.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Licenses.licx" />
     <EmbeddedResource Include="Properties\Resources.resx">
