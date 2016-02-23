@@ -79,7 +79,7 @@ namespace wpf_wakusese.src.main.viewControl.cadastros
             tvPerfil.IsEnabled = true;
 
             empresas = null;
-            empresas =util.ConverterL2OC(boEmpresa.ObterListaObjeto());
+            empresas = IconUtil.ConverterL2OC(boEmpresa.ObterListaObjeto());
 
             // util.BestFitColumn(gcEmpresa);
 
@@ -165,7 +165,7 @@ namespace wpf_wakusese.src.main.viewControl.cadastros
                 boEmpresa.Excluir(emp);
                 boEmpresa.SaveChanges();
 
-                empresas =util.ConverterL2OC(boEmpresa.ObterListaObjeto());
+                empresas = IconUtil.ConverterL2OC(boEmpresa.ObterListaObjeto());
 
                 doConsultar();
 
@@ -215,7 +215,7 @@ namespace wpf_wakusese.src.main.viewControl.cadastros
         {
             var emp = gcEmpresa.GetFocusedRow() as Empresa;
             perfis = new ObservableCollection<Perfil>();
-            perfis = util.ConverterL2OC(boPerfil.ObterListaPerfilporEmpresa(emp));
+            perfis = IconUtil.ConverterL2OC(boPerfil.ObterListaPerfilporEmpresa(emp));
 
             int linhaFocada = tvEmpresa.FocusedRowHandle;
 
@@ -242,7 +242,7 @@ namespace wpf_wakusese.src.main.viewControl.cadastros
             if (per != null && perfis.Count != 0)
             {
                 perfilFuncionalidades = new ObservableCollection<PerfilFuncionalidade>();
-                perfilFuncionalidades =util.ConverterL2OC(boPerfilFuncionalidade.ObterListaFuncinalidadedoPerfilSelecionado(per));
+                perfilFuncionalidades = IconUtil.ConverterL2OC(boPerfilFuncionalidade.ObterListaFuncinalidadedoPerfilSelecionado(per));
                 btnAddFuncionalidadePerfil.IsEnabled = true;
             }
             else
@@ -276,7 +276,7 @@ namespace wpf_wakusese.src.main.viewControl.cadastros
             var listaPerfilFuncionalidadeSelecionado = perfilFuncionalidades as ObservableCollection<PerfilFuncionalidade>;
 
             // Obter a Lista de todas as funcionalidades Cadastradas
-            listaFuncionalidadesAtualizada =util.ConverterL2OC(boFuncionalidade.ObterListaObjeto());
+            listaFuncionalidadesAtualizada = IconUtil.ConverterL2OC(boFuncionalidade.ObterListaObjeto());
 
             foreach (var itemFuncionalidade in listaFuncionalidadesAtualizada)
             {

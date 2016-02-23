@@ -55,20 +55,33 @@ namespace wpf_wakusese.src.main.viewControl
             txtUsuarioLogado.Text = usuarioLogado.nome;
         }
 
-        public TelaPrincipal(UsuarioPerfil usuarioLog)
+        public TelaPrincipal(Usuario usuarioLog)
         {
-            
             InitializeComponent();
-            
-            //this.Cursor = Cursors.Arrow;
+            this.Cursor = Cursors.Arrow;
 
-            //usuarioLogado = bo.daoUsuario.ObterObjetoPorId(usuarioLog.usuario.id);
+            usuarioLogado = usuarioLog;
+            empLogada = usuarioLog.ultimaEmpresa;
 
-            //empLogada = bo.daoEmpresa.ObterEmpresaPorId(1);  //********************************************************
-            //bo.doAtualizarPermissoesUsuario(empLogada, usuarioLogado);
+            txtEmpresa.Text = empLogada.nome;
+            txtUsuarioLogado.Text = usuarioLogado.nome;
 
-            //txtUsuarioLogado.Text = usuarioLogado.nome;
         }
+
+        //public TelaPrincipal(UsuarioPerfil usuarioLog)
+        //{
+
+        //    InitializeComponent();
+
+        //    //this.Cursor = Cursors.Arrow;
+
+        //    //usuarioLogado = bo.daoUsuario.ObterObjetoPorId(usuarioLog.usuario.id);
+
+        //    //empLogada = bo.daoEmpresa.ObterEmpresaPorId(1);  //********************************************************
+        //    //bo.doAtualizarPermissoesUsuario(empLogada, usuarioLogado);
+
+        //    //txtUsuarioLogado.Text = usuarioLogado.nome;
+        //}
 
         private void OnWindowStateChanged(object sender, EventArgs e)
         {
@@ -156,8 +169,8 @@ namespace wpf_wakusese.src.main.viewControl
         private void btnCategoriaProdutos_Click(object sender, EventArgs e)
         {
             this.Cursor = Cursors.Wait;
-            //TelaCategoria frm = new TelaCategoria();
-            //stkContent.Content = frm;
+            TelaCategoria frm = new TelaCategoria(this);
+            stkContent.Content = frm;
             this.Cursor = Cursors.Arrow;
         }
 

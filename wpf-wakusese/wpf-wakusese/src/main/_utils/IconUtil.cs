@@ -9,7 +9,7 @@ namespace wpf_wakusese.src.main._utils
 {
     public class IconUtil
     {
-        public ObservableCollection<T> ConverterL2OC<T>(IList<T> obj)
+        public static ObservableCollection<T> ConverterL2OC<T>(IList<T> obj)
         {            
             return obj == null ? null : new ObservableCollection<T>(obj);            
         }

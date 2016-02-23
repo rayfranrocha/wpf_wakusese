@@ -52,7 +52,7 @@ namespace wpf_wakusese.src.main.viewControl.cadastros
         private void doConsultar()
         {                        
             tvFuncionalidade.AllowEditing = false;
-            funcionalidades = util.ConverterL2OC(boFuncionalidade.ObterListaObjeto()); 
+            funcionalidades = IconUtil.ConverterL2OC(boFuncionalidade.ObterListaObjeto()); 
 
             habilitarBotoes(true);
             frmTelaPrincipal.tabControlMenu.IsEnabled = true;

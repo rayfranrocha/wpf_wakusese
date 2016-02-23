@@ -111,7 +111,7 @@ namespace wpf_wakusese.src.main.viewControl.cadastros
 
             tvPerfilEmpresa.IsEnabled = true; //tvUsuarioPerfil.IsEnabled = true;       
 
-            usuarios =util.ConverterL2OC(domSeguranca.ObterListaUsuariodaEmpresa(emp));
+            usuarios = IconUtil.ConverterL2OC(domSeguranca.ObterListaUsuariodaEmpresa(emp));
 
             //util.BestFitColumn(gcUsuario);
 
@@ -170,7 +170,7 @@ namespace wpf_wakusese.src.main.viewControl.cadastros
                 boUsuario.Excluir(usu);
                 boUsuario.SaveChanges();
 
-                usuarios = util.ConverterL2OC(boUsuario.ObterListaObjeto()); ///
+                usuarios = IconUtil.ConverterL2OC(boUsuario.ObterListaObjeto()); ///
 
                 doConsultar();
 
@@ -203,7 +203,7 @@ namespace wpf_wakusese.src.main.viewControl.cadastros
             var listaUsuarioPerfis = usuarioPerfis as ObservableCollection<UsuarioPerfil>;
 
             // Obter a Lista de todas as funcionalidades Cadastradas
-            listaPerfisAtualizada =util.ConverterL2OC(boPerfil.ObterListaObjeto());
+            listaPerfisAtualizada = IconUtil.ConverterL2OC(boPerfil.ObterListaObjeto());
 
             foreach (var itemPerfil in listaPerfisAtualizada)
             {
@@ -286,7 +286,7 @@ namespace wpf_wakusese.src.main.viewControl.cadastros
 
             //Preenche o Grid control Usuario perfil de acordo com o usuario linha focada
             usuarioPerfis = new ObservableCollection<UsuarioPerfil>();
-            usuarioPerfis =util.ConverterL2OC(boUsuarioPerfil.ObterListaObjetoUsuario(usuFocado));
+            usuarioPerfis = IconUtil.ConverterL2OC(boUsuarioPerfil.ObterListaObjetoUsuario(usuFocado));
 
             ObservableCollection<Perfil> listaPerfil = new ObservableCollection<Perfil>();
 
@@ -317,7 +317,7 @@ namespace wpf_wakusese.src.main.viewControl.cadastros
             if (per != null && perfis.Count != 0)
             {
                 perfilFuncionalidades = new ObservableCollection<PerfilFuncionalidade>();
-                perfilFuncionalidades = util.ConverterL2OC(boPerfilFuncionalidade.ObterListaFuncinalidadedoPerfilSelecionado(per));
+                perfilFuncionalidades = IconUtil.ConverterL2OC(boPerfilFuncionalidade.ObterListaFuncinalidadedoPerfilSelecionado(per));
 
             }
             else

@@ -47,7 +47,7 @@ namespace wpf_wakusese.src.main.viewControl.cadastros
             InitializeComponent();
             frmTelaPrincipal = telaPrincipalInfo;
             categorias = new ObservableCollection<Categoria>();
-            categorias = util.ConverterL2OC(boCategoria.ObterListaCategoriadaEmpresa(frmTelaPrincipal.empLogada));
+            categorias = IconUtil.ConverterL2OC(boCategoria.ObterListaCategoriadaEmpresa(frmTelaPrincipal.empLogada));
         
         }
 

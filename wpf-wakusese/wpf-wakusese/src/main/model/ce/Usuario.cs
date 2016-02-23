@@ -113,14 +113,16 @@ namespace wpf_wakusese.src.main.model.ce
             set { _endereco = value; RaisePropertyChanged("endereco"); }
         }
 
-        [NotMapped]
-        public List<String> listaNomeFuncionalidade { get; set; }
-
         public bool isPossuiAcesso(string nomeFuncionalidade)
         {
             return this.listaNomeFuncionalidade.Contains(nomeFuncionalidade);
 
         }
 
+        [NotMapped]
+        public List<String> listaNomeFuncionalidade { get; set; }
+
+        [NotMapped]
+        public List<Empresa> ListaEmpresa { get; set; }
     }
 }

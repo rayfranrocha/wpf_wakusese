@@ -58,14 +58,45 @@ namespace wpf_wakusese.src.main.model.servicos
 
         /// <summary>
         /// Este método é resposável por autenticar um usuario (fazer login e recuperar seus acessos)
-        /// <para> 1. Verifica credenciais do usuário (telefone ou email + senha) </para>
-        /// <para>2. Recupera a lista de Perfil a partir do Usuario + Empresa </para>
-        /// <para>3. A partir da lista de perfil, adiciona ao Usuario a lista de Funcionalidade que o mesmo tem acesso </para>
+        /// <para> 1. Obtem o usuario a partir das credenciais do usuário (telefone ou email + senha). Este usuario deve conter UltimaEmpresa </para>
+        /// <para> 2. Define lista de empresas associadas ao usuario </para>
+        /// <para> 3. Se o usuario nao contiver ultimaEmpresa e ListaEmpresa > 0, associa o primeiro item da ListaEmpresa como ultima empresa do usuario</para>
+        /// <para> 4. Se o usuario.ultimaEmpresa != null, doAtualizarPermissoesUsuario(...)
         /// </summary>
         /// <returns>Usuario</returns>
-        public Usuario doAutenticarUsuario(String telOrEmail,String senha)
+        public Usuario doAutenticarUsuario(String telOrEmail, String senha)
         {
+            //1.
             Usuario r = boUsuario.ObterListaObjeto(telOrEmail, senha);
+
+            //2.
+            ObservableCollection<UsuarioPerfil> ListaUsuarioPerfil = IconUtil.ConverterL2OC(boUsuarioPerfil.ObterListaUsuarioPerfil(r));
+
+            ObservableCollection<Perfil> Listaperfil = new ObservableCollection<Perfil>();
+
+            foreach (var item in ListaUsuarioPerfil)
+            {
+                Listaperfil.Add(boPerfil.ObterPerfil(item));
+
+            }
+
+            r.ListaEmpresa = new List<Empresa>(from c in Listaperfil
+                                               select c.empresa).Distinct().ToList();
+
+            //3.
+            if (r.ultimaEmpresa == null)
+            {
+                if (r.ListaEmpresa.Count > 0)
+                {
+                    r.ultimaEmpresa = r.ListaEmpresa[0];
+                }
+            }
+
+            //4.
+            if (r.ultimaEmpresa != null)
+            {
+                doAtualizarPermissoesUsuario(r.ultimaEmpresa, r);
+            }
 
             return r;
         }
@@ -84,7 +115,7 @@ namespace wpf_wakusese.src.main.model.servicos
             //3. Atualizar usuarioLogado.listaFuncionalidade [ lambda no listaPerfilFuncionalidade ]
             usuario.listaNomeFuncionalidade.Clear();
             usuario.listaNomeFuncionalidade.AddRange((from x in listaPerfilFuncionalidade
-                                                            select x.funcionalidade.nome)
+                                                      select x.funcionalidade.nome)
                                                              .ToList());
         }
 
@@ -97,9 +128,9 @@ namespace wpf_wakusese.src.main.model.servicos
             List<UsuarioPerfil> listaUsuarioPerfil = boUsuarioPerfil.ObterListaObjeto();
 
             //3. Recuperar lista de Usuario que pertencem a empresa logada
-            List<Usuario> listaUsuario= (from x in listaUsuarioPerfil
-                                         where listaPerfil.Contains(x.perfil)
-                                         select x.usuario).ToList();
+            List<Usuario> listaUsuario = (from x in listaUsuarioPerfil
+                                          where listaPerfil.Contains(x.perfil)
+                                          select x.usuario).ToList();
 
             return listaUsuario;
 

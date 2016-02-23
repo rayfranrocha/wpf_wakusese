@@ -64,7 +64,7 @@ namespace wpf_wakusese.src.main.viewControl.cadastros
         {
             tvProduto.AllowEditing = false;
 
-            categorias = util.ConverterL2OC(boCategoria.ObterListaCategoriadaEmpresa(frmTelaPrincipal.empLogada));
+            categorias = IconUtil.ConverterL2OC(boCategoria.ObterListaCategoriadaEmpresa(frmTelaPrincipal.empLogada));
             if (categorias == null)
             {
                 MessageBox.Show("Não há regitros de categoria(s) no banco de dados!");
@@ -73,7 +73,7 @@ namespace wpf_wakusese.src.main.viewControl.cadastros
             }
             else
             {
-                produtos = util.ConverterL2OC(boProduto.ObterListaProdutosdaEmpresa(frmTelaPrincipal.empLogada));
+                produtos = IconUtil.ConverterL2OC(boProduto.ObterListaProdutosdaEmpresa(frmTelaPrincipal.empLogada));
                 frmTelaPrincipal.tabControlMenu.IsEnabled = true;
             }            
 

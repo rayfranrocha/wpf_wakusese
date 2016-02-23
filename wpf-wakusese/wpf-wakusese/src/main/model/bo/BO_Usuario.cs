@@ -47,14 +47,15 @@ namespace wpf_wakusese.src.main.model.bo
         public Usuario ObterListaObjeto(string telefoneOrEmail, string senha)
         {
             Usuario r = _DbSet
-
-                               .Where(o => o.telefone.Contains(telefoneOrEmail) || o.senha.Contains(senha))
+                               .Where(o => (o.telefone == telefoneOrEmail || o.email == telefoneOrEmail) && o.senha == senha)
+                               .Include(o => o.ultimaEmpresa)
                 //.Where(o => o.telefone == telefoneOrEmail && o.senha == senha)
                                .FirstOrDefault();
             if (r == null)
             {
                 throw new ArgumentException("Não foi encontrado usuário com este telefone e senha!");
             }
+
             return r;
         }
 

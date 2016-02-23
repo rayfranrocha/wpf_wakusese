@@ -85,7 +85,7 @@ namespace wpf_wakusese
             //ObservableCollection<Empresa> lista1 = bo1.ObterListaObjeto();
 
             var bo2 = FactoryBO<Empresa>.GetBO();
-            ObservableCollection<Empresa> lista2 = util.ConverterL2OC(bo2.ObterListaObjeto());
+           // ObservableCollection<Empresa> lista2 = IconUtil.ConverterL2OC(bo2.ObterListaObjeto());
         }
 
         private void Exemplo27()

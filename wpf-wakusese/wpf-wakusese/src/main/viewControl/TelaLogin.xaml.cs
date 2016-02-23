@@ -44,7 +44,7 @@ namespace wpf_wakusese.src.main.viewControl
 
         private void btnLogin_Click(object sender, RoutedEventArgs e)
         {
-            
+
             var metroWindow = (Application.Current.MainWindow as MetroWindow);
             metroWindow.MetroDialogOptions.ColorScheme = MetroDialogColorScheme.Theme;
 
@@ -62,40 +62,19 @@ namespace wpf_wakusese.src.main.viewControl
                     String senha = txtSenha.Password;
 
                     usuarioLogado = domSeguranca.doAutenticarUsuario(telefoneOrEmail, senha);
-                    if (usuarioLogado != null)
+
+                    if (usuarioLogado.ListaEmpresa.Count() < 2)
                     {
-                        
-                        ObservableCollection<UsuarioPerfil> ListaUsuarioPerfil =util.ConverterL2OC(boUsuarioPerfil.ObterListaUsuarioPerfil(usuarioLogado));
-
-                        ObservableCollection<Perfil> Listaperfil = new ObservableCollection<Perfil>();
-
-                        foreach (var item in ListaUsuarioPerfil)
-                        {
-                            Listaperfil.Add(boPerfil.ObterPerfil(item));
-
-                        }
-
-                        ObservableCollection<Empresa> ListaEmpresa = new ObservableCollection<Empresa>(from c in Listaperfil
-                                                                                                       select c.empresa);
-
-                        if (ListaEmpresa.Distinct().Count() < 2)
-                        {
-                            Empresa emp = new Empresa();
-                            emp = ListaEmpresa[0];
-                            TelaPrincipal janela = new TelaPrincipal(usuarioLogado, emp);
-                            janela.Show();
-                            Close();
-                        }
-                        else
-                        {
-                            //TelaPerfilLogin janela = new TelaPerfilLogin(Listaperfil, usuarioLogado);
-                            //   janela.Show();
-                            MessageBox.Show("Escolha empresa ... tela");
-                            Close();
-                        }
+                        TelaPrincipal janela = new TelaPrincipal(usuarioLogado);
+                        janela.Show();
+                        Close();
                     }
-
-
+                    else
+                    {
+                        PopupSelecionarEmpresa janela = new PopupSelecionarEmpresa(usuarioLogado);
+                        janela.Show();
+                        Close();
+                    }
                 }
                 catch (Exception ex)
                 {
