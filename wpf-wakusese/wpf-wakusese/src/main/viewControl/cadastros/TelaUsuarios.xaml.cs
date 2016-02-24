@@ -125,16 +125,18 @@ namespace wpf_wakusese.src.main.viewControl.cadastros
 
         private void btnInserir_Click(object sender, RoutedEventArgs e)
         {
-            frmTelaPrincipal.tabControlMenu.IsEnabled = false;
-            habilitarBotoes(false);
+            //frmTelaPrincipal.tabControlMenu.IsEnabled = false;
+            //habilitarBotoes(false);
 
-            if (tvUsuario.IsEnabled)
-            {
-                tvUsuario.AddNewRow();
-                tvUsuario.AllowEditing = true;
-                ultimaLinhaFocada = tvUsuario.FocusedRowHandle;
+            //if (tvUsuario.IsEnabled)
+            //{
+            //    tvUsuario.AddNewRow();
+            //    tvUsuario.AllowEditing = true;
+            //    ultimaLinhaFocada = tvUsuario.FocusedRowHandle;
 
-            }
+            //}
+            PopupInserirUsuario frm = new PopupInserirUsuario();
+            frm.ShowDialog();
 
         }
 
