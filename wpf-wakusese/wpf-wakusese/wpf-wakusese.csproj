@@ -92,7 +92,7 @@
     <Reference Include="PresentationCore" />
     <Reference Include="PresentationFramework" />
     <Reference Include="Xceed.Wpf.Toolkit">
-      <HintPath>E:\novo\wpf-wakusese\wpf-wakusese\bin\Debug\Xceed.Wpf.Toolkit.dll</HintPath>
+      <HintPath>..\..\..\..\ConsumerFood\packages\Extended.Wpf.Toolkit.2.6\lib\net35\Xceed.Wpf.Toolkit.dll</HintPath>
     </Reference>
   </ItemGroup>
   <ItemGroup>
@@ -148,6 +148,9 @@
     <Compile Include="src\main\model\dominios\IDominioSeguranca.cs" />
     <Compile Include="src\main\model\dominios\DominioSeguranca.cs" />
     <Compile Include="src\main\model\enums\PerfilPadraoEnum.cs" />
+    <Compile Include="src\main\viewControl\cadastros\PopupInserirProduto.xaml.cs">
+      <DependentUpon>PopupInserirProduto.xaml</DependentUpon>
+    </Compile>
     <Compile Include="src\main\viewControl\cadastros\PopupInserirUsuario.xaml.cs">
       <DependentUpon>PopupInserirUsuario.xaml</DependentUpon>
     </Compile>
@@ -197,6 +200,10 @@
       <SubType>Code</SubType>
     </Compile>
     <Page Include="Resources\Icons.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="src\main\viewControl\cadastros\PopupInserirProduto.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>

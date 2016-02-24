@@ -43,16 +43,13 @@ namespace wpf_wakusese.src.main.viewControl
 
         private BitmapImage imagemSource(string cam)
         {
-           
-                
+                          
                 BitmapImage bitmap = new BitmapImage();
                 bitmap.BeginInit();
                 bitmap.UriSource = new Uri(cam);
                 bitmap.EndInit();
 
-                return bitmap;
-
-            
+                return bitmap;           
            
         }
 
@@ -61,12 +58,13 @@ namespace wpf_wakusese.src.main.viewControl
             InitializeComponent();
             this.Cursor = Cursors.Arrow;
 
-            List<TodoItem> items = new List<TodoItem>();
-            items.Add(new TodoItem() { Titulo = "Complete this WPF tutorial", Imagem = imagemSource("src/main/viewControl/Resources/Imagens/gift1.png") });
-            //items.Add(new TodoItem() { Title = "Learn C#", Completion = 80 });
-            //items.Add(new TodoItem() { Title = "Wash the car", Completion = 0 });
+            //List<TodoItem> items = new List<TodoItem>();
+            //items.Add(new TodoItem() { NomeBotao="btnPedidoDelivery", Titulo = "Pedido Delivery", Imagem = new BitmapImage(new Uri(@"\src\main\viewControl\resources\Imagens\delivery4.png",UriKind.Relative)) });
+            //items.Add(new TodoItem() { NomeBotao = "btnPedidoDelivery", Titulo = "Pedido Local", Imagem = new BitmapImage(new Uri(@"\src\main\viewControl\resources\Imagens\cart.png", UriKind.Relative)) });
+            ////items.Add(new TodoItem() { Title = "Learn C#", Completion = 80 });
+            ////items.Add(new TodoItem() { Title = "Wash the car", Completion = 0 });
 
-            icTodoList.ItemsSource = items;
+            //icTodoList.ItemsSource = items;
 
             usuarioLogado = usuarioLog;
 
@@ -81,6 +79,7 @@ namespace wpf_wakusese.src.main.viewControl
         {
             public string Titulo { get; set; }
             public ImageSource Imagem { get; set; }
+            public string NomeBotao { get; set; }
         }
 
         public TelaPrincipal(Usuario usuarioLog)

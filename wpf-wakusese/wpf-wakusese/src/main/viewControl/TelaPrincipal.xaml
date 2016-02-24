@@ -34,9 +34,7 @@
                         <TextBlock Text="VENDAS" Foreground="Blue" />
                     </StackPanel>
                 </TabItem.Header>
-
-
-                <ItemsControl  Name="icTodoList">
+                <!--<ItemsControl  Name="icTodoList">
                         <ItemsControl.ItemsPanel>
                             <ItemsPanelTemplate>
                                 <WrapPanel />
@@ -45,14 +43,13 @@
                     
                         <ItemsControl.ItemTemplate>
                             <DataTemplate>
-                            <ctrl:BotaoTelaPrincipal x:Name="z" Titulo="{Binding Titulo}"   Imagem="{Binding imagem}" />
+                            <ctrl:BotaoTelaPrincipal  Titulo="{Binding Titulo}"   Imagem="{Binding Imagem}" />
                             
                             </DataTemplate>
                         </ItemsControl.ItemTemplate>
                         
-                    </ItemsControl>
-                
-                <!--<StackPanel  Name="stkBtnsVenda"  Orientation="Horizontal" VerticalAlignment="Top" Height="80"  Loaded="stkBtnsVenda_Loaded" >
+                    </ItemsControl>-->                
+                <StackPanel  Name="stkBtnsVenda"  Orientation="Horizontal" VerticalAlignment="Top" Height="80"  Loaded="stkBtnsVenda_Loaded" >
                     <ctrl:BotaoTelaPrincipal x:Name="btnAbriFecharCaixa" Titulo="Caixa"   Imagem="Resources/Imagens/Cashier.png" />
                     <ctrl:BotaoTelaPrincipal x:Name="btnHistoricoCaixa"   Titulo="Histórico do Caixa" Imagem="Resources/Imagens/Clock.png" />
                     <GridSplitter Width="1"/>
@@ -65,7 +62,7 @@
                     <GridSplitter  Width="1"/>
                     <ctrl:BotaoTelaPrincipal x:Name="btnSairLogout"     Click="btnSairLogout_Click" Tag="btnB" Titulo="Logout" Imagem="Resources/Imagens/exit.png" />
 
-                </StackPanel>-->
+                </StackPanel>
 
             </TabItem>
 
