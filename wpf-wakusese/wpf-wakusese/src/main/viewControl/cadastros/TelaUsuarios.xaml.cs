@@ -135,7 +135,7 @@ namespace wpf_wakusese.src.main.viewControl.cadastros
             //    ultimaLinhaFocada = tvUsuario.FocusedRowHandle;
 
             //}
-            PopupInserirUsuario frm = new PopupInserirUsuario();
+            PopupInserirUsuario frm = new PopupInserirUsuario(frmTelaPrincipal);
             frm.ShowDialog();
 
         }

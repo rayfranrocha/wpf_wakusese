@@ -68,5 +68,18 @@ namespace wpf_wakusese.src.main.model.bo
                                   .FirstOrDefault();
             return perfil;
         }
+
+        public List<Perfil> ObterListaPerfildaEmpresa(Empresa empresa)
+        {
+            List<Perfil> lista = _DbSet
+                                       .Include(o => o.empresa)
+                                       .Where(o=> o.empresa.id == empresa.id)
+                                       .OrderBy(o => o.id)
+                                       .ToList();
+
+            //  ObservableCollection<Perfil> listObv = new ObservableCollection<Perfil>(lista);
+
+            return lista;
+        }
     }
 }

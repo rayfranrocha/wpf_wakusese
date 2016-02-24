@@ -30,7 +30,7 @@
         </Grid.ColumnDefinitions>
         <Label Content="Geral:" HorizontalAlignment="Left" Grid.ColumnSpan="4" FontSize="25" Grid.Column="0" Grid.Row="0" VerticalAlignment="Top" />
         <Label Content="Nome:" HorizontalAlignment="Right" Grid.Column="0" Grid.Row="1" VerticalAlignment="Top" />
-        <TextBox  Name="txtNomeCliente" Grid.Column="1" Grid.Row="1" HorizontalAlignment="Left" Height="23" TextWrapping="Wrap"  VerticalAlignment="Top" Width="225"/>
+        <TextBox  Name="txtNomeCliente" Text="{Binding ElementName=_this,Path=usuario.nome}" Grid.Column="1" Grid.Row="1" HorizontalAlignment="Left" Height="23" TextWrapping="Wrap"  VerticalAlignment="Top" Width="225"/>
         <Label Content="Facebook:" Grid.Column="0" Grid.Row="2" HorizontalAlignment="Right" VerticalAlignment="Top"/>
         <TextBox Name="txtFacebook" Grid.Column="1" Grid.Row="2" HorizontalAlignment="Left" Height="23"  TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="225"/>
         <Label Content="Latitude:"  HorizontalAlignment="Right" Grid.Column="0" Grid.Row="3"  VerticalAlignment="Top" />
@@ -50,18 +50,18 @@
         <TextBox Name="txtReferencia" HorizontalAlignment="Left" Grid.Column="1" Grid.Row="4" Height="23"  TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="225"/>
         <Label Content="Telefone:"  Grid.Column="0" Grid.Row="5" HorizontalAlignment="Right"  VerticalAlignment="Top"/>
 
-        <xctk:MaskedTextBox  Name="txtTelefone"  Grid.Column="1" Grid.Row="5" Mask="(00)000000000" HorizontalAlignment="Left" Height="23"   TextWrapping="Wrap"  VerticalAlignment="Top" Width="225" TextOptions.TextHintingMode="Animated" AllowPromptAsInput="False" HidePromptOnLeave="True" IncludeLiteralsInValue="False"/>
+        <xctk:MaskedTextBox  Name="txtTelefone"  Grid.Column="1" Grid.Row="5" Mask="(00)000000000" Text="{Binding ElementName=_this,Path=usuario.telefone}" HorizontalAlignment="Left" Height="23"   TextWrapping="Wrap"  VerticalAlignment="Top" Width="225" TextOptions.TextHintingMode="Animated" AllowPromptAsInput="False" HidePromptOnLeave="True" IncludeLiteralsInValue="False"/>
         <!--<TextBox Name="txtTelefone" HorizontalAlignment="Left" Grid.Column="1" Grid.Row="5" Height="23"  TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="225"/>-->
         <Label Content="Email:"  Grid.Column="0" Grid.Row="6" HorizontalAlignment="Right"  VerticalAlignment="Top"/>
-        <TextBox Name="txtEmail" HorizontalAlignment="Left" Grid.Column="1" Grid.Row="6" Height="23"  TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="225"/>
+        <TextBox Name="txtEmail" HorizontalAlignment="Left" Grid.Column="1" Grid.Row="6" Height="23"  TextWrapping="Wrap" Text="{Binding ElementName=_this,Path=usuario.email}" VerticalAlignment="Top" Width="225"/>
         <Label Content="Logradouro:"  Grid.Column="2" Grid.Row="4" HorizontalAlignment="Right"  VerticalAlignment="Top"/>
-        <TextBox Name="txtLogradouro"  HorizontalAlignment="Left" Grid.Column="3" Grid.Row="4" Height="23"  TextWrapping="Wrap" VerticalAlignment="Top" Text="" Width="225" />
+        <TextBox Name="txtLogradouro"  HorizontalAlignment="Left" Grid.Column="3" Grid.Row="4" Height="23"  TextWrapping="Wrap" VerticalAlignment="Top" Text="{Binding ElementName=_this,Path=usuario.endereco.logradouro}" Width="225" />
         <Label Content="Cep:"  Grid.Column="2" Grid.Row="5" HorizontalAlignment="Right"  VerticalAlignment="Top"/>
 
-        <xctk:MaskedTextBox Name="txtCep" Grid.Column="3" Grid.Row="5" Mask="00000-000" HorizontalAlignment="Left" Height="23"  TextWrapping="Wrap" Text="" AllowPromptAsInput="False" IncludeLiteralsInValue="False" HidePromptOnLeave="True" VerticalAlignment="Top" Width="225"/>
+        <xctk:MaskedTextBox Name="txtCep" Text="{Binding ElementName=_this,Path=usuario.endereco.cep}" Grid.Column="3" Grid.Row="5" Mask="00000-000" HorizontalAlignment="Left" Height="23"  TextWrapping="Wrap"  AllowPromptAsInput="False" IncludeLiteralsInValue="False" HidePromptOnLeave="True" VerticalAlignment="Top" Width="225"/>
         <!--<TextBox Name="txtCep" HorizontalAlignment="Left" Grid.Column="3" Grid.Row="5" Height="23"  TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="220"/>-->
         <Label Content="Senha:"  Grid.Column="2" Grid.Row="6" HorizontalAlignment="Right"  VerticalAlignment="Top"/>
-        <TextBox Name="txtSenha" HorizontalAlignment="Left" Grid.Column="3" Grid.Row="6" Height="23"  TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="225"/>
+        <TextBox Name="txtSenha" HorizontalAlignment="Left" Grid.Column="3" Grid.Row="6" Height="23"  TextWrapping="Wrap" Text="{Binding ElementName=_this,Path=usuario.senha}" VerticalAlignment="Top" Width="225"/>
         <Label Content="Selecione o Perfil:"  Grid.Column="0"  Grid.Row="7" HorizontalAlignment="Left"  VerticalAlignment="Top"/>
         <ListBox VerticalAlignment="Stretch" ScrollViewer.VerticalScrollBarVisibility="Visible" ItemsSource="{Binding ElementName=_this,Path=ListadePerfil}" Grid.Column="1" Grid.Row="7"  >
             <ListBox.ItemTemplate>

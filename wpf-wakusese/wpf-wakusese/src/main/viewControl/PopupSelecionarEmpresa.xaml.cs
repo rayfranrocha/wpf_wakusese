@@ -65,6 +65,8 @@ namespace wpf_wakusese.src.main.viewControl
             else
             {
                 //atualiza ultimaEmpresa do usuario logado
+                //BO_Endereco boEndereco = (BO_Endereco)FactoryBO<Endereco>.GetBO();
+                //boEndereco.Attach(empLogada.endereco);
                 usuarioLog.ultimaEmpresa = empLogada;
                 boUsuario.InserirOuAlterar(usuarioLog);
                 boUsuario.SaveChanges();

@@ -100,9 +100,9 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
-    <Compile Include="Migrations\201602231947340_initial.cs" />
-    <Compile Include="Migrations\201602231947340_initial.Designer.cs">
-      <DependentUpon>201602231947340_initial.cs</DependentUpon>
+    <Compile Include="Migrations\201602241229594_Initial.cs" />
+    <Compile Include="Migrations\201602241229594_Initial.Designer.cs">
+      <DependentUpon>201602241229594_Initial.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="src\main\model\bo\BO_Categoria.cs" />
@@ -262,8 +262,8 @@
       <DependentUpon>Settings.settings</DependentUpon>
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
-    <EmbeddedResource Include="Migrations\201602231947340_initial.resx">
-      <DependentUpon>201602231947340_initial.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201602241229594_Initial.resx">
+      <DependentUpon>201602241229594_Initial.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Licenses.licx" />
     <EmbeddedResource Include="Properties\Resources.resx">

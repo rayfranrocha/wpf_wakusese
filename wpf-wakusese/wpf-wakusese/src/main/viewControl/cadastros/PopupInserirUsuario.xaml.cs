@@ -23,7 +23,8 @@ namespace wpf_wakusese.src.main.viewControl.cadastros
     /// Interaction logic for PopupInserirUsuario.xaml
     /// </summary>
     public partial class PopupInserirUsuario : MetroWindow
-    { int ultimaLinhaFocada;// = null;
+    { 
+        
         BO_Empresa boEmpresa = (BO_Empresa)FactoryBO<Empresa>.GetBO();
         BO_Perfil boPerfil = (BO_Perfil)FactoryBO<Perfil>.GetBO();
         BO_UsuarioPerfil boUsuarioPerfil = (BO_UsuarioPerfil)FactoryBO<UsuarioPerfil>.GetBO();
@@ -39,7 +40,7 @@ namespace wpf_wakusese.src.main.viewControl.cadastros
         }
 
         // Using a DependencyProperty as the backing store for usuario.  This enables animation, styling, binding, etc...
-        public static readonly DependencyProperty usuarioProperty =
+        public static  DependencyProperty usuarioProperty =
             DependencyProperty.Register("usuario", typeof(Usuario), typeof(PopupInserirUsuario));
 
         
@@ -54,14 +55,23 @@ namespace wpf_wakusese.src.main.viewControl.cadastros
         public static readonly DependencyProperty ListaPerfilProperty =
             DependencyProperty.Register("ListadePerfil", typeof(ObservableCollection<Perfil>), typeof(PopupInserirUsuario));
 
-        
-        public PopupInserirUsuario()
+
+        TelaPrincipal frmTelaPrincipal;
+        public PopupInserirUsuario(TelaPrincipal telaPrincipalInfo)
         {
             InitializeComponent();
+            frmTelaPrincipal = telaPrincipalInfo;
+            usuario = new Usuario();
             ListadePerfil = new ObservableCollection<Perfil>();
-            ListadePerfil = IconUtil.ConverterL2OC(boPerfil.ObterListaObjeto());
+            doConsultar();
         }
-            //ListaPerfil.ItemsSource = IconUtil.ConverterL2OC(boPerfil.ObterListaObjeto());
+
+        private void doConsultar()
+        {
+           
+            ListadePerfil = IconUtil.ConverterL2OC(boPerfil.ObterListaPerfildaEmpresa(frmTelaPrincipal.empLogada));
+        }
+            
         
 
         private void btnVoltar_Click(object sender, RoutedEventArgs e)
@@ -78,19 +88,19 @@ namespace wpf_wakusese.src.main.viewControl.cadastros
             }
             else
             {
-                Usuario usuario = new Usuario();
-                usuario.nome = txtNomeCliente.Text;
-                usuario.dataNascimento = Convert.ToDateTime(txtDtNascimento.Text);
-                usuario.email = txtEmail.Text;
-                usuario.facebook = txtFacebook.Text;
-                usuario.instagram = txtInstagram.Text;
-                usuario.senha = txtSenha.Text;
-                usuario.telefone = txtTelefone.Text;
-                usuario.endereco.logradouro = txtLogradouro.Text;
-                usuario.endereco.longitude = Convert.ToDecimal(txtLongitude.Text);
-                usuario.endereco.latitude = Convert.ToDecimal(txtLatitude.Text);
 
-
+                #region usuario recebe de txt
+                //usuario.nome = txtNomeCliente.Text;
+                //usuario.dataNascimento = Convert.ToDateTime(txtDtNascimento.Text);
+                //usuario.email = txtEmail.Text;
+                //usuario.facebook = txtFacebook.Text;
+                //usuario.instagram = txtInstagram.Text;
+                //usuario.senha = txtSenha.Text;
+                //usuario.telefone = txtTelefone.Text;
+                //usuario.endereco.logradouro = txtLogradouro.Text;
+                //usuario.endereco.longitude = Convert.ToDecimal(txtLongitude.Text);
+                //usuario.endereco.latitude = Convert.ToDecimal(txtLatitude.Text);
+                #endregion
 
                 boUsuario.InserirOuAlterar(usuario);
                 boUsuario.SaveChanges();
@@ -99,9 +109,10 @@ namespace wpf_wakusese.src.main.viewControl.cadastros
 
                 foreach (var item in ListadePerfil)
                 {
-                    usuarioPerfil = new UsuarioPerfil();
+                    
                     if (item.isSelecionado)
                     {
+                        usuarioPerfil = new UsuarioPerfil();
                         usuarioPerfil.usuario = usuario;
                         usuarioPerfil.perfil = item;
                         boUsuarioPerfil.InserirOuAlterar(usuarioPerfil);
@@ -113,7 +124,8 @@ namespace wpf_wakusese.src.main.viewControl.cadastros
                 System.Windows.Forms.MessageBox.Show("Usuario Salvo Com Sucesso!");
                 txtNomeCliente.Text = ""; txtCep.Text = ""; txtDtNascimento.Text = ""; txtEmail.Text = ""; txtFacebook.Text = ""; txtInstagram.Text = ""; txtLatitude.Text = "";
                 txtLogradouro.Text = ""; txtLongitude.Text = ""; txtReferencia.Text = ""; txtSenha.Text = ""; txtTelefone.Text = "";
-                Close();
+                doConsultar();
+                //Close();
             }
         }
     }

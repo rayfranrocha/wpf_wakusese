@@ -120,7 +120,7 @@ namespace wpf_wakusese.src.main.model.servicos
             List<Perfil> listaPerfil = boPerfil.ObterListaPerfilporEmpresa(empresa);
 
             //2. Recuperar de lista de UsuarioPerfil
-            List<UsuarioPerfil> listaUsuarioPerfil = boUsuarioPerfil.ObterListaObjeto();
+            List<UsuarioPerfil> listaUsuarioPerfil = boUsuarioPerfil.ObterListaObjeto(empresa);
 
             //3. Recuperar lista de Usuario que pertencem a empresa logada
             List<Usuario> listaUsuario = (from x in listaUsuarioPerfil

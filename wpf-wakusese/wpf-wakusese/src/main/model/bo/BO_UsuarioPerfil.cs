@@ -37,6 +37,17 @@ namespace wpf_wakusese.src.main.model.bo
             return r;
         }
 
+        public List<UsuarioPerfil> ObterListaObjeto(Empresa empresa)
+        {
+            List<UsuarioPerfil> r = _DbSet
+                         .Include(o => o.perfil)
+                         .Include(o=> o.usuario)
+                         .Where(o => o.perfil.empresa.id == empresa.id)
+                         .ToList();
+
+            return r;
+        }
+
         public List<UsuarioPerfil> ObterListaObjetoUsuario(Usuario usuFocado)
         {
             if (usuFocado != null)
@@ -82,6 +93,7 @@ namespace wpf_wakusese.src.main.model.bo
             List<UsuarioPerfil> listaUsuarioPerfil = _DbSet
                                 .Include(o => o.perfil)
                                 .Include(o=> o.perfil.empresa)
+                                .Include(o => o.perfil.empresa.endereco)
                                 .Where(o => o.usuario.id == usuarioLogado.id)
                                 .ToList();
             //ObservableCollection<UsuarioPerfil> listObv = new ObservableCollection<UsuarioPerfil>(usuPerf);
